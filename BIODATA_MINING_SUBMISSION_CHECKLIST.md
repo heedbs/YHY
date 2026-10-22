@@ -8,7 +8,7 @@ English README.md is primary; readme_kor.md is optional supplementary guidance. 
 
 ## Author workflow
 
-1. Confirm the actual code rightsholders and institutional/coauthor restrictions. Record consent privately. MIT is a proposed option for original code, NOT a selected license. Preserve third-party licenses irrespective of that decision. Do not label the repository open-source before selecting an applicable license.
+1. Confirm the actual code rightsholders and institutional/coauthor restrictions. Record consent privately. MIT is selected for authorized original code; LICENSE_SCOPE.md lists unresolved component exceptions. Preserve third-party licenses irrespective of that decision. Do not label the repository open-source before selecting an applicable license.
 2. Review minimal exact fold/partition, duplicate-exclusion, patch hierarchy and OOF fields for distribution rights and linkability. User willingness to disclose is not proof that all fields are safe. Keep these files out until a field-level review is complete. Do not invent a legal reason to withhold data or promise access that cannot be provided.
 3. Resolve or explicitly document the historical cache-generation/reference gap and incomplete environment pins. Distinguish tested CPU synthetic checks, unexecuted examples, and reference-only benchmark/explainability code. No new model execution is needed merely to edit these documents.
 4. Compare tables/figures with their frozen aggregate sources and record the specific final code commit. Retain scientific limitations and AI-assistance disclosures. Add final panel identities only when supplied.
@@ -22,7 +22,7 @@ English README.md is primary; readme_kor.md is optional supplementary guidance. 
 | --- | --- | --- |
 | Code and aggregate review candidate | Uploaded on review branch | Review before merging |
 | Default branch contents | Review candidate not yet merged | Merge only after approval |
-| Code license and rightsholder | Unresolved | Author decision; third-party notices retained |
+| Code license and rightsholder | MIT selected; ownership/component exceptions remain | Author decision; third-party notices retained |
 | Exact split/manifest/OOF disclosure | Pending field-level review | Decide minimal safe, authorized distribution |
 | Cache reconstruction and historical environment | Partly unresolved | Resolve evidence or disclose limitations |
 | Version/archive identifier | No release/DOI issued | Identify final submission version; do not invent DOI |
@@ -31,7 +31,7 @@ English README.md is primary; readme_kor.md is optional supplementary guidance. 
 
 ## Availability statement: current review state
 
-The original ORCHID data are available from Zenodo at https://doi.org/10.5281/zenodo.12636426 and https://doi.org/10.5281/zenodo.12646943. A private review candidate containing path-adapted code, configuration examples, aggregate results and figure/table source data has been prepared at https://github.com/heedbs/YHY. Exact study-specific split/patch manifests and individual predictions are not included in the current candidate, pending disclosure review. Complete reconstruction of the historical preprocessing cache and some environment details remains unresolved. A final public code version, license and data-access conditions have not yet been assigned.
+The original ORCHID data are available from Zenodo at https://doi.org/10.5281/zenodo.12636426 and https://doi.org/10.5281/zenodo.12646943. A private review candidate containing path-adapted code, configuration examples, aggregate results and figure/table source data has been prepared at https://github.com/heedbs/YHY. Exact study-specific split/patch manifests and individual predictions are not included in the current candidate, pending disclosure review. Complete reconstruction of the historical preprocessing cache and some environment details remains unresolved. MIT has been selected for authorized original software contributions, with explicit component exceptions; a final public release and data-access conditions remain pending.
 
 This paragraph describes the current state, not the intended submission state. Replace it with an accurate final statement after publication/access decisions; do not simply replace 'private' with 'public' while leaving other claims unchecked. Cite both original datasets formally. A public repository does not itself establish ethics approval or authorization to redistribute linked patient records.
 
@@ -43,7 +43,7 @@ This paragraph describes the current state, not the intended submission state. R
 - OS: historical Linux/CUDA workflow; other operating systems not validated.
 - Language: Python; shell components are reference orchestration.
 - Requirements: see environment/ and REPRODUCIBILITY.md; missing historical dependencies remain stated.
-- License: NOT_SELECTED. Dataset CC BY 4.0 is separate from source-code licensing.
+- License: MIT for authorized original software contributions; see LICENSE_SCOPE.md for exceptions. Dataset CC BY 4.0 is separate from source-code licensing.
 - Non-academic restrictions: cannot be finalized until applicable code and third-party licenses are reviewed.
 
 The general journal guidance requires an Availability of data and materials statement, recommends machine-readable supporting data, and requests dataset identifiers and software access/requirements information. It does not prescribe a special GitHub folder layout or a Korean README. The layout and workflow here are project recommendations, not editorial requirements.

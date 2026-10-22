@@ -1,5 +1,5 @@
 category,decision,reason
-Scientific code and config examples,INCLUDE_CANDIDATE_LICENSE_PENDING,Needed to inspect actual procedures; exact source hashes and internal diffs retained
+Scientific code and config examples,MIT_SELECTED_ORIGINAL_CONTRIBUTIONS_COMPONENT_EXCEPTIONS,See LICENSE_SCOPE.md; original source ownership not automatically certified
 Aggregate result tables and figure source data,INCLUDE_CANDIDATE,Verified against final analysis sources; author data license decision pending
 Patient split and patient/source/patch manifest contents,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Exact reruns need them; potential linkability and permitted redistribution must be reviewed
 Individual OOF predictions and patient/source mapping,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Paired reanalysis needs these; default public ZIP excludes all patient rows
@@ -11,3 +11,4 @@ Fine-tuned/pretrained model weight files,EXCLUDE,"Large/binary artifacts, owners
 Generated explainability image panels,EXCLUDE_PENDING_FINAL_PANEL_REVIEW,Final panel assignment/pathology review and exact comparison identity unresolved
 Internal provenance and raw diff/source copies,EXCLUDE_INTERNAL_REVIEW_ONLY,Absolute path mapping remains outside public candidate
 Research-data-free synthetic fixtures,INCLUDE_CANDIDATE,Artificial CPU tests explicitly labeled; not study data
+Aggregate fold composition and field-level review,INCLUDE_AGGREGATE_AND_SCHEMA_ONLY,No patient row values; source linkage remains pending final approval

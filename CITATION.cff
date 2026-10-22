@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Review draft citation metadata; manuscript and repository identifiers are not assigned."
+message: "Review draft citation metadata; no manuscript or archival DOI is assigned."
 title: "ORCHID comparative study reproducibility package"
 type: software
 authors:

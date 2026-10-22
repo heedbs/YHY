@@ -2,7 +2,7 @@
 
 - No eligible task-aligned three-class patient-level external validation is established here. No clinical superiority, pathology-validated localization or IRB approval is newly claimed.
 - Exact split/patch manifests and patient OOF data are pending release decisions, so independent reproduction of all published numbers is not yet self-contained.
-- The historical Reinhard cache generator/reference and full cache identity cannot be reconstructed as a new validated implementation from these exports. Training assumes verified cached patches.
+- The historical notebook cache builder and recorded target constants have now been located; 30/30 exact-JPEG sample evidence exists, but the notebook saved run skipped all existing files. First-generation/full-cache identity, exact reference sample lineage and fold-specific fit isolation remain unverified. The reference was fitted on a legacy train set, not each modern outer-fold train. See PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md. Training still assumes verified cached patches.
 - Public code is path-adapted and its code/source SHA changes. CPU scientific-function/class AST parity does not certify CUDA equivalence or exact resume under historical checkpoint identity checks.
 - The local `build_figures.py` plotting script is absent from its original figure-directory SHA manifest. Its current source digest is recorded, but historical execution identity cannot be independently certified from that manifest. It is included as reference code, not a certified final-manuscript generator. Other final FigureLabs edits remain unprovided.
 - Historical environment records are incomplete, especially some plotting/compiler/causal-conv1d dependencies; current environment is not substituted for historical evidence.

@@ -9,3 +9,5 @@ The AST fingerprint check normalizes only the empty Python3.12 type_params field
 Authoritative Stage1/Stage2/benchmark results were not reselected or recomputed. Bootstrap code was preserved without execution. Existing saved scores have some same-binary-label ties but no opposing-label tie groups; the vectorized historical rank/AP implementation should not be assumed generally tie-correct for a new dataset. No new CI or p-value was produced.
 
 Not run: dependency installation; real-data training/inference; CUDA smoke or architecture execution; bootstrap; efficiency measurement; Grad-CAM; original-cache reconstruction; final manuscript figure equivalence; independent pathology/ethics assessment. Current packaging environment is separately recorded in environment/current_cpu_packaging_record.json.
+
+Follow-up 22 October 2026: the same 11 artificial CPU tests pass in the new review copy with CUDA_VISIBLE_DEVICES empty. No scientific Python file was changed. Historical cache notebook/reference and Gate A sample receipts were inspected without running their code. Original data-file bytes remain unchanged. See PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md.

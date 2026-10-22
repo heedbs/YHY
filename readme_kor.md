@@ -4,7 +4,7 @@
 
 ## 현재 상태
 
-BioData Mining 투고 예정 원고를 지원하는 **비공개 검토용 재현성 후보 패키지**입니다. 논문 게재, 저널 승인, IRB 적합성 또는 코드 공개 승인이 완료됐다는 뜻이 아닙니다. 코드 소유권과 최종 라이선스는 아직 확정하지 않았습니다.
+BioData Mining 투고 예정 원고를 지원하는 **비공개 검토용 재현성 후보 패키지**입니다. 논문 게재, 저널 승인, IRB 적합성 또는 코드 공개 승인이 완료됐다는 뜻이 아닙니다. 자체 개발 소프트웨어 기여에는 MIT를 선택했습니다. 외부 권리와 composite 모듈의 출처 예외는 LICENSE_SCOPE.md를 따르며 전체 공개 승인은 아직 완료되지 않았습니다.
 
 저장소: https://github.com/heedbs/YHY
 
@@ -47,3 +47,5 @@ ORCHID 공식 training DOI는 https://doi.org/10.5281/zenodo.12636426 이며 val
 투고 전에 코드 권리·라이선스, 자료 제공 방침, 심사 접근 방법, 영문 원고의 Data/Code availability와 저장소 설명의 일치 여부를 확정해야 합니다. 자세한 근거는 [RESULTS_PROVENANCE.md](RESULTS_PROVENANCE.md), [DATA_ACCESS.md](DATA_ACCESS.md), [LICENSE_DECISION_REQUIRED.md](LICENSE_DECISION_REQUIRED.md), [AI_USE_INVENTORY.md](AI_USE_INVENTORY.md)를 확인하십시오.
 
 한국어 설명과 영문 문서가 충돌하면 임의로 해석하지 말고 근거를 확인하여 두 문서를 함께 정정하십시오. 본 문서 추가는 연구 설정이나 결과를 변경하지 않습니다.
+
+See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.

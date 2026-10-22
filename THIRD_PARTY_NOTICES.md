@@ -13,3 +13,11 @@ This file is an attribution/review inventory, not the license grant for original
 | ORCHID images | Two official Zenodo DOIs in DATA_ACCESS.md | CC BY4.0 confirmed by official API | No images bundled. Required credits/change descriptions recorded; not a code license or IRB conclusion. |
 
 Apache license sources: https://github.com/huggingface/pytorch-image-models/blob/v1.0.19/LICENSE and https://github.com/state-spaces/mamba/blob/v2.2.4/LICENSE .
+
+## Additional method-source review (22 October 2026)
+
+- MixStyle official method repository: https://github.com/KaiyangZhou/mixstyle-release ; its LICENSE identifies MIT, copyright 2021 Kaiyang Zhou. Local MixStyle implements the method but exact copied/adapted/independent lineage is NOT_ESTABLISHED. Record the method citation; verify any actual upstream file relationship before asserting cleared redistribution. Method: Domain Generalization with MixStyle, ICLR 2021.
+- GeM method implementation reference: https://github.com/filipradenovic/cnnimageretrieval-pytorch/blob/master/cirtorch/layers/functional.py ; repository LICENSE is MIT, copyright 2016-2019 VRG, CTU Prague. Local code differs in implementation details; provenance cannot be established from a matching mathematical expression alone. Exact direct derivation is NOT_ESTABLISHED.
+- Official library dependencies remain separate. Original local project contributions can use MIT while external source retains its applicable terms. No third-party model weights/binaries are redistributed and no current source search is a proof of complete originality.
+
+Verified license URLs: https://github.com/KaiyangZhou/mixstyle-release/blob/master/LICENSE and https://github.com/filipradenovic/cnnimageretrieval-pytorch/blob/master/LICENSE . No source file is relabeled as copied solely from algorithm similarity. See LICENSE_SCOPE.md.

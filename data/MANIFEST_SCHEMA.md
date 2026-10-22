@@ -20,3 +20,7 @@ patient row, image identifier, UID list or image hash list is shipped.
 Image acquisition, cache-generation parameters/reference image, exclusion records,
 and approved split access must be resolved before a new full run. An independent
 third party cannot yet regenerate all original numbers using only this ZIP.
+
+Follow-up: the historical notebook builder and recorded target constants have
+been found. See PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md; first-generation
+cache identity and exact reference fit-sample lineage are still not established.

@@ -4,7 +4,7 @@
 
 Historical training/benchmark records, not the current pip environment, are in environment/. They report Python3.12.7, PyTorch2.5.1+cu124, CUDA12.4, cuDNN90100, timm1.0.19, mamba_ssm2.2.4, NumPy1.26.4, pandas2.2.2, sklearn1.5.1, OpenCV4.10.0. Some plotting/packaging dependency versions are not fully recorded. The current CPU packaging interpreter is separately identified in TEST_REPORT.md.
 
-Installation order (documentation example, not executed here): create a Python3.12 environment; install the CUDA12.4 build of torch2.5.1 from the official PyTorch index; install compatible torchvision (historical exact version must be verified); install recorded scientific packages; install a CUDA/compiler-compatible mamba-ssm2.2.4 and required causal-conv1d dependency only after torch. The exact historical causal-conv1d/compiler build is unresolved. No CPU/Identity fallback is permitted for Composite-Mamba. Do not install new packages into the historical research environment.
+Installation order (documentation example, not executed here): create a Python3.12 environment; install the CUDA12.4 build of torch2.5.1 from the official PyTorch index; install compatible torchvision (historical exact version must be verified); install recorded scientific packages; install a CUDA/compiler-compatible mamba-ssm2.2.4 and required causal-conv1d dependency only after torch. The exact historical causal-conv1d/compiler build is unresolved. A recovered legacy notebook records torchvision0.20.1; this is not proof of the final-training wheel/build identity. See PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md. No CPU/Identity fallback is permitted for Composite-Mamba. Do not install new packages into the historical research environment.
 
 ## Local data configuration
 
