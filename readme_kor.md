@@ -30,7 +30,7 @@ BioData Mining 투고 예정 원고를 지원하는 **비공개 검토용 재현
 실제 실행 순서는 [REPRODUCIBILITY.md](REPRODUCIBILITY.md)를 따르십시오. 데이터 확보 → 승인된 manifest 및 검증된 cache 준비 → 새 로컬 경로/config 연결 → 단계별 학습 → 저장된 예측 평가 → figure/table 생성 순서입니다. 문서상 실행 예시와 실제 검증한 명령을 구분해야 합니다.
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python tests/test_cpu.py
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
 sha256sum -c SHA256_MANIFEST.txt
 ```
 
@@ -47,5 +47,7 @@ ORCHID 공식 training DOI는 https://doi.org/10.5281/zenodo.12636426 이며 val
 투고 전에 코드 권리·라이선스, 자료 제공 방침, 심사 접근 방법, 영문 원고의 Data/Code availability와 저장소 설명의 일치 여부를 확정해야 합니다. 자세한 근거는 [RESULTS_PROVENANCE.md](RESULTS_PROVENANCE.md), [DATA_ACCESS.md](DATA_ACCESS.md), [LICENSE_DECISION_REQUIRED.md](LICENSE_DECISION_REQUIRED.md), [AI_USE_INVENTORY.md](AI_USE_INVENTORY.md)를 확인하십시오.
 
 한국어 설명과 영문 문서가 충돌하면 임의로 해석하지 말고 근거를 확인하여 두 문서를 함께 정정하십시오. 본 문서 추가는 연구 설정이나 결과를 변경하지 않습니다.
+
+후속 유지보수에서는 공개용 config 생성기의 stage 혼용 차단, SHA 검증기의 누락·중복·경로 검사, 과거 bootstrap 함수의 지원하지 않는 입력 차단을 보완했습니다. 원본 연구 코드와 동결 통계 결과는 바꾸지 않았습니다. 비어 있던 효율성 보조 CSV 2개만 공개 후보에서 제외했으며, 실제 최종 값은 `results/efficiency/`를 사용합니다.
 
 See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.

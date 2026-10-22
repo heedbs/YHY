@@ -1,4 +1,7 @@
-"""Exact pure functions extracted from final analysis; no analysis runs on import."""
+"""Historical analysis functions; bootstrap entry adds explicit input guards.
+
+No analysis runs on import. The historical reference script remains unchanged.
+"""
 import numpy as np
 from sklearn.metrics import accuracy_score, average_precision_score, balanced_accuracy_score, confusion_matrix, f1_score, roc_auc_score
 
@@ -32,7 +35,28 @@ def metrics(y, p):
     return out, cm, pred
 
 def bootstrap_metrics(y, p, idx):
-    """Vectorized metrics for class-stratified bootstrap samples (continuous scores have no ties)."""
+    """Historical vectorized calculation, limited to supported stratified inputs.
+
+Opposing-label OVR score ties are not handled by the historical rank/AP
+algorithm; reject them rather than silently generalizing it to new datasets.
+"""
+    y=np.asarray(y);p=np.asarray(p);idx=np.asarray(idx)
+    if y.ndim!=1 or p.shape!=(len(y),3) or not np.issubdtype(y.dtype,np.integer):
+        raise ValueError('expected integer labels and N by 3 probabilities')
+    if set(y.tolist())!={0,1,2} or not np.isfinite(p).all() or (p<0).any() or (p>1).any():
+        raise ValueError('three classes and finite probabilities in [0,1] required')
+    if not np.allclose(p.sum(1),1,rtol=0,atol=1e-5):
+        raise ValueError('probability row sums invalid')
+    if idx.ndim!=2 or len(idx)==0 or idx.shape[1]!=len(y) or not np.issubdtype(idx.dtype,np.integer):
+        raise ValueError('expected nonempty integer resampling indices with N columns')
+    if (idx<0).any() or (idx>=len(y)).any():
+        raise ValueError('resampling index out of range')
+    for c in range(3):
+        if not np.all((y[idx]==c).sum(1)==(y==c).sum()):
+            raise ValueError('class-stratified patient counts must be preserved')
+        order=np.argsort(p[:,c]);score=p[order,c];binary=y[order]==c
+        if np.any((score[1:]==score[:-1]) & (binary[1:]!=binary[:-1])):
+            raise ValueError('opposing-label OVR score ties unsupported by historical bootstrap implementation')
     yy = y[idx]
     pp = p[idx]
     pred = pp.argmax(2)

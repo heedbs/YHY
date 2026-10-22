@@ -122,7 +122,7 @@ class CPUChecks(unittest.TestCase):
     def test_local_config_binding_collision_and_mismatch(self):
         with tempfile.TemporaryDirectory() as temp:
             d=Path(temp);split=d/'final_outer_inner_split_manifest.csv';split.write_text('SYNTHETIC_FIXTURE_ONLY\n')
-            template=d/'fixture.json';config={'run_id':'SYNTH_RUN','historical_code_sha256':'SYNTH_HISTORY','split_sha256':hashlib.sha256(split.read_bytes()).hexdigest()};template.write_text(json.dumps(config))
+            template=d/'fixture.json';config={'run_id':'SYNTH_RUN','historical_code_sha256':'SYNTH_HISTORY','split_sha256':hashlib.sha256(split.read_bytes()).hexdigest(), 'model_name':'InceptionV3', 'epochs':80, 'checkpoint_criterion':'inner_patient_macro_ovr_auroc|inner_patient_macro_f1|validation_loss|earlier_epoch'};template.write_text(json.dumps(config))
             out=d/'bound.json';env=dict(os.environ,ORCHID_MANIFEST_DIR=temp,PYTHONDONTWRITEBYTECODE='1')
             cmd=[sys.executable,str(ROOT/'scripts/configure_local_run.py'),'--stage','stage1','--template',str(template),'--output',str(out)]
             result=subprocess.run(cmd,env=env,capture_output=True,text=True);self.assertEqual(result.returncode,0)

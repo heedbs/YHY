@@ -12,10 +12,19 @@ This package documents the existing internal, patient-wise ORCHID study. Class o
 
 ## What can be checked now
 
+| Reader goal | Entry point | Current limit |
+| --- | --- | --- |
+| Inspect study results | `results/`, `table_source_data/`, `figure_source_data/` | Aggregate frozen outputs, not a new analysis |
+| Inspect model/training settings | `stage1/`, `stage2/`, `configs/run_catalog.csv` | Exact private manifests and validated cache still required |
+| Run research-data-free checks | `tests/` | CPU synthetic checks, not full experiment reproduction |
+| Understand data access | [DATA_ACCESS.md](DATA_ACCESS.md) | Patient-level release review incomplete |
+| Understand licensing | [LICENSE_SCOPE.md](LICENSE_SCOPE.md) | Composite-module source exceptions remain |
+| Reuse benchmark/Grad-CAM scripts | `benchmark/reference/`, `explainability/reference/` | Reference only; not a turnkey public workflow |
+
 Read aggregate frozen outputs under results/, table_source_data/ and figure_source_data/. Compare scientific parameters in configs/ with configs/run_catalog.csv, and original/public code fingerprints in CODE_CHANGES.csv and code_semantic_fingerprints.json. Run the CPU-only synthetic tests below; fixtures are not research observations.
 
 ```bash
-PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python tests/test_cpu.py
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
 sha256sum -c SHA256_MANIFEST.txt
 ```
 
@@ -31,5 +40,7 @@ sha256sum -c SHA256_MANIFEST.txt
 GPU measurement/explainability code is reference material under benchmark/reference/ and explainability/reference/. Read limitations before execution. No new training, inference, benchmark or GPU action was used to prepare this package. Public launch approval and automatic resume are not provided.
 
 See LICENSE_DECISION_REQUIRED.md and RELEASE_FILE_DECISIONS.csv before deciding on any public release. Dataset CC BY 4.0 does not license this code or resolve ethics/IRB questions.
+
+Empty historical figure-helper efficiency CSVs have been omitted. Use `results/efficiency/EFFICIENCY_MODEL_SUMMARY.csv` and `EFFICIENCY_FIGURE_PLOTTING_DATA.csv` instead. Historical sources are preserved outside the candidate; no result was recalculated. See MAINTENANCE_CHANGES.csv for public-copy-only fixes.
 
 See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.

@@ -9,3 +9,5 @@ This scan does not prove absence of every secret or certify legal/ethics suitabi
 Run scripts/check_public_package.py on the entire candidate before release and verify SHA256_MANIFEST.txt. All ZIP members were checked against that exact tree; internal_review is excluded.
 
 Follow-up disclosure review inspected original schemas privately. New public files contain field names, aggregate fold counts and source-file hashes only, not patient/source/UID/hash-list values or notebook outputs. Original patient-level rows remain withheld pending final review. Heuristic scanning does not establish legal permission or anonymity.
+
+Maintenance: SHA verification is now strict about complete candidate file coverage and rejects duplicate/unsafe entries. Scanning avoids reading symlink targets and oversized files. Earlier uploads were also independently compared against remote file trees; this checker defect does not establish that those uploads contained unlisted files or altered results. New tests use only synthetic fixtures.
