@@ -1,0 +1,7 @@
+component,Mamba,NoMamba
+EfficientNet-Lite2 backbone,shared,shared
+feature taps,shared,shared
+MixStyle/projection/token grid,shared,shared
+token shape,"[B,196,192]","[B,196,192]"
+token operation,Mamba block,Identity
+GeM/dropout/classifier,shared,shared

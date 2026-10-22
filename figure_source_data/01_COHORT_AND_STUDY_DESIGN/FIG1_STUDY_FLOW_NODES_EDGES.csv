@@ -1,0 +1,7 @@
+type,id,from,to
+node,149 patients,,
+node,10072 source images,,
+node,232689 patches,,
+edge,hierarchy_1,149 patients,10072 source images
+edge,hierarchy_2,10072 source images,232689 patches
+edge,evaluation,outer train,inner validation; best checkpoint; one outer test

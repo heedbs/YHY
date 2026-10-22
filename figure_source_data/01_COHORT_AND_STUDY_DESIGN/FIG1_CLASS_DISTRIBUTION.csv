@@ -1,0 +1,4 @@
+cls,patients,source_images,patches
+normal,14,1045,30122
+oscc,104,6932,149114
+osmf,31,2095,53453

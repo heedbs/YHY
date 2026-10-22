@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Review draft citation metadata; manuscript and repository identifiers are not assigned."
+title: "ORCHID comparative study reproducibility package"
+type: software
+authors:
+  - family-names: "Yang"
+    given-names: "Hee Yoon"
+    orcid: "https://orcid.org/0009-0004-6231-2517"
+abstract: "Review-stage software and aggregate source data for an internal patient-wise oral histopathology comparison and corrected matched Mamba ablation."

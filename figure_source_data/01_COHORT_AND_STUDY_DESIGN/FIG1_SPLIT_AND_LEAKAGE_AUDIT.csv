@@ -1,0 +1,16 @@
+outer_fold,comparison,patient_overlap,source_sha256_overlap,patch_uid_overlap
+0,train__inner_val,0,0,0
+0,train__outer_test,0,0,0
+0,inner_val__outer_test,0,0,0
+1,train__inner_val,0,0,0
+1,train__outer_test,0,0,0
+1,inner_val__outer_test,0,0,0
+2,train__inner_val,0,0,0
+2,train__outer_test,0,0,0
+2,inner_val__outer_test,0,0,0
+3,train__inner_val,0,0,0
+3,train__outer_test,0,0,0
+3,inner_val__outer_test,0,0,0
+4,train__inner_val,0,0,0
+4,train__outer_test,0,0,0
+4,inner_val__outer_test,0,0,0

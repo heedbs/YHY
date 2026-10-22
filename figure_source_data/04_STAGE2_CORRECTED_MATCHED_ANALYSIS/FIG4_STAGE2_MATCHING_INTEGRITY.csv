@@ -1,0 +1,7 @@
+model,seed,expected_patients,observed_patients,missing,extra,duplicates,patient_order_exact,target_exact,outer_fold_exact,probability_integrity,pass
+Composite-NoMamba,42,149,149,0,0,0,True,True,True,True,True
+Composite-NoMamba,20260824,149,149,0,0,0,True,True,True,True,True
+Composite-NoMamba,314159,149,149,0,0,0,True,True,True,True,True
+Composite-Mamba,42,149,149,0,0,0,True,True,True,True,True
+Composite-Mamba,20260824,149,149,0,0,0,True,True,True,True,True
+Composite-Mamba,314159,149,149,0,0,0,True,True,True,True,True

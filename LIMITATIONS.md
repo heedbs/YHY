@@ -1,0 +1,13 @@
+# Limitations and unresolved provenance
+
+- No eligible task-aligned three-class patient-level external validation is established here. No clinical superiority, pathology-validated localization or IRB approval is newly claimed.
+- Exact split/patch manifests and patient OOF data are pending release decisions, so independent reproduction of all published numbers is not yet self-contained.
+- The historical Reinhard cache generator/reference and full cache identity cannot be reconstructed as a new validated implementation from these exports. Training assumes verified cached patches.
+- Public code is path-adapted and its code/source SHA changes. CPU scientific-function/class AST parity does not certify CUDA equivalence or exact resume under historical checkpoint identity checks.
+- The local `build_figures.py` plotting script is absent from its original figure-directory SHA manifest. Its current source digest is recorded, but historical execution identity cannot be independently certified from that manifest. It is included as reference code, not a certified final-manuscript generator. Other final FigureLabs edits remain unprovided.
+- Historical environment records are incomplete, especially some plotting/compiler/causal-conv1d dependencies; current environment is not substituted for historical evidence.
+- An invalid v2.3 development smoke evaluated outer fold0 before later corrective protocols. Subsequent documentation forbids its use for selection; complete human viewing/use history is UNKNOWN. One post-best outer evaluation per final production run does not erase that development exposure.
+- Some original GPU telemetry fields report a multi-GPU parsing ValueError; separate environment records and measurements remain preserved. No new measurement or retroactive fix is claimed.
+- Figure-source helper practical-batch CSV is header-only in the earlier figure package; authoritative populated values are in final efficiency summary/table sources. It is not silently treated as a missing model result.
+- Explainability r1 selects evidence patches using each model's scores; the same exact patch across models and OOF-patient-vs-patch argmax equivalence were not proven. No ROI-based Dice/IoU/localization claim is supported. Full pathology review/final panel identities remain pending.
+- Train loss is patch CE under patient-balanced sampling and augmentation; inner loss is all-patch CE. Patient metrics aggregate image means. Verified best-to-last degradation on one inner fold does not justify replacing frozen results. Curve tails have declining available-fold counts; recorded histories are not patient CIs.

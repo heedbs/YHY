@@ -1,0 +1,16 @@
+outer_fold,class,patients,source_images,patches
+0,normal,3,168,5880
+0,oscc,21,1389,28546
+0,osmf,6,461,11113
+1,normal,2,172,6020
+1,oscc,20,1433,28686
+1,osmf,7,450,12618
+2,normal,3,228,6414
+2,oscc,21,1410,31108
+2,osmf,6,350,9577
+3,normal,3,221,5791
+3,oscc,21,1373,28740
+3,osmf,6,429,10614
+4,normal,3,256,6017
+4,oscc,21,1327,32034
+4,osmf,6,405,9531

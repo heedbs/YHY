@@ -1,0 +1,6 @@
+model_name,output_shape,output_finite,mamba_runtime_modules,mamba_fallback,pretrained_sha256
+InceptionV3,"(1, 3)",True,NONE,False,9c452c63a67fd03a38a78c401ba12d4be0e926df63c93403de3a29f6df20fefb
+EfficientNet-Lite2,"(1, 3)",True,NONE,False,9aa83de8a2fb5cf86cb67e3aa2bf665429195e5be80d5fc744b6fa387c53ffe6
+MobileViT-S,"(1, 3)",True,NONE,False,87f5585cb61814a5e18920d556772ed9c3af6c9ad72b6cf798c654021c306f81
+Composite-NoMamba,"(1, 3)",True,NONE,False,9aa83de8a2fb5cf86cb67e3aa2bf665429195e5be80d5fc744b6fa387c53ffe6
+Composite-Mamba,"(1, 3)",True,head.mamba.0.m:mamba_ssm.modules.mamba_simple.Mamba,False,9aa83de8a2fb5cf86cb67e3aa2bf665429195e5be80d5fc744b6fa387c53ffe6

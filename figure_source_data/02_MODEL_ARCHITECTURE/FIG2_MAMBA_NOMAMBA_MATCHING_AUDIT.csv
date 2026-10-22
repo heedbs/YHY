@@ -1,0 +1,13 @@
+item,composite_mamba,composite_nomamba,classification
+EfficientNet-Lite2 backbone,tf_efficientnet_lite2.in1k,same,MATCHED_COMMON_CONDITION
+pretrained weight SHA-256,9aa83de8a2fb5cf86cb67e3aa2bf665429195e5be80d5fc744b6fa387c53ffe6,9aa83de8a2fb5cf86cb67e3aa2bf665429195e5be80d5fc744b6fa387c53ffe6,MATCHED_COMMON_CONDITION
+"BGR/RGB, resize, normalization",BGR->RGB; 256; mean/std 0.5,same,MATCHED_COMMON_CONDITION
+augmentation,hflip/vflip/rot90,same,MATCHED_COMMON_CONDITION
+MixStyle,"p=0.5, alpha=0.1",same,MATCHED_COMMON_CONDITION
+GeM,trainable p=3.0,same,MATCHED_COMMON_CONDITION
+dropout,0.2,same,MATCHED_COMMON_CONDITION
+multi-scale projections/token grid/head/fc,same,same,MATCHED_COMMON_CONDITION
+loss/sampling/optimizer/scheduler/batch/accumulation,same frozen settings,same frozen settings,MATCHED_COMMON_CONDITION
+Mamba token operation,MambaBlock,Identity,EXPECTED_MAMBA_DIFFERENCE
+token input/output shape,"[B,196,192] -> [B,196,192]","[B,196,192] -> [B,196,192]",MATCHED_COMMON_CONDITION
+outer-test isolation,"after best checkpoint, once",same planned contract,MATCHED_COMMON_CONDITION

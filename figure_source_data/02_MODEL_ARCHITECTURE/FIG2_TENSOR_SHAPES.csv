@@ -1,0 +1,3 @@
+tensor,shape,Mamba,NoMamba
+token input,"[B,196,192]",input to Mamba block,identity input
+token output,"[B,196,192]",Mamba output,identity output

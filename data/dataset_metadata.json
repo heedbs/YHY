@@ -1,0 +1,56 @@
+[
+  {
+    "record_id": "12636426",
+    "doi": "10.5281/zenodo.12636426",
+    "title": "High-resolution AI image dataset for diagnosing oral submucous fibrosis and squamous cell carcinoma",
+    "publication_date": "2024-07-03",
+    "version": "v1 (version relation index 0)",
+    "license_id": "cc-by-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "creators": [
+      "Chaudhary, Nisha",
+      "Rai, Arpita",
+      "Madhav Rao, Aakash",
+      "Md Imam, Faizan",
+      "Augustine, Jeyaseelan",
+      "Chaurasia, Akhilanand",
+      "Mishra, Deepika",
+      "Chandra, Akhilesh",
+      "Chauhan, Varnit",
+      "Ahmad, Tanveer"
+    ],
+    "official_api": "https://zenodo.org/api/records/12636426",
+    "checked_date": "2026-10-21",
+    "files": [
+      {
+        "name": "train.zip",
+        "checksum": "md5:74c27a6fd0991992eb4741422869b0f5"
+      }
+    ]
+  },
+  {
+    "record_id": "12646943",
+    "doi": "10.5281/zenodo.12646943",
+    "title": "Validation and Test Datasets for \"High-resolution AI image dataset for diagnosing oral submucous fibrosis and squamous cell carcinoma\"",
+    "publication_date": "2024-07-03",
+    "version": "v1 (version relation index 0)",
+    "license_id": "cc-by-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "creators": [
+      "Chaudhary, Nisha",
+      "Ahmad, Tanveer"
+    ],
+    "official_api": "https://zenodo.org/api/records/12646943",
+    "checked_date": "2026-10-21",
+    "files": [
+      {
+        "name": "val.zip",
+        "checksum": "md5:911381e8c8527685f683199d25ebe34a"
+      },
+      {
+        "name": "test.zip",
+        "checksum": "md5:182c27fd4593d3107027e07231143447"
+      }
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+class,patients,source_images,patches,patient_share,duplicate_exclusion_scope
+normal,14,1045,30122,0.09395973154362416,156 exact-duplicate patch rows excluded globally before splitting; no class-specific removed count supplied here
+osmf,31,2095,53453,0.2080536912751678,156 exact-duplicate patch rows excluded globally before splitting; no class-specific removed count supplied here
+oscc,104,6932,149114,0.697986577181208,156 exact-duplicate patch rows excluded globally before splitting; no class-specific removed count supplied here
+total,149,10072,232689,1.0,156 exact-duplicate patch rows excluded globally before splitting

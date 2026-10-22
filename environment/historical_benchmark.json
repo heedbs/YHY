@@ -1,0 +1,24 @@
+{
+  "python_version": "3.12.7 | packaged by Anaconda, Inc. | (main, Oct  4 2024, 13:27:36) [GCC 11.2.0]",
+  "torch": "2.5.1+cu124",
+  "cuda": "12.4",
+  "cudnn": 90100,
+  "timm": "1.0.19",
+  "mamba_ssm": "2.2.4",
+  "opencv": "4.10.0",
+  "precision": "FP32",
+  "inference_mode": true,
+  "autocast": false,
+  "tf32_matmul": false,
+  "tf32_cudnn": false,
+  "input_shape": [
+    3,
+    256,
+    256
+  ],
+  "measurement_blocks": 3,
+  "warmup_iterations": 30,
+  "timed_iterations": 100,
+  "source_label": "frozen_publication_benchmark_environment",
+  "gpu_model": "NVIDIA RTX 4500 Ada Generation"
+}

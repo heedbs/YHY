@@ -1,0 +1,6 @@
+stage,model,seed,outer_fold,configured_max_epoch,completed_epoch_count,best_epoch,final_epoch,stopping_reason,reached_epoch_cap,best_within_last_2_epochs,terminal_macro_f1_slope_5,terminal_macro_f1_slope_10,final_learning_rate,scheduler_consistent,history_complete,convergence_warning,warning_reason
+Stage2 correction,Composite-Mamba,42,0,40,23,10,22,early_stopping,False,False,-0.009191919191919135,-0.009470462197734881,,True,True,False,
+Stage2 correction,Composite-Mamba,42,1,40,27,14,26,early_stopping,False,False,-3.7417468711382035e-17,-0.001536137882523947,,True,True,False,
+Stage2 correction,Composite-Mamba,42,2,40,15,2,14,early_stopping,False,False,-0.0024237224237224127,0.0008354832597256875,,True,True,False,
+Stage2 correction,Composite-Mamba,42,3,40,17,4,16,early_stopping,False,False,-0.007179356591121333,-0.00018924821063855455,,True,True,False,
+Stage2 correction,Composite-Mamba,42,4,40,24,11,23,early_stopping,False,False,0.005842175253939975,0.0025547602374696955,,True,True,False,

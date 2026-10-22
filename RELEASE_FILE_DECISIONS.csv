@@ -1,0 +1,13 @@
+category,decision,reason
+Scientific code and config examples,INCLUDE_CANDIDATE_LICENSE_PENDING,Needed to inspect actual procedures; exact source hashes and internal diffs retained
+Aggregate result tables and figure source data,INCLUDE_CANDIDATE,Verified against final analysis sources; author data license decision pending
+Patient split and patient/source/patch manifest contents,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Exact reruns need them; potential linkability and permitted redistribution must be reviewed
+Individual OOF predictions and patient/source mapping,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Paired reanalysis needs these; default public ZIP excludes all patient rows
+Source-image/patch SHA lists and archive member identifiers,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Hash-based linkage and data license/reidentification scope need review
+Whole-file config/code/checkpoint digests,INCLUDE_CANDIDATE,Non-patient artifact identity only; no tensors
+Images and full patch cache,EXCLUDE,Official DOI access instead; no image content in ZIP
+Fine-tuned/pretrained model weight files,EXCLUDE,"Large/binary artifacts, ownership and model-specific terms require separate decision"
+"Full logs, secrets, emails, credentials, ethics correspondence",EXCLUDE,Not needed for scientific procedure; no old git history copied
+Generated explainability image panels,EXCLUDE_PENDING_FINAL_PANEL_REVIEW,Final panel assignment/pathology review and exact comparison identity unresolved
+Internal provenance and raw diff/source copies,EXCLUDE_INTERNAL_REVIEW_ONLY,Absolute path mapping remains outside public candidate
+Research-data-free synthetic fixtures,INCLUDE_CANDIDATE,Artificial CPU tests explicitly labeled; not study data

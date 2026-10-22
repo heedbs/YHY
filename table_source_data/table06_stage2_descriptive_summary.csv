@@ -1,0 +1,45 @@
+analysis,model,metric,n_seeds,mean,sd,min,max,inferential_ci
+model_seed_point_estimates,Composite-Mamba,accuracy,3,0.9328859060402684,0.01342281879194629,0.9194630872483222,0.9463087248322147,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,macro_f1,3,0.8871856435965091,0.024687510743065404,0.8624303232998886,0.9118047813699987,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,balanced_accuracy,3,0.8791405726889598,0.024417322857003543,0.8564781992201347,0.9049982275788727,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,macro_ovr_auroc,3,0.9766673485858225,0.004095257218525996,0.9735017107442842,0.9812924009752878,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,macro_ovr_auprc,3,0.92795052545506,0.009749986602144324,0.9194686593874953,0.9386028311773479,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,multiclass_brier,3,0.1074241709920412,0.011336609121307878,0.09826580954460695,0.12010347628689508,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,normal_sensitivity,3,0.7619047619047619,0.041239304942116105,0.7142857142857143,0.7857142857142857,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,normal_specificity,3,0.9876543209876543,0.004276668660663901,0.9851851851851852,0.9925925925925926,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,normal_precision,3,0.8653846153846154,0.04487179487179484,0.8333333333333334,0.9166666666666666,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,osmf_sensitivity,3,0.913978494623656,0.04927500747264346,0.8709677419354839,0.967741935483871,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,osmf_specificity,3,0.963276836158192,0.012945129081796123,0.9491525423728814,0.9745762711864406,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,osmf_precision,3,0.8686274509803921,0.040040348738553236,0.8235294117647058,0.9,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,oscc_sensitivity,3,0.9615384615384616,0.009615384615384637,0.9519230769230769,0.9711538461538461,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,oscc_specificity,3,0.9111111111111111,0.022222222222222254,0.8888888888888888,0.9333333333333333,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-Mamba,oscc_precision,3,0.9616230078769005,0.009030512156590837,0.9528301886792453,0.970873786407767,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,accuracy,3,0.923937360178971,0.007749668042813757,0.9194630872483222,0.9328859060402684,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,macro_f1,3,0.8723913043478261,0.025340396886505356,0.8476923076923076,0.8983277591973243,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,balanced_accuracy,3,0.8611308046791918,0.02787604170796354,0.8358738036157392,0.8910404112017014,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,macro_ovr_auroc,3,0.9798498576215605,0.001493019227751118,0.9782448546937338,0.9811974101066502,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,macro_ovr_auprc,3,0.9285158546441705,0.00834885506236144,0.9197427439814962,0.9363633026100272,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,multiclass_brier,3,0.10905779580726926,0.007929287735324331,0.10053889722080339,0.11622325252387489,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,normal_sensitivity,3,0.7142857142857143,0.0714285714285714,0.6428571428571429,0.7857142857142857,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,normal_specificity,3,0.9901234567901235,0.004276668660663901,0.9851851851851852,0.9925925925925926,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,normal_precision,3,0.8813131313131314,0.054804379833865366,0.8181818181818182,0.9166666666666666,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,osmf_sensitivity,3,0.9139784946236559,0.018624202231923397,0.9032258064516129,0.9354838709677419,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,osmf_specificity,3,0.9519774011299434,0.0048927988914374936,0.9491525423728814,0.9576271186440678,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,osmf_precision,3,0.8333333333333334,0.016980890270283114,0.8235294117647058,0.8529411764705882,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,oscc_sensitivity,3,0.955128205128205,0.005551444896054139,0.9519230769230769,0.9615384615384616,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,oscc_specificity,3,0.9037037037037038,0.012830005981991702,0.8888888888888888,0.9111111111111111,NOT_COMPUTED: repeated patients across seeds
+model_seed_point_estimates,Composite-NoMamba,oscc_precision,3,0.9582088623350759,0.005446850741524066,0.9519230769230769,0.9615384615384616,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,macro_f1,3,0.01479433924868312,0.024203422144329058,-0.00872352285395761,0.039629518427332644,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,balanced_accuracy,3,0.01800976800976802,0.020340716916776417,0.0,0.04007148765213275,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,macro_ovr_auroc,3,-0.003182509035737876,0.005404173691828463,-0.006605597320013201,0.0030475462815540144,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,macro_ovr_auprc,3,-0.0005653291891104898,0.008365527147936454,-0.009972857953492564,0.006037341818840414,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,multiclass_brier,3,-0.0016336248152280842,0.005223556021295782,-0.0065080105325080045,0.003880223763020191,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,normal_sensitivity,3,0.047619047619047596,0.08247860988423222,0.0,0.1428571428571428,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,normal_specificity,3,-0.0024691358024691392,0.004276668660663901,-0.007407407407407418,0.0,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,normal_precision,3,-0.015928515928515925,0.053667922330186094,-0.07575757575757569,0.027972027972027913,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,osmf_sensitivity,3,3.700743415417188e-17,0.03225806451612906,-0.032258064516129004,0.032258064516129115,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,osmf_specificity,3,0.011299435028248558,0.012945129081796123,0.0,0.025423728813559254,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,osmf_precision,3,0.035294117647058844,0.038573167790011804,0.0,0.07647058823529418,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,oscc_sensitivity,3,0.006410256410256425,0.005551444896054106,0.0,0.009615384615384692,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,oscc_specificity,3,0.007407407407407418,0.025660011963983403,-0.022222222222222254,0.022222222222222254,NOT_COMPUTED: repeated patients across seeds
+mamba_minus_nomamba_seed_point_estimates,paired contrast,oscc_precision,3,0.0034141455418246203,0.010500916083796248,-0.00870827285921627,0.009708737864077666,NOT_COMPUTED: repeated patients across seeds

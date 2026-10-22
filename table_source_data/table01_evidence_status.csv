@@ -1,0 +1,4 @@
+stage,purpose,conditions,seed_folds,evaluation_unit,completion,scope
+Stage 1,Frozen internal patient-wise model comparison,4 models,42; folds 0-4,patient,20/20 integrity-pass frozen run audit,Pooled OOF and fold descriptive performance; composite Mamba result does not isolate Mamba
+Corrected Stage 2,Matched Mamba versus Identity comparison,Composite-Mamba; Composite-NoMamba,"42,20260824,314159; folds 0-4",patient-paired,6 model-seed OOF sets; corrected seed42 source identified,Repeated same patients; three-seed summary descriptive; no external confirmation
+Efficiency,Controlled forward timing,5 models,Frozen benchmark checkpoint identities,timed GPU forward,20 cells; 3 blocks and 300 iterations per cell,Hardware-specific; model-only separated from preprocessing/H2D
