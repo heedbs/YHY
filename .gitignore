@@ -22,3 +22,4 @@ local_manifests/
 manifest_bundle_REVIEW_ONLY/
 weights_map_PRIVATE.json
 .DS_Store
+.venv*/

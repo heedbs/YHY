@@ -12,6 +12,8 @@ This package documents the existing internal, patient-wise ORCHID study. Class o
 
 ## What can be checked now
 
+Start with [PUBLICATION_READINESS.md](PUBLICATION_READINESS.md) for verified scope and remaining decisions. A fresh isolated CPU test environment has now passed all 26 tests; see [environment/CPU_TEST_ENVIRONMENT.md](environment/CPU_TEST_ENVIRONMENT.md). This is not the historical GPU-training environment.
+
 | Reader goal | Entry point | Current limit |
 | --- | --- | --- |
 | Inspect study results | `results/`, `table_source_data/`, `figure_source_data/` | Aggregate frozen outputs, not a new analysis |
@@ -44,6 +46,6 @@ See LICENSE_DECISION_REQUIRED.md and RELEASE_FILE_DECISIONS.csv before deciding 
 
 Empty historical figure-helper efficiency CSVs have been omitted. Use `results/efficiency/EFFICIENCY_MODEL_SUMMARY.csv` and `EFFICIENCY_FIGURE_PLOTTING_DATA.csv` instead. Historical sources are preserved outside the candidate; no result was recalculated. See MAINTENANCE_CHANGES.csv for public-copy-only fixes.
 
-See [REPRODUCTION_READINESS.csv](REPRODUCTION_READINESS.csv) for an explicit distinction between checked local input/config binding and unverified clean-environment model execution. A matching pretrained-file hash does not alone prove that timm initialized from that exact file.
+See [REPRODUCTION_READINESS.csv](REPRODUCTION_READINESS.csv) for the distinction between input binding, current-environment CPU initialization, and still-unverified historical CUDA execution. An offline audit has now traced the actual weight file and copied tensors for all five publication model variants; see [data/PRETRAINED_INITIALIZATION_AUDIT.csv](data/PRETRAINED_INITIALIZATION_AUDIT.csv). It did not run a forward pass or retroactively certify historical initialization.
 
 See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.

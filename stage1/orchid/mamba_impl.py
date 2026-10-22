@@ -91,7 +91,7 @@ class OrchidEffLite2_MSMambaDG(nn.Module):
     def __init__(self, num_classes: int = 3, pretrained: bool = True,
                  taps=(3, 4), d_model: int = 192, n_mamba: int = 1,
                  mixstyle_p: float = 0.5, mixstyle_alpha: float = 0.1,
-                 dropout: float = 0.2, use_gem: bool = True):
+                 dropout: float = 0.2, use_gem: bool = True, pretrained_state_dict: dict | None = None):
         super().__init__()
         preferred = ["tf_efficientnet_lite2.in1k", "tf_efficientnet_lite2"]
         avail = set(timm.list_models())
@@ -101,7 +101,10 @@ class OrchidEffLite2_MSMambaDG(nn.Module):
             if not cand:
                 raise RuntimeError("timm에서 EfficientNet-Lite2(tf_efficientnet_lite2) 계열 모델명을 찾지 못했습니다.")
             name = sorted(cand)[0]
-        self.backbone = timm.create_model(name, pretrained=pretrained, features_only=True, out_indices=taps)
+        # Public-copy path binding only; topology and forward methods are unchanged.
+        overlay = {"state_dict": pretrained_state_dict, "file": None, "hf_hub_id": None, "url": ""} if pretrained_state_dict is not None else None
+        self.backbone = timm.create_model(name, pretrained=pretrained, features_only=True, out_indices=taps,
+                                          pretrained_cfg_overlay=overlay)
         chs = self.backbone.feature_info.channels()
         self.mixstyle = MixStyle(p=mixstyle_p, alpha=mixstyle_alpha)
         self.head = MultiScaleTokenMambaHead(

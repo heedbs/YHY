@@ -51,7 +51,14 @@ class CPUChecks(unittest.TestCase):
                 if hasattr(child,'type_params') and child.type_params==[]:
                     child._fields=tuple(f for f in child._fields if f!='type_params')
             h=hashlib.sha256(ast.dump(node,include_attributes=False).encode()).hexdigest()
-            self.assertEqual(h,r['historical_ast_sha256'],r['public_path']+':'+r['symbol'])
+            if 'public_binding_ast_sha256' in r:
+                self.assertEqual(h,r['public_binding_ast_sha256'],r['public_path']+':'+r['symbol'])
+                # Only the explicit pretrained-file constructor binding changed.
+                node.body=[n for n in node.body if not isinstance(n,ast.FunctionDef) or n.name!='__init__']
+                non_init=hashlib.sha256(ast.dump(node,include_attributes=False).encode()).hexdigest()
+                self.assertEqual(non_init,r['historical_non_init_ast_sha256'])
+            else:
+                self.assertEqual(h,r['historical_ast_sha256'],r['public_path']+':'+r['symbol'])
 
     def test_image_equal_patient_aggregation(self):
         for stage in ['stage1','stage2']:

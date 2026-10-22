@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 import timm
 import torch
+import safetensors.torch
 
 from . import CLASS_ORDER
 from .data import BASE, PreprocessConfig
@@ -47,19 +48,22 @@ def preprocessing(model_name: str) -> PreprocessConfig:
 
 
 def create_model(model_name: str, pretrained: bool = True):
-    verify_pretrained(model_name)
+    verified_path, _ = verify_pretrained(model_name)
+    # Frozen artifacts are safetensors, even when a resolved cache blob has no suffix.
+    pretrained_state = safetensors.torch.load_file(str(verified_path), device="cpu") if pretrained else None
     if model_name == "EfficientNet-Lite2+Mamba":
         from . import mamba_impl
         if not mamba_impl.HAS_MAMBA:
             raise RuntimeError("mamba_ssm unavailable; fallback forbidden")
-        model = mamba_impl.OrchidEffLite2_MSMambaDG(num_classes=3, pretrained=pretrained)
+        model = mamba_impl.OrchidEffLite2_MSMambaDG(num_classes=3, pretrained=pretrained, pretrained_state_dict=pretrained_state)
         mamba_blocks = [(name, module) for name, module in model.named_modules() if module.__class__.__module__.startswith("mamba_ssm")]
         if not mamba_blocks:
             raise RuntimeError("runtime model contains no mamba_ssm block")
         identity = mamba_identity(model, mamba_blocks)
     else:
         identifier = str(provenance_row(model_name)["exact_timm_identifier"])
-        model = timm.create_model(identifier, pretrained=pretrained, num_classes=3)
+        model = timm.create_model(identifier, pretrained=pretrained, num_classes=3,
+                                  pretrained_cfg_overlay={"state_dict": pretrained_state, "file": None, "hf_hub_id": None, "url": ""})
         identity = {"model_name": model_name, "identifier": identifier, "num_classes": 3, "class_order": CLASS_ORDER}
     model._orchid_identity = identity
     output_features = getattr(model, "num_classes", 3)

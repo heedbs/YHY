@@ -21,3 +21,5 @@ Apache license sources: https://github.com/huggingface/pytorch-image-models/blob
 - Official library dependencies remain separate. Original local project contributions can use MIT while external source retains its applicable terms. No third-party model weights/binaries are redistributed and no current source search is a proof of complete originality.
 
 Verified license URLs: https://github.com/KaiyangZhou/mixstyle-release/blob/master/LICENSE and https://github.com/filipradenovic/cnnimageretrieval-pytorch/blob/master/LICENSE . No source file is relabeled as copied solely from algorithm similarity. See LICENSE_SCOPE.md.
+
+Follow-up: the official MixStyle reference at `reid/models/mixstyle.py` was inspected. Local code differs in random gating, variance convention, statistic detachment and helper APIs; it is not an identical copy and must not be replaced with that reference as a licensing shortcut. The GeM reference implements the same pooling formula, not proof of exact code lineage. Full MIT notices for both method-reference repositories are retained under licenses/ conservatively, without changing frozen model code or claiming the authorship question resolved.

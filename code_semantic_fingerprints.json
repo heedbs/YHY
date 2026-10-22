@@ -37,7 +37,10 @@
   {
     "public_path": "stage1/orchid/mamba_impl.py",
     "symbol": "OrchidEffLite2_MSMambaDG",
-    "historical_ast_sha256": "59a69401b64e1607f6e34fba4e9c3b03d30ec76796a1e222df6f06c2becdef11"
+    "historical_ast_sha256": "59a69401b64e1607f6e34fba4e9c3b03d30ec76796a1e222df6f06c2becdef11",
+    "public_binding_ast_sha256": "e11cc3b3001f139f7e5914d3b49f1f72ba933be35c00c6d0dee2d600d14f5c49",
+    "historical_non_init_ast_sha256": "fae2f6f9ef062d3a148e24550203b4c915f526af4c4803a98a9d632f32efdbf1",
+    "maintenance_scope": "explicit verified-safetensors state_dict constructor argument only; full CPU initialized state equivalence audited"
   },
   {
     "public_path": "stage1/orchid/trainer.py",
@@ -97,7 +100,10 @@
   {
     "public_path": "stage2/orchid/mamba_impl.py",
     "symbol": "OrchidEffLite2_MSMambaDG",
-    "historical_ast_sha256": "59a69401b64e1607f6e34fba4e9c3b03d30ec76796a1e222df6f06c2becdef11"
+    "historical_ast_sha256": "59a69401b64e1607f6e34fba4e9c3b03d30ec76796a1e222df6f06c2becdef11",
+    "public_binding_ast_sha256": "e11cc3b3001f139f7e5914d3b49f1f72ba933be35c00c6d0dee2d600d14f5c49",
+    "historical_non_init_ast_sha256": "fae2f6f9ef062d3a148e24550203b4c915f526af4c4803a98a9d632f32efdbf1",
+    "maintenance_scope": "explicit verified-safetensors state_dict constructor argument only; full CPU initialized state equivalence audited"
   },
   {
     "public_path": "stage2/orchid/trainer.py",

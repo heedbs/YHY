@@ -1,14 +1,14 @@
 task,status,evidence,limit
 Aggregate result/source inspection,CHECKED,results and prior source fingerprints,not a new analysis
-Artificial CPU unit checks,PASS_26_TESTS,tests directory; tests use synthetic records,not real-data training/inference
+Artificial CPU unit checks,PASS_28_TESTS_NEW_ISOLATED_ENV,new CPU venv; pip check; 28 synthetic tests,not real-data training/inference
 Frozen source-linked minimal bundle,DRAFT_SERVER_ONLY,whole-file identity in data/manifest_bundle_identity.json,linked patient rows not uploaded; final field approval required
 Local metadata path binding,PASS_232689_PATCH_ROWS,private receipt; all original semantic rows matched,file presence not full source/cache content census
 Frozen split identity,PASS_EXACT_BYTES,same SHA as all fifty templates,aliases cannot silently replace original split
 Pretrained file identities,PASS_LOCAL_FILE_SHA,data/weight_artifact_identity.csv,files verified; initialized tensors not checked
 Local config preparation,PASS_50_OF_50,private config binding audit,only relocated code hash added; no model execution
-Pretrained tensor load binding,NOT_VERIFIED,stage1/orchid/models.py and stage2/orchid/models.py,verified file path is not passed directly to timm pretrained loading
+Pretrained tensor load binding,PASS_CURRENT_CPU_BASELINE_VS_BOUND,data/PRETRAINED_INITIALIZATION_AUDIT.csv; explicit verified state_dict binding,no trained checkpoint/CUDA/historical replay
 Original image to cache reproduction,PARTIAL_HISTORICAL_SAMPLE_EVIDENCE,PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md,first-generation full-cache and exact legacy reference sample lineage unresolved
-Clean environment installation,NOT_RUN,environment/ and REPRODUCIBILITY.md,complete compiler/dependency lock missing
-Training and model inference,NOT_RUN,no model execution performed in this preparation,GPU verification requires separate authorization
+Clean environment installation,PASS_CPU_FIXTURES_ONLY,environment/CPU_TEST_ENVIRONMENT.md,full historical CUDA stack not reconstructed
+Training and model inference,NOT_RUN,CPU constructor/state loading only; all forward counters zero,no scientific model execution authorized here
 Full frozen-result reanalysis,NOT_SELF_CONTAINED,individual OOF not included,patient-level access and corrected-source alignment needed
 Composite implementation public distribution,COMPONENT_REVIEW_PENDING,LICENSE_SCOPE.md,MIT selection does not clear unknown upstream derivation

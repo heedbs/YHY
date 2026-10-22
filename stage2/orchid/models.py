@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 import torch.nn as nn
+import safetensors.torch
 
 from . import CLASS_ORDER, mamba_impl
 from .checkpoint import sha256_file
@@ -56,11 +57,12 @@ def _identity(model, variant: str) -> dict:
 
 
 def create_model(model_name: str, pretrained: bool = True):
-    verify_pretrained(model_name)
+    verified_path, _ = verify_pretrained(model_name)
+    pretrained_state = safetensors.torch.load_file(str(verified_path), device="cpu") if pretrained else None
     if not mamba_impl.HAS_MAMBA:
         raise RuntimeError("mamba_ssm unavailable; fallback forbidden")
     cls = mamba_impl.OrchidEffLite2_MSMambaDG if model_name == "Composite-Mamba" else CompositeNoMamba
-    model = cls(num_classes=3, pretrained=pretrained)
+    model = cls(num_classes=3, pretrained=pretrained, pretrained_state_dict=pretrained_state)
     if model_name == "Composite-Mamba":
         if not any(module.__class__.__module__.startswith("mamba_ssm") for module in model.modules()):
             raise RuntimeError("runtime model contains no mamba_ssm block")
