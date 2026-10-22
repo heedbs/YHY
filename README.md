@@ -1,6 +1,10 @@
 # ORCHID comparative study: reproducibility candidate
 
-**Review-only candidate. No repository or release has been published. Code license and ownership are undecided.**
+**Private review candidate for a manuscript intended for submission to BioData Mining. This is not an accepted or published article, and no public software release has been issued. Code license and ownership are undecided.**
+
+English is the primary documentation for reviewers and readers. [한국어 보조 안내](readme_kor.md).
+
+Repository: https://github.com/heedbs/YHY . The review candidate is on `review/orchid-reproducibility-20261022`, not the default `main` branch. A private repository link alone does not grant reviewers access; agree an appropriate access or supplementary-package route before submission. Cite the exact reviewed commit, not an unspecified moving branch. Public release, archival identifiers and license selection remain separate author decisions.
 
 This package documents the existing internal, patient-wise ORCHID study. Class order: Normal=0, OSMF=1, OSCC=2. Cohort: 149 patients, 10,072 source images, 232,689 duplicate-clean patches. Stage 1 compares four models with seed42, five outer folds, AUROC-first checkpoint selection and an 80-epoch cap. Corrected Stage 2 compares Composite-Mamba with an exact Identity control using seeds42/20260824/314159, F1-first selection and a 40-epoch cap. Historical Stage 1 Mamba seed42 is not substituted into corrected Stage 2.
 
