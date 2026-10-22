@@ -8,6 +8,8 @@ Installation order (documentation example, not executed here): create a Python3.
 
 ## Local data configuration
 
+For the exact two-file input draft and CPU-only path preparation, see [data/AUTHORIZED_MANIFEST_BUNDLE.md](data/AUTHORIZED_MANIFEST_BUNDLE.md). Original rows remain server-only pending final disclosure review. `scripts/prepare_local_manifests.py` does not restore or generate the historical cache; it requires existing source/cache files.
+
 `ORCHID_MANIFEST_DIR` points to a private directory containing final_unique_patch_manifest.csv, final_outer_inner_split_manifest.csv, final_duplicate_exclusion_manifest.csv and selected_model_pretrained_provenance.csv. The pretrained table must have correct local_cache_path entries and verified weight_sha256. Set local cache/source paths in privately supplied manifests; keep logical patient/source/UID relations unchanged. `ORCHID_PRIVATE_ROOT` is a relocated research-artifact root used only by historical reference orchestration scripts. No frozen patient split or metadata content is distributed by default.
 
 ## Path-adapted training copies
@@ -36,3 +38,5 @@ benchmark/reference/ is the actual measured driver and source helper, with only 
 explainability/reference/ is the actual r1 runner. Frozen cases are excluded; output includes IDs unless separately reviewed. It selects median/high evidence patches within each model's own scores; identical-patch matched heatmap comparisons and patient-OOF-to-patch argmax agreement were not established by this runner. Do not claim validated localization, deterministic repeatability, or pathology validation from file presence.
 
 Tested now: syntax, exact selected class/function AST parity, synthetic aggregation/metric tests, config scientific settings, frozen aggregate-source integrity, privacy/path/secret/file-size scans, SHA and ZIP checks. Not tested now: package installation, research training/inference, CUDA equivalence of adapted models, bootstrap execution, benchmark, Grad-CAM, or bitwise reproduction of all paper figures.
+
+Follow-up input binding: whole-file bundle SHA, partition/target integrity, existence of all source/cache paths, exact pretrained file hashes and 50 newly generated local configs were checked CPU-only. No source image or cache was decoded/rehash-censused in this step. Current factory verification of a local weight file is separate from timm's automatic pretrained loading; exact initialized tensor provenance remains a future verification item. See REPRODUCTION_READINESS.csv.

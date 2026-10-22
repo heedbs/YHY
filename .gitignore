@@ -18,4 +18,7 @@ outputs/
 *.zip
 *.log
 local_config*.json
+local_manifests/
+manifest_bundle_REVIEW_ONLY/
+weights_map_PRIVATE.json
 .DS_Store

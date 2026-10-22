@@ -18,6 +18,7 @@ This package documents the existing internal, patient-wise ORCHID study. Class o
 | Inspect model/training settings | `stage1/`, `stage2/`, `configs/run_catalog.csv` | Exact private manifests and validated cache still required |
 | Run research-data-free checks | `tests/` | CPU synthetic checks, not full experiment reproduction |
 | Understand data access | [DATA_ACCESS.md](DATA_ACCESS.md) | Patient-level release review incomplete |
+| Prepare authorized local inputs | [Minimum manifest bundle](data/AUTHORIZED_MANIFEST_BUNDLE.md) | CPU-only binding; private patient bundle and validated cache required |
 | Understand licensing | [LICENSE_SCOPE.md](LICENSE_SCOPE.md) | Composite-module source exceptions remain |
 | Reuse benchmark/Grad-CAM scripts | `benchmark/reference/`, `explainability/reference/` | Reference only; not a turnkey public workflow |
 
@@ -42,5 +43,7 @@ GPU measurement/explainability code is reference material under benchmark/refere
 See LICENSE_DECISION_REQUIRED.md and RELEASE_FILE_DECISIONS.csv before deciding on any public release. Dataset CC BY 4.0 does not license this code or resolve ethics/IRB questions.
 
 Empty historical figure-helper efficiency CSVs have been omitted. Use `results/efficiency/EFFICIENCY_MODEL_SUMMARY.csv` and `EFFICIENCY_FIGURE_PLOTTING_DATA.csv` instead. Historical sources are preserved outside the candidate; no result was recalculated. See MAINTENANCE_CHANGES.csv for public-copy-only fixes.
+
+See [REPRODUCTION_READINESS.csv](REPRODUCTION_READINESS.csv) for an explicit distinction between checked local input/config binding and unverified clean-environment model execution. A matching pretrained-file hash does not alone prove that timm initialized from that exact file.
 
 See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.

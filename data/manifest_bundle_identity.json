@@ -1,0 +1,18 @@
+{
+  "status": "DRAFT_INTERNAL_REVIEW_NOT_PATIENT_DATA_RELEASE_APPROVAL",
+  "files": {
+    "patches.csv": "9cf8a81666e6ad470439255c9df9e33bcfeb794c32f56b30c10ecac4e86f87bc",
+    "final_outer_inner_split_manifest.csv": "e3aa21fa00af400d11287251e67027f001d433b7c231bc14526bb85f3fcd66e7"
+  },
+  "expected": {
+    "patients": 149,
+    "sources": 10072,
+    "patches": 232689,
+    "class_patients": {
+      "normal": 14,
+      "osmf": 31,
+      "oscc": 104
+    }
+  },
+  "contains_linkable_source_and_patient_identifiers": true
+}
