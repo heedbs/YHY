@@ -51,6 +51,12 @@ python -B scripts/preflight_local_run.py --stage stage2 \
 
 Preflight is read-only and requires no PyTorch, image decoder or GPU. It compares local patch semantics with the SHA-verified bundle, preserves the exact split, verifies scientific config equality and current code digest, hashes pretrained files, checks source/cache presence and rejects output collisions. A pass is **input binding only**, not cache-content, model-runtime or full reproduction certification. It does not create the future run output.
 
+### Optional Content Census
+
+To go beyond file presence, add `--verify-content` to the same preflight command. This optional mode requires the documented CPU OpenCV/NumPy environment, hashes every source against the frozen manifest, and decodes/hashes every existing cache file with one CPU decoder thread. It verifies three-channel crop dimensions and produces a UID-sorted whole-cache inventory digest. It creates no images and never regenerates cache or calls a model. On the complete dataset it reads about 62 GB and can take several minutes.
+
+Use `--expected-cache-digest` with a previously reviewed inventory digest to reject a changed cache. A newly computed digest is a baseline for the current files, not proof that they match their original generation. Current full-corpus evidence, if completed, is in [the test report](docs/audits/TEST_REPORT.md); first-generation limitations remain in [LIMITATIONS.md](LIMITATIONS.md).
+
 For Stage 1 use `--stage stage1`, a template under `configs/stage1/` and its trainer. The [config catalog](configs/README.md) defines the correct stage/model family. Never use historical Stage 1 Mamba seed 42 as corrected Stage 2 input.
 
 ## 4. Research Execution

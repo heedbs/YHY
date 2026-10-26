@@ -1,0 +1,18 @@
+{
+  "sources_sha_verified": 10072,
+  "cache_decoded": 232689,
+  "cache_inventory_sha256": "4250d64d45bd8109e124fa7141178c75707238532978ee745f1cf54c69e6eedd",
+  "cache_digest_definition": "SHA256 of UID-sorted UTF8(uid) + NUL + ASCII(file_SHA256) + LF",
+  "cache_generated": false,
+  "historical_first_generation_verified": false,
+  "decoder": "OpenCV IMREAD_COLOR; one CPU decoder thread",
+  "opencv_version": "4.10.0",
+  "numpy_version": "1.26.4",
+  "status": "PASS_CURRENT_SOURCE_AND_CACHE_CONTENT",
+  "started_utc": "2026-10-26T07:25:50.010012+00:00",
+  "finished_utc": "2026-10-26T07:31:24.157315+00:00",
+  "input_metadata_changed": 0,
+  "model_execution": false,
+  "gpu_access": false,
+  "new_image_files": 0
+}

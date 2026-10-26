@@ -1,4 +1,4 @@
-"""Read-only local-input verification. No model imports, image decode or GPU calls."""
+"""Read-only input verification; optional CPU content audit. Never executes models."""
 import argparse
 import json
 import os
@@ -48,6 +48,47 @@ def verify_local_rows(local, frozen):
             raise ValueError('local source/cache binding mismatch')
         if not source.is_file() or not cache.is_file():
             raise ValueError('missing source or existing cache file')
+
+
+def verify_content(rows, progress=None):
+    """Hash original sources; decode existing cache only, never regenerate it."""
+    import hashlib
+    import cv2
+    import numpy as np
+    cv2.setNumThreads(1)
+    sources = {}
+    for row in rows:
+        name = row['path']
+        if sources.setdefault(name, row['source_sha256']) != row['source_sha256']:
+            raise ValueError('contradictory source content identity')
+    def stamp(path):
+        stat = path.stat()
+        return stat.st_dev, stat.st_ino, stat.st_size, stat.st_mtime_ns, stat.st_ctime_ns
+    for index, (name, expected) in enumerate(sorted(sources.items()), 1):
+        path = Path(name); before = stamp(path)
+        if sha(path) != expected or stamp(path) != before:
+            raise ValueError('source SHA mismatch or concurrent source modification')
+        if progress and index % 1000 == 0: progress('sources', index, len(sources))
+    digest = hashlib.sha256()
+    uids = set()
+    for index, row in enumerate(sorted(rows, key=lambda r: r['uid']), 1):
+        if row['uid'] in uids:
+            raise ValueError('duplicate UID in content audit')
+        uids.add(row['uid'])
+        path = Path(row['cache_path']); before = stamp(path); payload = path.read_bytes()
+        image = cv2.imdecode(np.frombuffer(payload, dtype=np.uint8), cv2.IMREAD_COLOR)
+        if image is None or image.shape != (int(row['h']), int(row['w']), 3):
+            raise ValueError('cache decode or crop dimension mismatch')
+        if stamp(path) != before:
+            raise ValueError('concurrent cache modification')
+        digest.update(row['uid'].encode() + b'\0' + hashlib.sha256(payload).hexdigest().encode() + b'\n')
+        if progress and index % 10000 == 0: progress('cache', index, len(rows))
+    return {'sources_sha_verified': len(sources), 'cache_decoded': len(rows),
+            'cache_inventory_sha256': digest.hexdigest(),
+            'cache_digest_definition': 'SHA256 of UID-sorted UTF8(uid) + NUL + ASCII(file_SHA256) + LF',
+            'cache_generated': False, 'historical_first_generation_verified': False,
+            'decoder': 'OpenCV IMREAD_COLOR; one CPU decoder thread',
+            'opencv_version': cv2.__version__, 'numpy_version': np.__version__}
 
 
 def check(stage, config_path, manifest_dir, bundle, output):
@@ -105,11 +146,24 @@ def main():
     parser.add_argument('--stage', choices=['stage1', 'stage2'], required=True)
     for name in ('config', 'manifest-dir', 'bundle', 'output'):
         parser.add_argument('--' + name, type=Path, required=True)
+    parser.add_argument('--verify-content', action='store_true', help='Hash all source files and decode/hash all cache files on CPU; can take minutes')
+    parser.add_argument('--expected-cache-digest', help='Require this whole-cache inventory SHA; requires --verify-content')
     args = parser.parse_args()
     env = os.environ.get('ORCHID_MANIFEST_DIR')
     if not env or Path(env).resolve() != args.manifest_dir.resolve():
         raise ValueError('ORCHID_MANIFEST_DIR must match --manifest-dir')
-    print(json.dumps(check(args.stage, args.config, args.manifest_dir, args.bundle, args.output), indent=2))
+    if args.expected_cache_digest and not args.verify_content:
+        parser.error('--expected-cache-digest requires --verify-content')
+    result = check(args.stage, args.config, args.manifest_dir, args.bundle, args.output)
+    if args.verify_content:
+        result['content_audit'] = verify_content(read_rows(args.manifest_dir / 'final_unique_patch_manifest.csv'))
+        result['source_content_rehashed'] = True
+        result['cache_content_rehashed'] = True
+        result['cache_decode_verified'] = True
+        observed = result['content_audit']['cache_inventory_sha256']
+        if args.expected_cache_digest and observed != args.expected_cache_digest:
+            raise ValueError('whole-cache inventory SHA mismatch')
+    print(json.dumps(result, indent=2))
 
 
 if __name__ == '__main__':
