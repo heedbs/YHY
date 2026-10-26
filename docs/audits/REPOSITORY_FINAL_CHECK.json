@@ -1,0 +1,39 @@
+{
+  "status": "TECHNICAL_HANDOFF_VERIFIED_RELEASE_DECISIONS_SEPARATE",
+  "baseline_commit": "7cf75a8fdb52750bc00a5823ba396bb409f79676",
+  "hosted_cpu_baseline": "https://github.com/heedbs/YHY/actions/runs/40291231421",
+  "hosted_cpu_baseline_conclusion": "success",
+  "local_cpu_tests": 45,
+  "history_scope": "14 commits reachable from baseline main; retained review branch is an ancestor",
+  "history_unique_blobs_scanned": 307,
+  "history_local_blob_sha_matches": 297,
+  "history_remote_blobs_scanned": 10,
+  "history_heuristic_content_findings": 0,
+  "history_exclusions": [
+    "commit author metadata",
+    "unreachable or deleted objects",
+    "server-side retention",
+    "unknown identifier formats"
+  ],
+  "final_candidate_checks": [
+    "whole-package SHA coverage",
+    "heuristic release hygiene",
+    "Markdown file links",
+    "source indexes",
+    "CPU fixtures and aggregate tests"
+  ],
+  "manuscript_or_final_figure_work": false,
+  "new_training_inference_or_gpu": false,
+  "patient_linked_rows_included": false,
+  "visibility_changed": false,
+  "not_certified": [
+    "complete experimental reproduction",
+    "original rights clearance",
+    "ethics or pathology approval"
+  ],
+  "decisions_remaining": [
+    "documented code-license scope",
+    "linked-data distribution scope",
+    "author public-release authorization"
+  ]
+}

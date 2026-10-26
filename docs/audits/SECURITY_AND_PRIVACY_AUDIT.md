@@ -1,5 +1,7 @@
 # Security and privacy audit
 
+Final handoff includes a reachable-history content scan, not just the current tree. See [REPOSITORY_FINAL_CHECK.json](REPOSITORY_FINAL_CHECK.json) for the exact baseline, counts and exclusions. Git commit author metadata and unreachable/deleted objects are not covered; no history rewrite was performed.
+
 The candidate tree was read and scanned; .gitignore was not treated as sanitization. No old .git directory/history, raw image/cache, checkpoint/weight, raw patient prediction, patient ID, source-image hash list, credential file, email correspondence, ethics inquiry or full server log is included. Exact internal mapping/diffs/original-source snapshots remain outside this ZIP.
 
 Heuristic checks found no private server/account paths, source patient-ID patterns, email strings, private-key markers, GitHub tokens, cloud access keys or credential-value assignments. No symlink or file over5MiB was found. Whole-artifact hashes are scientific provenance, not individual-image or patient records. Only aggregate results and artificial SYNTH fixtures are included. The supplied author name and public ORCID are deliberate citation metadata.

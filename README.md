@@ -6,6 +6,8 @@
 
 Research software and frozen aggregate source data supporting a manuscript intended for **BioData Mining**. This repository is a private review candidate, not a published article or an independently validated clinical system.
 
+Repository organization and technical handoff are summarized in [Current Status](docs/STATUS.md). Data-distribution and license-scope decisions remain separate from technical validation.
+
 ## Study at a Glance
 
 **149 patients · 10,072 source images · 232,689 duplicate-clean patches**
