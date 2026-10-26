@@ -2,6 +2,8 @@
 
 Status: **PASS_TECHNICAL_VALIDATION_ONLY — PUBLIC_RELEASE_NOT_APPROVED**.
 
+**Current suite: 28 synthetic CPU tests passed in the isolated CPU environment.** Below, earlier counts preserve the progression from 11 to 21, 26 and 28. Statements about missing dependency installation describe earlier checks; installation and `pip check` were subsequently completed in the isolated environment, not the historical GPU environment.
+
 11 CPU tests passed with CUDA_VISIBLE_DEVICES empty: all Python syntax; scientific class/function AST equality; synthetic image-equal patient aggregation; contradictory target rejection; invalid probability rejection; patient-level metric checks; different Stage1/Stage2 checkpoint priorities and earlier-epoch ties; deterministic synthetic preprocessing; 50-run config catalog checks; local config hash binding/collision/mismatch; extracted final metric functions on artificial data. Fixtures are synthetic and are not research runs.
 
 The AST fingerprint check normalizes only the empty Python3.12 type_params field absent in Python3.9; it does not discard function bodies, constants or scientific expressions. Runtime code digests were independently compared with all 50 historical configs; scientific values in public config examples match their original files exactly. Best-checkpoint/history digests and final aggregate-source numeric strings were also checked. Both absolute and relative SHA manifest entry styles were resolved.
@@ -10,7 +12,7 @@ Authoritative Stage1/Stage2/benchmark results were not reselected or recomputed.
 
 Not run: dependency installation; real-data training/inference; CUDA smoke or architecture execution; bootstrap; efficiency measurement; Grad-CAM; original-cache reconstruction; final manuscript figure equivalence; independent pathology/ethics assessment. Current packaging environment is separately recorded in environment/current_cpu_packaging_record.json.
 
-Follow-up 22 October 2026: the same 11 artificial CPU tests pass in the new review copy with CUDA_VISIBLE_DEVICES empty. No scientific Python file was changed. Historical cache notebook/reference and Gate A sample receipts were inspected without running their code. Original data-file bytes remain unchanged. See PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md.
+Follow-up 22 October 2026: the same 11 artificial CPU tests pass in the new review copy with CUDA_VISIBLE_DEVICES empty. No scientific Python file was changed. Historical cache notebook/reference and Gate A sample receipts were inspected without running their code. Original data-file bytes remain unchanged. See [PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md).
 
 Current public-copy maintenance validation: 21 CPU synthetic tests pass (11 original plus 10 package/config/guard regressions). New checks cover manifest full coverage, duplicate/malformed/missing/hash-mismatched entries, unsafe path/symlink rejection, all 50 stage-specific config templates, wrong checkpoint criterion, unsupported opposing-label ties and non-stratified index rejection. Invalid synthetic inputs stop before the bootstrap calculation. No real bootstrap, training, inference or CUDA execution occurred. Historical Trainer/model/evaluation files, configs, aggregate results and final-analysis reference script remain byte-identical to the prior candidate. Empty helper CSVs were removed from the candidate only.
 

@@ -1,53 +1,55 @@
-# ORCHID 비교 연구: 한국어 보조 안내
+# ORCHID 한국어 안내
 
-[English README](README.md)가 논문 심사자와 국제 독자를 위한 기본 문서입니다. 이 파일은 국내 공동연구자 및 저자의 검토를 돕는 보조 안내이며, 새로운 분석 결과나 별도 실행 승인을 제공하지 않습니다.
+**환자 단위 구강 병리 분류 비교 및 Mamba matched ablation 연구**
 
-## 현재 상태
+[English README](README.md) · [재현 절차](REPRODUCIBILITY.md) · [결과 안내](results/README.md) · [문서 목록](docs/README.md) · [현재 상태](docs/STATUS.md)
 
-BioData Mining 투고 예정 원고를 지원하는 **비공개 검토용 재현성 후보 패키지**입니다. 논문 게재, 저널 승인, IRB 적합성 또는 코드 공개 승인이 완료됐다는 뜻이 아닙니다. 자체 개발 소프트웨어 기여에는 MIT를 선택했습니다. 외부 권리와 composite 모듈의 출처 예외는 LICENSE_SCOPE.md를 따르며 전체 공개 승인은 아직 완료되지 않았습니다.
+BioData Mining 투고 예정 원고를 지원하는 코드와 동결 집계 자료입니다. 현재 **비공개 검토본**이며, 논문 게재나 임상 검증이 완료됐다는 뜻은 아닙니다. 국제 독자에게는 영문 README를 기본 문서로 제공합니다.
 
-저장소: https://github.com/heedbs/YHY
+## 연구 구성
 
-2026년 10월 26일 검토본을 기본 `main` 브랜치에 반영했습니다. 기존 `review/orchid-reproducibility-20261022` 브랜치도 보존합니다. 이전 날짜의 점검표에 남은 병합 전 설명과 구분하십시오. 이번 반영은 공개 전환이나 release 발행이 아닙니다. 비공개 링크만으로 심사자 접근이 허용되지는 않으므로 투고 전 접근 방식을 정하고, 원고에는 정확한 commit을 특정해야 합니다.
+**환자 149명 · 원본 영상 10,072개 · 중복 정리 패치 232,689개**
 
-## 연구 구성과 결과 해석
+분류 순서는 Normal=0, OSMF=1, OSCC=2입니다. 패치 확률을 원본 영상 안에서 평균한 뒤, 환자 안의 각 영상을 동일 가중 평균합니다. 환자 단위 outer fold와 별도 inner validation을 사용합니다.
 
-- 분류 순서: Normal=0, OSMF=1, OSCC=2.
-- 분석 코호트: 환자 149명, source image 10,072개, 중복 정리 patch 232,689개.
-- Stage 1: 네 모델, seed 42, 환자 단위 outer 5-fold. 체크포인트는 inner-validation AUROC 우선으로 선택하며 최대 80 epochs입니다. InceptionV3는 physical batch 8 × accumulation 4, 나머지는 16 × 2입니다.
-- Corrected Stage 2: Composite-Mamba와 Identity 경로의 Composite-NoMamba를 seeds 42, 20260824, 314159 및 동일한 folds에서 비교합니다. inner-validation 환자 macro F1 우선, 최대 40 epochs입니다. 과거 Stage 1 Mamba seed 42를 corrected Stage 2로 대체하지 않습니다.
-- patch 확률을 source image 내부에서 평균한 뒤 환자 내부의 image들을 동일 가중 평균합니다. 반복 seed는 같은 환자와 folds를 사용하므로 독립 환자 447명으로 해석하지 않습니다.
-- Stage 2는 동일 코호트의 matched ablation 및 안정성 분석이지 독립 외부검증이 아닙니다. Mamba의 임상적 우월성, 동등성 또는 병변 위치 검증을 주장하지 않습니다.
+| 구분 | 비교와 run 수 | 체크포인트 선택 | 최대 epoch |
+| --- | --- | --- | --- |
+| Stage 1 | 네 모델 × 5 folds, seed 42: **20개** | inner-validation 환자 macro OVR AUROC 우선 | 80 |
+| Corrected Stage 2 | NoMamba/Mamba × 3 seeds × 5 folds: **30개** | inner-validation 환자 macro F1 우선 | 40 |
 
-## 포함 자료
+Stage 2의 seed 42 Mamba는 **교정된 Stage 2 run**입니다. 과거 Stage 1 Mamba로 대체하지 않습니다. 세 seed는 같은 환자와 분할을 반복하므로 독립 환자 447명이 아닙니다. Stage 1 EfficientNet-Lite2와 Stage 2 Composite-NoMamba도 서로 다른 비교 조건입니다.
 
-`stage1/`, `stage2/`에는 경로를 이식한 학습·모델·데이터 코드가 있습니다. `configs/`에는 50개 run의 설정 예시와 catalog, `analysis/`에는 평가·통계 코드, `results/`, `table_source_data/`, `figure_source_data/`에는 동결 집계 자료가 있습니다. benchmark, explainability 및 figure 코드는 해당 디렉터리의 reference 자료와 제한 사항을 함께 확인하십시오.
+## 무엇을 어디서 보나요?
 
-공개 후보에는 원본 병리 이미지, patch cache, checkpoint 및 pretrained weight, 실제 환자별 예측, 식별자 연결표, 정확한 환자 분할 manifest와 내부 감사자료를 넣지 않았습니다. 정확한 분할·manifest 제공은 재현성에 중요하지만 공개 여부가 아직 검토 중이며, 현재 패키지만으로 논문 수치 전체를 처음부터 재현할 수 있다고 주장하지 않습니다.
+| 확인할 내용 | 위치 |
+| --- | --- |
+| 최종 집계 결과와 표 자료 | [results](results/README.md), [table_source_data](table_source_data/) |
+| 모델·학습 코드와 설정 | [Stage 1](stage1/README.md), [Stage 2](stage2/README.md), [configs](configs/README.md) |
+| 데이터 확보와 재현 순서 | [DATA_ACCESS](DATA_ACCESS.md), [REPRODUCIBILITY](REPRODUCIBILITY.md) |
+| 코드 출처·AI 사용·검사 근거 | [문서 목록](docs/README.md) |
+| 미확인 사항과 공개 준비 상태 | [LIMITATIONS](LIMITATIONS.md), [현재 상태](docs/STATUS.md) |
 
-## 실행과 검증
+## GPU 없이 확인하기
 
-실제 실행 순서는 [REPRODUCIBILITY.md](REPRODUCIBILITY.md)를 따르십시오. 데이터 확보 → 승인된 manifest 및 검증된 cache 준비 → 새 로컬 경로/config 연결 → 단계별 학습 → 저장된 예측 평가 → figure/table 생성 순서입니다. 문서상 실행 예시와 실제 검증한 명령을 구분해야 합니다.
+[CPU 환경 안내](environment/CPU_TEST_ENVIRONMENT.md)에 따라 의존성을 준비한 뒤 저장소 루트에서 실행합니다.
 
 ```bash
+python -B scripts/check_public_package.py . --manifest
 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
-sha256sum -c SHA256_MANIFEST.txt
 ```
 
-위 명령은 적합한 의존성이 설치된 환경을 전제로 합니다. 패키지 제작 당시 CPU 검사 11개를 통과했지만 새 설치 환경 전체, 학습·추론·CUDA 동등성·bootstrap·benchmark·Grad-CAM을 재실행한 것은 아닙니다. synthetic fixture는 연구 환자나 실제 결과가 아닙니다. 과거 실행 환경과 현재 포장 환경은 `environment/`에서 구분합니다.
+격리된 CPU 환경에서 **28개 synthetic 검사**를 통과했습니다. 이는 패키지 무결성과 일부 계산 로직의 검사이며, 실제 데이터 학습·추론·CUDA 동등성 검증은 아닙니다. 검사용 가상 자료를 연구 관측값으로 해석하면 안 됩니다.
 
-공개용 코드의 경로 수정 및 Mamba 클래스 추출로 파일 SHA가 달라졌습니다. 일부 과학적 함수와 클래스의 AST 일치 검사는 과거 실행 파일의 바이트 동일성, CUDA 동등성 또는 historical checkpoint의 안전한 resume를 보증하지 않습니다. [CODE_CHANGES.csv](CODE_CHANGES.csv)와 [TEST_REPORT.md](TEST_REPORT.md)를 확인하십시오.
+## 재현 범위와 제한
 
-## 데이터·라이선스와 남은 제한
+공식 데이터 확보 → 승인된 정확한 manifest와 검증된 cache 준비 → 로컬 경로·SHA 연결 → 해당 Stage trainer 실행 → 저장된 예측 평가 → figure/table 생성 순서입니다. 자세한 명령은 [재현 안내](REPRODUCIBILITY.md)를 따릅니다.
 
-ORCHID 공식 training DOI는 https://doi.org/10.5281/zenodo.12636426 이며 validation/test DOI는 https://doi.org/10.5281/zenodo.12646943 입니다. 확인한 공식 메타데이터의 CC BY 4.0은 데이터 출처에 대한 것으로, 이 저장소 코드 전체의 라이선스나 연구윤리 판단을 대신하지 않습니다. 원래 저장소의 train/val/test 구분과 본 연구의 환자 단위 folds도 별개입니다.
+원본 이미지, cache, checkpoint, 환자별 예측 및 정확한 환자 연결 manifest는 이 패키지에 포함하지 않았습니다. 따라서 현재 저장소만으로 모든 논문 수치를 처음부터 완전 재현할 수 있다고 주장하지 않습니다. cache 최초 생성·과거 환경·최종 외부 편집 figure 대응 등에 남은 제한도 공개적으로 기록했습니다.
 
-정확한 cache 생성 과정, 일부 과거 환경 버전, 최종 외부 편집 figure의 대응 및 이미지 판독 검증에 미확인 사항이 있습니다. 과거 개발 smoke의 outer 접근 이력도 [LIMITATIONS.md](LIMITATIONS.md)에 공개적으로 기록했습니다. production run의 best 확정 후 outer 평가 1회와 연구 개발 전체 이력은 구분합니다.
+Stage 1은 비교 관찰 결과, Stage 2는 동일 코호트의 matched ablation·안정성 분석입니다. 독립 외부검증이 아닙니다. Stage 2의 세 primary CI는 모두 0을 포함하며 우월성이나 동등성을 입증하지 않습니다. InceptionV3의 batch 8 × accumulation 4를 다른 Stage 1 모델의 16 × 2와 혼동하지 마십시오.
 
-투고 전에 코드 권리·라이선스, 자료 제공 방침, 심사 접근 방법, 영문 원고의 Data/Code availability와 저장소 설명의 일치 여부를 확정해야 합니다. 자세한 근거는 [RESULTS_PROVENANCE.md](RESULTS_PROVENANCE.md), [DATA_ACCESS.md](DATA_ACCESS.md), [LICENSE_DECISION_REQUIRED.md](LICENSE_DECISION_REQUIRED.md), [AI_USE_INVENTORY.md](AI_USE_INVENTORY.md)를 확인하십시오.
+## 라이선스와 공개
 
-한국어 설명과 영문 문서가 충돌하면 임의로 해석하지 말고 근거를 확인하여 두 문서를 함께 정정하십시오. 본 문서 추가는 연구 설정이나 결과를 변경하지 않습니다.
+권한 있는 자체 소프트웨어 기여에는 [MIT](LICENSE)를 선택했습니다. Codex 보조 사용은 그 자체로 외부 저장소 코드 복사를 뜻하지 않으며, 실제 외부 의존성의 라이선스는 별개로 유지합니다. 출처와 미확인 범위는 [라이선스 안내](docs/licensing/LICENSE_SCOPE.md), [AI 사용 기록](docs/provenance/AI_USE_INVENTORY.md)을 확인하십시오.
 
-후속 유지보수에서는 공개용 config 생성기의 stage 혼용 차단, SHA 검증기의 누락·중복·경로 검사, 과거 bootstrap 함수의 지원하지 않는 입력 차단을 보완했습니다. 원본 연구 코드와 동결 통계 결과는 바꾸지 않았습니다. 비어 있던 효율성 보조 CSV 2개만 공개 후보에서 제외했으며, 실제 최종 값은 `results/efficiency/`를 사용합니다.
-
-See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.
+데이터의 CC BY 4.0을 코드 전체에 적용하거나 연구윤리 판단을 대신하는 근거로 사용하지 않습니다. 이번 문서 정리는 저장소 공개 전환, release 발행, 환자별 자료 공개가 아닙니다. 인용 시 정확한 commit을 특정하고 [CITATION.cff](CITATION.cff)를 확인하십시오.

@@ -1,14 +1,16 @@
+> Historical snapshot from 22 October 2026. For current status, see [docs/STATUS.md](../STATUS.md). Statements about branch location or pending choices describe that earlier snapshot.
+
 # BioData Mining submission preparation
 
 Checked 22 October 2026 against https://link.springer.com/journal/13040/submission-guidelines . This is an author workflow, not journal approval. Research is the working article-type assumption; confirm the chosen article type before submission. Requirements specific to a software article must not be applied automatically to a research article.
 
 ## Repository scope
 
-English README.md is primary; readme_kor.md is optional supplementary guidance. The repository supports a research manuscript, not a clinical product. Maintain stage-specific training settings and corrected Stage 2 provenance. Do not change frozen results to improve reproducibility claims. Review-only documentation and tests do not establish complete end-to-end reproducibility.
+English ../../README.md is primary; ../../readme_kor.md is optional supplementary guidance. The repository supports a research manuscript, not a clinical product. Maintain stage-specific training settings and corrected Stage 2 provenance. Do not change frozen results to improve reproducibility claims. Review-only documentation and tests do not establish complete end-to-end reproducibility.
 
 ## Author workflow
 
-1. Confirm the actual code rightsholders and institutional/coauthor restrictions. Record consent privately. MIT is selected for authorized original code; LICENSE_SCOPE.md lists unresolved component exceptions. Preserve third-party licenses irrespective of that decision. Do not label the repository open-source before selecting an applicable license.
+1. Confirm the actual code rightsholders and institutional/coauthor restrictions. Record consent privately. MIT is selected for authorized original code; ../licensing/LICENSE_SCOPE.md lists unresolved component exceptions. Preserve third-party licenses irrespective of that decision. Do not label the repository open-source before selecting an applicable license.
 2. Review minimal exact fold/partition, duplicate-exclusion, patch hierarchy and OOF fields for distribution rights and linkability. User willingness to disclose is not proof that all fields are safe. Keep these files out until a field-level review is complete. Do not invent a legal reason to withhold data or promise access that cannot be provided.
 3. Resolve or explicitly document the historical cache-generation/reference gap and incomplete environment pins. Distinguish tested CPU synthetic checks, unexecuted examples, and reference-only benchmark/explainability code. No new model execution is needed merely to edit these documents.
 4. Compare tables/figures with their frozen aggregate sources and record the specific final code commit. Retain scientific limitations and AI-assistance disclosures. Add final panel identities only when supplied.
@@ -42,8 +44,8 @@ This paragraph describes the current state, not the intended submission state. R
 - Archived version: NOT_ASSIGNED; final commit/release and any archive identifier must be recorded after creation.
 - OS: historical Linux/CUDA workflow; other operating systems not validated.
 - Language: Python; shell components are reference orchestration.
-- Requirements: see environment/ and REPRODUCIBILITY.md; missing historical dependencies remain stated.
-- License: MIT for authorized original software contributions; see LICENSE_SCOPE.md for exceptions. Dataset CC BY 4.0 is separate from source-code licensing.
+- Requirements: see environment/ and ../../REPRODUCIBILITY.md; missing historical dependencies remain stated.
+- License: MIT for authorized original software contributions; see ../licensing/LICENSE_SCOPE.md for exceptions. Dataset CC BY 4.0 is separate from source-code licensing.
 - Non-academic restrictions: cannot be finalized until applicable code and third-party licenses are reviewed.
 
 The general journal guidance requires an Availability of data and materials statement, recommends machine-readable supporting data, and requests dataset identifiers and software access/requirements information. It does not prescribe a special GitHub folder layout or a Korean README. The layout and workflow here are project recommendations, not editorial requirements.

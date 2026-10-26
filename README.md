@@ -1,51 +1,65 @@
-# ORCHID comparative study: reproducibility candidate
+# ORCHID
 
-**Private review candidate for a manuscript intended for submission to BioData Mining. This is not an accepted or published article, and no public software release has been issued. MIT is selected for authorized original software contributions; explicit composite-module exceptions and remaining rights review are documented in LICENSE_SCOPE.md.**
+**Patient-wise oral histopathology comparison and matched Mamba ablation**
 
-English is the primary documentation for reviewers and readers. [한국어 보조 안내](readme_kor.md).
+[한국어 안내](readme_kor.md) · [Reproduce](REPRODUCIBILITY.md) · [Results](results/README.md) · [Documentation](docs/README.md) · [Current Status](docs/STATUS.md)
 
-For the intended journal submission, see [BioData Mining submission preparation](BIODATA_MINING_SUBMISSION_CHECKLIST.md), including outstanding author decisions and a current-state availability-statement draft. This checklist is not a journal compliance certification.
+Research software and frozen aggregate source data supporting a manuscript intended for **BioData Mining**. This repository is a private review candidate, not a published article or an independently validated clinical system.
 
-Repository: https://github.com/heedbs/YHY . The reviewed candidate was integrated into the default `main` branch on 26 October 2026; the earlier review branch is retained. This integration does not make the repository public or issue a release. Earlier dated checklists describe the pre-integration state. A private repository link alone does not grant reviewers access; agree an appropriate access or supplementary-package route before submission. Cite the exact reviewed commit, not an unspecified moving branch. MIT selection does not resolve remaining component-rights, public-release or archival decisions.
+## Study at a Glance
 
-This package documents the existing internal, patient-wise ORCHID study. Class order: Normal=0, OSMF=1, OSCC=2. Cohort: 149 patients, 10,072 source images, 232,689 duplicate-clean patches. Stage 1 compares four models with seed42, five outer folds, AUROC-first checkpoint selection and an 80-epoch cap. Corrected Stage 2 compares Composite-Mamba with an exact Identity control using seeds42/20260824/314159, F1-first selection and a 40-epoch cap. Historical Stage 1 Mamba seed42 is not substituted into corrected Stage 2.
+**149 patients · 10,072 source images · 232,689 duplicate-clean patches**
 
-## What can be checked now
+The task is H&E oral histopathology classification: **Normal (0), OSMF (1), OSCC (2)**. Predictions are averaged within each source image, then images receive equal weight within each patient. Evaluation uses frozen patient-wise outer folds and separate inner validation.
 
-Start with [PUBLICATION_READINESS.md](PUBLICATION_READINESS.md) for verified scope and remaining decisions. A fresh isolated CPU test environment has now passed all 26 tests; see [environment/CPU_TEST_ENVIRONMENT.md](environment/CPU_TEST_ENVIRONMENT.md). This is not the historical GPU-training environment.
+| Study | Models and runs | Checkpoint selection | Epoch cap |
+| --- | --- | --- | --- |
+| Stage 1 | InceptionV3, EfficientNet-Lite2, MobileViT-S, Composite-Mamba; 5 folds each, seed 42; **20 runs** | Inner-validation patient macro OVR AUROC first | 80 |
+| Corrected Stage 2 | Composite-NoMamba versus Composite-Mamba; 5 folds × 3 seeds each; **30 runs** | Inner-validation patient macro F1 first | 40 |
 
-| Reader goal | Entry point | Current limit |
-| --- | --- | --- |
-| Inspect study results | `results/`, `table_source_data/`, `figure_source_data/` | Aggregate frozen outputs, not a new analysis |
-| Inspect model/training settings | `stage1/`, `stage2/`, `configs/run_catalog.csv` | Exact private manifests and validated cache still required |
-| Run research-data-free checks | `tests/` | CPU synthetic checks, not full experiment reproduction |
-| Understand data access | [DATA_ACCESS.md](DATA_ACCESS.md) | Patient-level release review incomplete |
-| Prepare authorized local inputs | [Minimum manifest bundle](data/AUTHORIZED_MANIFEST_BUNDLE.md) | CPU-only binding; private patient bundle and validated cache required |
-| Understand licensing | [LICENSE_SCOPE.md](LICENSE_SCOPE.md) | Composite-module source exceptions remain |
-| Reuse benchmark/Grad-CAM scripts | `benchmark/reference/`, `explainability/reference/` | Reference only; not a turnkey public workflow |
+Stage 2 uses seeds 42, 20260824 and 314159 on the **same patients and folds**, not 447 independent patients. Its Mamba seed-42 results come from corrected Stage 2 runs, never historical Stage 1 replacements. The Identity control retains the shared composite architecture; Stage 1 EfficientNet-Lite2 is not that matched control.
 
-Read aggregate frozen outputs under results/, table_source_data/ and figure_source_data/. Compare scientific parameters in configs/ with configs/run_catalog.csv, and original/public code fingerprints in CODE_CHANGES.csv and code_semantic_fingerprints.json. Run the CPU-only synthetic tests below; fixtures are not research observations.
+## Start Here
+
+| Goal | Entry point |
+| --- | --- |
+| Read frozen results and table-ready data | [Results guide](results/README.md), [table data](table_source_data/) |
+| Inspect models and training settings | [Stage 1](stage1/README.md), [Stage 2](stage2/README.md), [config catalog](configs/README.md) |
+| Obtain data and understand missing prerequisites | [Data access](DATA_ACCESS.md), [reproduction instructions](REPRODUCIBILITY.md) |
+| Check the package without research data | [CPU environment](environment/CPU_TEST_ENVIRONMENT.md), commands below |
+| Trace code, results and AI assistance | [Provenance and audit index](docs/README.md) |
+| Understand what is not yet reproduced | [Limitations](LIMITATIONS.md), [current status](docs/STATUS.md) |
+
+### CPU Checks
+
+From the repository root, in the documented CPU environment:
 
 ```bash
+python -B scripts/check_public_package.py . --manifest
 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
-sha256sum -c SHA256_MANIFEST.txt
 ```
 
-## Research execution order
+The isolated CPU environment passed **28 synthetic tests**. These check package integrity and selected scientific logic, not real-data training, CUDA equivalence or retrospective reconstruction of the experiments. Synthetic fixtures are not research observations. See the [test report](docs/audits/TEST_REPORT.md).
 
-1. Obtain ORCHID from the official DOIs in DATA_ACCESS.md, preserving the original repository split separately from study folds.
-2. Obtain author-reviewed duplicate-clean patch metadata and exact patient split metadata; these are excluded pending release approval. A historical notebook builder and reference constants have been located (PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md); first-generation/full-cache and final fold-fit lineage are not fully verified. Supply the already validated cache or resolve this prerequisite with the authors.
-3. Follow REPRODUCIBILITY.md to configure local paths and bind relocated code/config hashes. Public copies are path-adapted, not byte-identical historical executable files.
-4. Stage 1 training uses stage1/train_one_run.py; Stage 2 uses stage2/train_one_run.py. Their Trainer/model/data functions preserve the verified scientific logic. New research execution examples below were not run during packaging.
-5. Frozen prediction evaluation/statistical source code is in analysis/. Individual predictions are excluded. Corrected paired analysis uses 10,000 class-stratified paired-patient bootstrap repetitions and seed20260830; no new bootstrap was performed here.
-6. Figure/table scripts and aggregate source data are included. Final externally edited manuscript figures are not identified in the local evidence and are not certified as reproduced.
+## Reproduction Workflow
 
-GPU measurement/explainability code is reference material under benchmark/reference/ and explainability/reference/. Read limitations before execution. No new training, inference, benchmark or GPU action was used to prepare this package. Public launch approval and automatic resume are not provided.
+1. Obtain the original ORCHID datasets from the official DOIs in [DATA_ACCESS.md](DATA_ACCESS.md).
+2. Supply authorized exact manifests and a validated patch cache. Patient-linked rows and the cache are **not bundled**; historical cache-generation lineage has unresolved limitations.
+3. Bind local paths and hashes using [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Public code copies contain documented portability and verified-weight-binding changes.
+4. Use the corresponding Stage 1 or Stage 2 trainer. Config examples preserve their distinct checkpoint rules and epoch caps; InceptionV3 uses batch 8 × accumulation 4, the other Stage 1 models 16 × 2.
+5. Evaluate authorized saved predictions with [analysis code](analysis/README.md), then use the [figure](figures/README.md) and table source data.
 
-See LICENSE_DECISION_REQUIRED.md and RELEASE_FILE_DECISIONS.csv before deciding on any public release. Dataset CC BY 4.0 does not license this code or resolve ethics/IRB questions.
+This is an execution map, **not a claim that the entire workflow has been rerun from this package**. Benchmark and explainability scripts are reference material with additional prerequisites.
 
-Empty historical figure-helper efficiency CSVs have been omitted. Use `results/efficiency/EFFICIENCY_MODEL_SUMMARY.csv` and `EFFICIENCY_FIGURE_PLOTTING_DATA.csv` instead. Historical sources are preserved outside the candidate; no result was recalculated. See MAINTENANCE_CHANGES.csv for public-copy-only fixes.
+## Scope and Interpretation
 
-See [REPRODUCTION_READINESS.csv](REPRODUCTION_READINESS.csv) for the distinction between input binding, current-environment CPU initialization, and still-unverified historical CUDA execution. An offline audit has now traced the actual weight file and copied tensors for all five publication model variants; see [data/PRETRAINED_INITIALIZATION_AUDIT.csv](data/PRETRAINED_INITIALIZATION_AUDIT.csv). It did not run a forward pass or retroactively certify historical initialization.
+- Included: model/training/evaluation source, 50 config examples, synthetic tests and frozen aggregate figure/table data.
+- Excluded: source images, patch cache, weights, patient-level predictions, exact patient-linked manifests and private server logs.
+- Stage 2 is a same-cohort matched ablation/stability analysis, **not external validation**. Its three primary seed-specific confidence intervals include zero; neither superiority nor equivalence is established.
+- Historical cache-fit lineage, development-time outer access and final externally edited figure mapping remain explicit [limitations](LIMITATIONS.md).
 
-See [license scope](LICENSE_SCOPE.md), [data review](DATA_DISCLOSURE_REVIEW.md) and [recovered preprocessing evidence](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No new training or patient-data upload was performed.
+## License and Citation
+
+[MIT](LICENSE) is selected for authorized original software contributions. Third-party software retains its own terms; see [license scope](docs/licensing/LICENSE_SCOPE.md) and [third-party notices](THIRD_PARTY_NOTICES.md). Dataset CC BY 4.0 is separate from the code license. No new pathology, ethics or clinical approval is asserted.
+
+Citation metadata: [CITATION.cff](CITATION.cff). Cite the exact reviewed commit. No manuscript DOI or archival release DOI is assigned. Private access, release decisions and dated historical records are explained in [Current Status](docs/STATUS.md).

@@ -6,4 +6,4 @@ The original archive split is distinct from this study's patient-wise folds. Exa
 
 No raw image, cache, model weight, checkpoint, individual prediction, source-image hash list or identity map is included. Cache-generation equivalence, source DOI mapping for final panels, and unavailable metadata are not reconstructed. Synthetic test records contain artificial identities prefixed SYNTH and no research observations.
 
-Follow-up schema/linkability review: DATA_DISCLOSURE_REVIEW.md and DATA_FIELD_RELEASE_REVIEW.csv. Only aggregate fold composition is newly included; no patient-level disclosure approval is inferred. Cache evidence is updated in PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md.
+Follow-up schema/linkability review: docs/data/DATA_DISCLOSURE_REVIEW.md and [DATA_FIELD_RELEASE_REVIEW.csv](docs/data/DATA_FIELD_RELEASE_REVIEW.csv). Only aggregate fold composition is newly included; no patient-level disclosure approval is inferred. Cache evidence is updated in [PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md](docs/audits/PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md).

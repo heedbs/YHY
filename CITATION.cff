@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "Review draft citation metadata; no manuscript or archival DOI is assigned."
 title: "ORCHID comparative study reproducibility package"
 type: software
+repository-code: "https://github.com/heedbs/YHY"
 authors:
   - family-names: "Yang"
     given-names: "Hee Yoon"

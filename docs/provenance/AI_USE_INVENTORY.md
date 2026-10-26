@@ -1,5 +1,7 @@
 # AI assistance inventory
 
+Author declaration: Hee Yoon Yang reports sole authorship with Codex-assisted development. This is an author-reported provenance statement, not an independent audit of every line's origin. AI assistance does not by itself mean code was copied from another repository; imported third-party dependencies and actual adapted source must be considered separately.
+
 | Tool | Model/version | Recorded role | Related artifacts | Verification scope |
 |---|---|---|---|---|
 | ChatGPT/Codex | Exact model per historical task NOT_RECORDED in artifact metadata | Code drafting/adaptation, operational debugging, audit/analysis scripts, figure plotting, documentation and packaging assistance, confirmed by project task history | Training implementation and analysis/figure/audit source families; current staging preparation | CPU/static and recorded numerical checks only; not blanket scientific/pathology approval |
