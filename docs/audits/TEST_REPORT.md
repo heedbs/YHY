@@ -4,14 +4,14 @@ Updated 26 October 2026. Status: **technical checks only**, not complete experim
 
 | Check | Result | What it establishes |
 | --- | --- | --- |
-| Isolated CPU synthetic suite | 38 tests passed | Earlier 34 checks plus four CPU cache-content regressions: determinism/no writes, wrong source SHA, damaged/dimension-mismatched cache and duplicate/conflicting identities |
+| Isolated CPU/metadata suite | 41 tests passed | Earlier 38 checks plus cohort-unit/export consistency, source-index hashes and correction/original-fingerprint preservation |
 | Full synthetic preflight | Passed | Wrong config/code/weight/bundle and output collision fail before model execution; successful preflight creates no run directory |
 | Existing authorized local inputs | 50/50 configurations passed | Exact bundle/local patch semantics, split/config/code/pretrained SHA and source/cache presence; no input changes or run-output creation; [aggregate receipt](LOCAL_INPUT_PREFLIGHT_SUMMARY.csv) |
 | Current source/cache content | 10,072 source SHA matches; 232,689 cache files decoded and hashed | All cache crop dimensions/channels matched the frozen rows; [aggregate content receipt](SOURCE_CACHE_CONTENT_VERIFICATION.json); no image/model output created |
 | Historical CPU initialization receipts | Six factory cases, full state equality | Verified-file binding matched baseline initialization; zero forward calls; not trained checkpoint/CUDA identity |
 | Frozen aggregate/code/config integrity | Rechecked during packaging | No research source, config or result recalculation/change in this maintenance |
 
-The unit suite uses artificial fixtures only. The separately labeled content census reads real files but does not execute a model. Commands and environment setup are maintained in [the CPU guide](../../environment/CPU_TEST_ENVIRONMENT.md). Local-input verification is documented in [REPRODUCIBILITY.md](../../REPRODUCIBILITY.md).
+Model/metric regressions use artificial fixtures. The evidence-index tests inspect public aggregate metadata; the separately labeled content census reads real files without executing a model. Commands and environment setup are maintained in [the CPU guide](../../environment/CPU_TEST_ENVIRONMENT.md). Local-input verification is documented in [REPRODUCIBILITY.md](../../REPRODUCIBILITY.md).
 
 The six input preflight tests cover binding, identities and collisions. Four content regressions additionally check deterministic inventories without file changes, source corruption, cache corruption/dimensions and duplicate/conflicting identities. Default preflight remains standard-library-only; image decoding is opt-in.
 

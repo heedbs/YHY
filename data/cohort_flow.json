@@ -1,0 +1,31 @@
+{
+  "status": "VERIFIED_AGGREGATE_MANIFEST_COUNTS_NOT_NEW_MODEL_RESULTS",
+  "patients_after": 149,
+  "source_images_before": 10228,
+  "source_images_excluded": 156,
+  "source_images_after": 10072,
+  "duplicate_source_sha_groups": 78,
+  "patch_rows_before": 233937,
+  "patch_rows_removed": 1248,
+  "patch_rows_after": 232689,
+  "exclusion_rule": "Exclude all source-image occurrences in exact source SHA groups; remove their associated patch rows",
+  "source_artifacts": [
+    {
+      "label": "ORCHID_COMPARATIVE_PROTOCOL_v2.0.md",
+      "sha256": "236fc395b8ed092f83dd4847f4a191cb1b62aafc5445fcb7a9c19058573eec11"
+    },
+    {
+      "label": "final_duplicate_exclusion_manifest.csv",
+      "sha256": "dc201131614eeefa1118a2159d528d1b7ba09cb4af3473684bad977e8b7145a0"
+    },
+    {
+      "label": "all_patches.csv",
+      "sha256": "098453baf12e51c4d3e171322fefa1ada52a37bc85e523a80e3ef9eb2df39a54"
+    },
+    {
+      "label": "final_unique_patch_manifest.csv",
+      "sha256": "0a11c1fbf95be513220a09da19fa5bd42eb6749ec384b1c09aab52b3b29a9a99"
+    }
+  ],
+  "removed_patch_hash_deduplication_claim": false
+}

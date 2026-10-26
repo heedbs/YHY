@@ -1,5 +1,7 @@
 # Results provenance
 
+Current claim-to-file mapping is in [CLAIM_SOURCE_INDEX.csv](CLAIM_SOURCE_INDEX.csv). Cohort export unit/count corrections are recorded in [DATA_CORRECTIONS.csv](DATA_CORRECTIONS.csv); corrected public copies retain original source fingerprints. These corrections do not change frozen model estimates.
+
 Source families were selected from frozen final analysis manifests and corrected Stage2 source provenance, not timestamps. results/ CSVs preserve stored numerical strings. SOURCE_FILE_FINGERPRINTS.csv connects every exported file to an original artifact label and SHA without server paths. configs/run_catalog.csv links all 50 runs to original config/code/split/pretrained/best-checkpoint digests. Private absolute-path mapping and exact code diffs remain outside the public ZIP.
 
 Stage1: 20 completed runs, seed42, AUROC-first lexicographic tuple (AUROC, macro F1, negative validation patch loss, earlier epoch), max80; pooled OOF149 patients/model. Fold means are separate descriptive outputs.

@@ -21,6 +21,8 @@ Stage 2의 seed 42 Mamba는 **교정된 Stage 2 run**입니다. 과거 Stage 1 M
 
 ## 무엇을 어디서 보나요?
 
+원고 수치와 설명을 대조할 때는 [근거 안내](docs/MANUSCRIPT_EVIDENCE_GUIDE.md)를 먼저 확인하십시오. 출처 파일과 SHA, 집계 자료의 정정 이력을 구분해 제공합니다.
+
 | 확인할 내용 | 위치 |
 | --- | --- |
 | 최종 집계 결과와 표 자료 | [results](results/README.md), [table_source_data](table_source_data/) |

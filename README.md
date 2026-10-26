@@ -21,6 +21,8 @@ Stage 2 uses seeds 42, 20260824 and 314159 on the **same patients and folds**, n
 
 ## Start Here
 
+For manuscript cross-checking, start with the [evidence guide](docs/MANUSCRIPT_EVIDENCE_GUIDE.md) and its hashed source index. Curated export corrections are logged separately from frozen model results.
+
 | Goal | Entry point |
 | --- | --- |
 | Read frozen results and table-ready data | [Results guide](results/README.md), [table data](table_source_data/) |

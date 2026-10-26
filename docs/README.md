@@ -4,6 +4,8 @@
 
 ## Reproduce and Inspect
 
+- [Manuscript evidence guide](MANUSCRIPT_EVIDENCE_GUIDE.md): source hierarchy, claim-to-file index and documented data corrections.
+
 - [Reproduction workflow](../REPRODUCIBILITY.md) and [data access](../DATA_ACCESS.md).
 - [Results guide](../results/README.md) and [limitations](../LIMITATIONS.md).
 - [CPU environment](../environment/CPU_TEST_ENVIRONMENT.md) and [test report](audits/TEST_REPORT.md).

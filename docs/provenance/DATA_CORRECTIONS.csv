@@ -1,0 +1,3 @@
+date,file,field,previous,corrected,evidence,scope
+2026-10-26,table_source_data/table02_cohort.csv,duplicate_exclusion_scope,156 exact-duplicate patch rows,156 source-image occurrences; 78 source SHA groups; 1248 associated patch rows,data/cohort_flow.json,Text/unit correction only; class/total counts and performance untouched
+2026-10-26,figure_source_data/01_COHORT_AND_STUDY_DESIGN/FIG1_COHORT_COUNTS.csv,patches_before_duplicate_exclusion;cohort,232845;raw_unique_manifest,233937;frozen_protocol_v2_analytic_corpus,data/cohort_flow.json,Corrected cohort-flow input; final patch count and performance untouched
