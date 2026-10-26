@@ -4,7 +4,7 @@ Updated 26 October 2026. Status: **technical checks only**, not complete experim
 
 | Check | Result | What it establishes |
 | --- | --- | --- |
-| Isolated CPU/metadata suite | 51 tests passed | Earlier 45 checks plus six reviewed-data scope, tamper, secret-retention, gzip and exact-extraction regressions |
+| Isolated CPU/metadata suite | 53 tests passed | Earlier 51 checks plus CSV deduplication and removed-file/canonical-source integrity guards |
 | Full synthetic preflight | Passed | Wrong config/code/weight/bundle and output collision fail before model execution; successful preflight creates no run directory |
 | Existing authorized local inputs | 50/50 configurations passed | Exact bundle/local patch semantics, split/config/code/pretrained SHA and source/cache presence; no input changes or run-output creation; [aggregate receipt](LOCAL_INPUT_PREFLIGHT_SUMMARY.csv) |
 | Current source/cache content | 10,072 source SHA matches; 232,689 cache files decoded and hashed | All cache crop dimensions/channels matched the frozen rows; [aggregate content receipt](SOURCE_CACHE_CONTENT_VERIFICATION.json); no image/model output created |
@@ -23,4 +23,4 @@ No real-data training, model forward, CUDA execution, bootstrap, benchmark, Grad
 
 A SHA-pinned GitHub-hosted CPU workflow is configured; local equivalents were checked separately. Hosted success must be confirmed on the exact commit's Actions run, not inferred from this local report. See [continuous validation](../CONTINUOUS_VALIDATION.md).
 
-Earlier test counts and follow-up narratives are preserved in [the dated verification snapshot](../history/TECHNICAL_VERIFICATION_PRE_CLEANUP_20261026.md). They are historical evidence, not competing current test totals.
+Earlier test narratives remain in Git history rather than duplicate current-tree snapshots. [FILE_REDIRECTIONS.csv](../provenance/FILE_REDIRECTIONS.csv) records removed paths and current replacements. No historical research artifact was deleted.

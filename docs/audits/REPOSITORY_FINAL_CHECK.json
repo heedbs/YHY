@@ -3,7 +3,7 @@
   "baseline_commit": "7cf75a8fdb52750bc00a5823ba396bb409f79676",
   "hosted_cpu_baseline": "https://github.com/heedbs/YHY/actions/runs/40291231421",
   "hosted_cpu_baseline_conclusion": "success",
-  "local_cpu_tests": 51,
+  "local_cpu_tests": 53,
   "history_scope": "14 commits reachable from baseline main; retained review branch is an ancestor",
   "history_unique_blobs_scanned": 307,
   "history_local_blob_sha_matches": 297,
@@ -38,5 +38,10 @@
   "data_scope": "12 exact policy entries: compressed patches, exact split, 4 Stage1 and 6 corrected Stage2 OOF sets",
   "source_linked_records_anonymous": false,
   "source_data_validation": "149 exact patients per set; target/fold/run/probability/hierarchy aligned; frozen source SHA verified",
-  "original_software_license": "MIT author-authorized; third-party notices preserved"
+  "original_software_license": "MIT author-authorized; third-party notices preserved",
+  "removed_files": 24,
+  "removed_duplicate_csv_aliases": 15,
+  "canonical_source_map": "docs/provenance/FILE_REDIRECTIONS.csv",
+  "core_scientific_code_changed": false,
+  "original_server_artifacts_deleted": false
 }

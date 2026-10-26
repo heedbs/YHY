@@ -12,7 +12,7 @@ Saved aggregate outputs, not recalculated estimates. Fold summaries and pooled p
 | Corrected Stage 2 by seed | [Seed metrics](stage2/STAGE2_CORRECTED_SEED_SPECIFIC_METRICS.csv) |
 | Corrected matched differences | [Paired effects](stage2/STAGE2_CORRECTED_PAIRED_EFFECTS.csv) |
 | Descriptive seed stability | [Three-seed summary](stage2/STAGE2_CORRECTED_THREE_SEED_DESCRIPTIVE.csv) |
-| Efficiency | [Model summary](efficiency/EFFICIENCY_MODEL_SUMMARY.csv), [plotting data](efficiency/EFFICIENCY_FIGURE_PLOTTING_DATA.csv) |
+| Efficiency and plotting input | [Canonical model summary](efficiency/EFFICIENCY_MODEL_SUMMARY.csv) |
 | Manuscript tables | [Table source data](../table_source_data/) |
 
 Stage 2 compares Mamba minus NoMamba on the same patients. Primary CIs include zero; non-significance is not equivalence. Keep efficiency modes/batches separate. Historical benchmark identity is not relabeled as the corrected checkpoint. Aggregates here are unchanged; reviewed frozen probabilities are separately included under [data/oof](../data/oof/).

@@ -20,13 +20,13 @@
 
 ## Data and Licensing
 
-- [License scope](licensing/LICENSE_SCOPE.md), [decision status](licensing/LICENSE_STATUS.md), [third-party notices](../THIRD_PARTY_NOTICES.md).
+- [License scope](licensing/LICENSE_SCOPE.md) and [third-party notices](../THIRD_PARTY_NOTICES.md).
 - [Data disclosure review](data/DATA_DISCLOSURE_REVIEW.md), [field review](data/DATA_FIELD_RELEASE_REVIEW.csv), [file decisions](data/RELEASE_FILE_DECISIONS.csv).
-- [Image attribution](data/IMAGE_ATTRIBUTION_MANIFEST.csv): unresolved final-panel mapping remains unresolved.
+- Image attribution requirements remain in [data/README](../data/README.md); unverified final-panel candidate inventories are not distributed with this image-free repository.
 
 ## Technical Evidence
 
 - [Security and privacy scan](audits/SECURITY_AND_PRIVACY_AUDIT.md).
 - [Preprocessing and environment evidence](audits/PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md).
 - [Reproduction readiness matrix](audits/REPRODUCTION_READINESS.csv).
-- [Historical snapshots](history/README.md): earlier checklists and change ledgers; use [current status](STATUS.md) for present decisions.
+- [Removed aliases and old documents](provenance/FILE_REDIRECTIONS.csv): replacement paths and hashes. Older snapshots remain in Git history; [current status](STATUS.md) is authoritative.

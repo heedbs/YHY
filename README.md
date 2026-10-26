@@ -25,6 +25,8 @@ Stage 2 uses seeds 42, 20260824 and 314159 on the **same patients and folds**, n
 
 For manuscript cross-checking, start with the [evidence guide](docs/MANUSCRIPT_EVIDENCE_GUIDE.md) and its hashed source index. Curated export corrections are logged separately from frozen model results.
 
+Aggregate results have one canonical copy under `results/`. Removed figure/table aliases and obsolete review documents are mapped in [FILE_REDIRECTIONS.csv](docs/provenance/FILE_REDIRECTIONS.csv); prior versions remain in Git history.
+
 | Goal | Entry point |
 | --- | --- |
 | Read frozen results and table-ready data | [Results guide](results/README.md), [table data](table_source_data/) |
