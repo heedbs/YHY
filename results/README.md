@@ -15,4 +15,4 @@ Saved aggregate outputs, not recalculated estimates. Fold summaries and pooled p
 | Efficiency | [Model summary](efficiency/EFFICIENCY_MODEL_SUMMARY.csv), [plotting data](efficiency/EFFICIENCY_FIGURE_PLOTTING_DATA.csv) |
 | Manuscript tables | [Table source data](../table_source_data/) |
 
-Stage 2 compares Mamba minus NoMamba on the same patients. Primary seed-specific CIs include zero; non-significance is not equivalence. Keep efficiency modes/batches separate. Historical benchmark checkpoint identity is not relabeled as the later corrected seed-42 checkpoint. No patient-level predictions or identifiers are included.
+Stage 2 compares Mamba minus NoMamba on the same patients. Primary CIs include zero; non-significance is not equivalence. Keep efficiency modes/batches separate. Historical benchmark identity is not relabeled as the corrected checkpoint. Aggregates here are unchanged; reviewed frozen probabilities are separately included under [data/oof](../data/oof/).

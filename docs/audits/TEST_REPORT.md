@@ -4,7 +4,7 @@ Updated 26 October 2026. Status: **technical checks only**, not complete experim
 
 | Check | Result | What it establishes |
 | --- | --- | --- |
-| Isolated CPU/metadata suite | 45 tests passed | Earlier 41 checks plus documentation checker success/no writes, broken/escaping links, changed/duplicate indexes and external-symlink rejection |
+| Isolated CPU/metadata suite | 51 tests passed | Earlier 45 checks plus six reviewed-data scope, tamper, secret-retention, gzip and exact-extraction regressions |
 | Full synthetic preflight | Passed | Wrong config/code/weight/bundle and output collision fail before model execution; successful preflight creates no run directory |
 | Existing authorized local inputs | 50/50 configurations passed | Exact bundle/local patch semantics, split/config/code/pretrained SHA and source/cache presence; no input changes or run-output creation; [aggregate receipt](LOCAL_INPUT_PREFLIGHT_SUMMARY.csv) |
 | Current source/cache content | 10,072 source SHA matches; 232,689 cache files decoded and hashed | All cache crop dimensions/channels matched the frozen rows; [aggregate content receipt](SOURCE_CACHE_CONTENT_VERIFICATION.json); no image/model output created |
@@ -15,7 +15,9 @@ Model/metric regressions use artificial fixtures. The evidence-index tests inspe
 
 The six input preflight tests cover binding, identities and collisions. Four content regressions additionally check deterministic inventories without file changes, source corruption, cache corruption/dimensions and duplicate/conflicting identities. Default preflight remains standard-library-only; image decoding is opt-in.
 
-The current complete-cache digest is a new inventory of existing files, not a comparison against an unavailable first-generation inventory. It does not prove historical generation/fitting equivalence. A source-linked exact-input ZIP was prepared for server-side review only; no patient rows, images or per-image hash list were uploaded.
+The current complete-cache digest is a new inventory, not first-generation equivalence. The author subsequently approved a field-reviewed minimum metadata/OOF candidate. Twelve exact files now contain intentionally source-linked records; images, cache and private source maps remain excluded. Release scanning allows only the patient-pattern rule for exact reviewed path/SHA, never secret/private-path rules.
+
+`verify_release_data.py` checks 232,689 patch rows, 745 split rows and ten 149-patient OOF sets against the frozen split and run catalog. It rejects target/fold/argmax/probability and hierarchy mismatches, including historical Stage 1 substitution into corrected Stage 2. This is data-integrity validation, not new inference or performance/CI calculation.
 
 No real-data training, model forward, CUDA execution, bootstrap, benchmark, Grad-CAM or cache generation was performed. The unresolved scientific limitations are maintained in [LIMITATIONS.md](../../LIMITATIONS.md).
 

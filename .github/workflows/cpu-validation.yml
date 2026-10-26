@@ -36,6 +36,9 @@ jobs:
       - name: Check documentation and source indexes
         working-directory: ${{ runner.temp }}/orchid-candidate
         run: python -B scripts/check_evidence_links.py .
+      - name: Check approved frozen inputs and OOF alignment
+        working-directory: ${{ runner.temp }}/orchid-candidate
+        run: python -B scripts/verify_release_data.py
       - name: Install isolated CPU-check dependencies
         shell: bash
         run: |

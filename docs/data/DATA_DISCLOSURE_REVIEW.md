@@ -1,11 +1,17 @@
-# Data disclosure review: no raw patient rows uploaded
+# Approved Minimal Data Candidate
 
-The author authorized investigation and expressed willingness to disclose reproducibility data. A technical review cannot certify all legal or reidentification conditions. Original split, patient, source, patch, exclusion and corrected OOF schemas were inspected read-only. Counts and field-level decisions are public; original values/mappings remain server-only.
+On 26 October 2026 the author authorized field review and inclusion of minimal public-ORCHID-linked split/manifest and frozen OOF data in the distribution candidate. The repository remains private. This is not consent to publish all server records.
 
-Observed frozen corpus: 149 patients, 10,072 sources, 232,689 patches; patient outer-test membership exactly once across 5 folds; all per-fold train/inner-validation/outer-test patient sets disjoint. This is a metadata identity check, not new prediction evaluation.
+## Included Fields
 
-Original patient keys and filenames link directly to downloadable source records; source hashes allow exact linking; patch UIDs/cache names and crop coordinates permit linkage. Paths additionally expose server layout. Class and per-patient image/patch counts can act as quasi-identifiers in combination. Replacing only the patient column does not establish anonymization. No names/contacts are schema fields in these manifests, but that is not proof of patient anonymity.
+- Patch metadata: UID, crop coordinates/dimensions, class, original public-source-linked patient key, image SHA and archive-relative source path. No server/cache absolute path is included.
+- Exact split: the seven original columns are retained to preserve historical bytes/SHA. They contain fold/partition, public-source-linked patient/class, constant source token and image/patch counts, not new clinical attributes.
+- Frozen OOF: run/model/seed/fold, patient key/target, three probabilities, image/patch counts and argmax class. Four Stage 1 sets and six corrected Stage 2 model-seed sets are included separately. Mamba seed 42 in Stage 2 is corrected, not historical Stage 1 reuse.
 
-Recommended release design: disclose only the authorized minimum deterministic source-to-study mapping, fold/partition, target and crop hierarchy needed for exact reruns, after explicitly reviewing source-data linkage. If only opaque study aliases are released, acknowledge that exact source-linked reruns remain impossible without the withheld mapping. Avoid publishing redundant patient rows, server/cache paths and raw logs. OOF probabilities require the same explicit linkage review. Do not claim a need for secrecy as a legal fact if none has been established.
+These records are **linkable to public source images**, not newly anonymized. No real-name/contact/date-of-birth fields or additional clinical attributes are included. The review is not a guarantee against every possible reidentification route. Data-origin licensing does not substitute for an ethics determination.
 
-This update adds only aggregate fold counts and schema-level review. A final field/list decision is still required before posting original or derived patient-level split/OOF rows; no claim that those data have been publicly released is made. The internal source inventory retains paths and SHA for author review only.
+## Controls
+
+[RELEASE_DATA_POLICY.json](../../data/RELEASE_DATA_POLICY.json) lists exact candidate paths, byte/content hashes, fields and counts. Only these exact reviewed files can bypass the source-patient-pattern rule. Credentials, private paths, emails and other rules remain active. Modified files or unknown gzip content fail; uncompressed content is scanned within bounded size limits.
+
+The earlier [field inventory](DATA_FIELD_RELEASE_REVIEW.csv) remains a dated inventory of the broader original schemas, not the current permission to disclose every listed field. Current file inclusion/exclusion is in [RELEASE_FILE_DECISIONS.csv](RELEASE_FILE_DECISIONS.csv). No image, checkpoint, cache, raw log, private source map or manuscript is added.

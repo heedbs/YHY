@@ -53,7 +53,7 @@ Follow [REPRODUCIBILITY.md](REPRODUCIBILITY.md): obtain authorized inputs → pr
 
 ## Scope and Interpretation
 
-Included: model/training/evaluation source, 50 config examples, synthetic tests and frozen aggregate figure/table data. Research images, cache, weights and patient-linked rows are not bundled; see [data access](DATA_ACCESS.md).
+Included: model/training/evaluation source, 50 config examples, synthetic tests, frozen aggregate data and [field-reviewed exact metadata / saved OOF predictions](data/README.md). Images, cache, weights and private clinical/server records are not bundled; see [data access](DATA_ACCESS.md).
 
 Stage 2 is same-cohort matched ablation, not external validation. Read the single [limitations register](LIMITATIONS.md) before interpreting results or claiming complete reproduction.
 

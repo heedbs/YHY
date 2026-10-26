@@ -1,7 +1,7 @@
 task,status,evidence,limit
 Aggregate result/source inspection,CHECKED,results and prior source fingerprints,not a new analysis
-CPU and aggregate metadata unit checks,PASS_45_TESTS_NEW_ISOLATED_ENV,TEST_REPORT.md; synthetic and aggregate evidence regressions,not real-data training/inference
-Frozen source-linked minimal bundle,DRAFT_SERVER_ONLY,whole-file identity in data/manifest_bundle_identity.json,linked patient rows not uploaded; final field approval required
+CPU and aggregate metadata unit checks,PASS_51_TESTS_NEW_ISOLATED_ENV,TEST_REPORT.md; synthetic and aggregate evidence regressions,not real-data training/inference
+Frozen source-linked minimal bundle,INCLUDED_FIELD_REVIEWED_CANDIDATE,data/RELEASE_DATA_POLICY.json; data/reproduction/,Source-linked records; not a claim of new anonymization; private repository
 Local metadata path binding,PASS_232689_PATCH_ROWS,private receipt; all original semantic rows matched,file presence not full source/cache content census
 Frozen split identity,PASS_EXACT_BYTES,same SHA as all fifty templates,aliases cannot silently replace original split
 Pretrained file identities,PASS_LOCAL_FILE_SHA,data/weight_artifact_identity.csv,file content check only; separate CPU initialization evidence below
@@ -12,5 +12,5 @@ Pretrained tensor load binding,PASS_CURRENT_CPU_BASELINE_VS_BOUND,data/PRETRAINE
 Original image to cache reproduction,PARTIAL_HISTORICAL_SAMPLE_EVIDENCE,PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md,first-generation full-cache and exact legacy reference sample lineage unresolved
 Clean environment installation,PASS_CPU_FIXTURES_ONLY,environment/CPU_TEST_ENVIRONMENT.md,full historical CUDA stack not reconstructed
 Training and model inference,NOT_RUN,CPU constructor/state loading only; all forward counters zero,no scientific model execution authorized here
-Full frozen-result reanalysis,NOT_SELF_CONTAINED,individual OOF not included,patient-level access and corrected-source alignment needed
-Composite implementation public distribution,COMPONENT_REVIEW_PENDING,LICENSE_SCOPE.md,MIT selection does not clear unknown upstream derivation
+Full frozen-result reanalysis,INPUTS_INCLUDED_REANALYSIS_NOT_RUN,data/oof/; frozen source SHA and alignment verified,No metrics or CI recomputed; reference orchestration still not turnkey
+Composite implementation public distribution,AUTHOR_AUTHORIZED_MIT_ORIGINAL_CONTRIBUTIONS,docs/licensing/LICENSE_SCOPE.md; explicit author instruction,Actual third-party rights retained; no independent originality/legal certificate

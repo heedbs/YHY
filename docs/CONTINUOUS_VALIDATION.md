@@ -2,7 +2,7 @@
 
 The [CPU workflow](../.github/workflows/cpu-validation.yml) checks pushes and pull requests; manual dispatch is also available. It uses a GitHub-hosted Ubuntu CPU runner, read-only repository permissions, no secrets, no artifact upload and SHA-pinned official checkout/Python actions. It never connects to the research server or reads patient data, weights or cache.
 
-Checks: complete candidate SHA coverage and heuristic hygiene scan; Markdown file links and source-index hashes; dependency consistency; synthetic and public aggregate metadata tests. The candidate is exported to a temporary directory without `.git`; the environment is outside the candidate. The package scanner intentionally remains strict rather than silently excluding research files.
+Checks: complete candidate SHA coverage and heuristic hygiene; Markdown/source indexes; approved frozen input/OOF alignment; dependency consistency; synthetic and public metadata tests. No model inference or performance/CI calculation is run. Exact reviewed source-linked files may bypass only the patient-pattern rule; secret/path checks remain active. The exported candidate excludes `.git` and the environment is outside it.
 
 Local equivalents, in the documented [CPU environment](../environment/CPU_TEST_ENVIRONMENT.md):
 

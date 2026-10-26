@@ -54,4 +54,4 @@ Stage 2는 동일 코호트의 matched ablation이며 독립 외부검증이 아
 
 권한 있는 자체 소프트웨어 기여에는 [MIT](LICENSE)를 선택했습니다. Codex 보조 사용은 그 자체로 외부 저장소 코드 복사를 뜻하지 않으며, 실제 외부 의존성의 라이선스는 별개로 유지합니다. 출처와 미확인 범위는 [라이선스 안내](docs/licensing/LICENSE_SCOPE.md), [AI 사용 기록](docs/provenance/AI_USE_INVENTORY.md)을 확인하십시오.
 
-데이터의 CC BY 4.0을 코드 전체에 적용하거나 연구윤리 판단을 대신하는 근거로 사용하지 않습니다. 이번 문서 정리는 저장소 공개 전환, release 발행, 환자별 자료 공개가 아닙니다. 인용 시 정확한 commit을 특정하고 [CITATION.cff](CITATION.cff)를 확인하십시오.
+자체 소프트웨어에는 MIT를 적용하고 외부 고지는 유지합니다. 승인된 최소 split·patch metadata와 frozen OOF 후보는 [data 안내](data/README.md)에 명시한 별도 범위·출처·라이선스로 포함했습니다. 원본과 연결되는 가명 ID이므로 완전 익명화를 주장하지 않습니다. 저장소는 비공개이며 공개 전환·Release·Zenodo 등록은 하지 않았습니다. 인용 시 정확한 commit과 [CITATION.cff](CITATION.cff)를 확인하십시오.

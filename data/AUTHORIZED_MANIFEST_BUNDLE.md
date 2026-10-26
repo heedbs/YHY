@@ -2,7 +2,9 @@
 
 ## Current disclosure status
 
-The authors have prepared a server-only review draft; the patient/source rows are NOT included in this repository. The public `manifest_bundle_identity.json` contains whole-file fingerprints and aggregate expectations only. Possession of that identity document is not access to the actual bundle or permission to distribute linked records. Ask the authors about the finalized access route; no automatic request-access promise is made here.
+The author approved this exact metadata candidate on 26 October 2026. `data/reproduction/` contains losslessly compressed patches and the original split CSV. `manifest_bundle_identity.json` retains historical hashes and its earlier draft annotation as provenance; current inclusion is governed by [RELEASE_DATA_POLICY.json](RELEASE_DATA_POLICY.json). The repository remains private.
+
+Extract outside the checkout: `python -B scripts/extract_reproduction_bundle.py --output ../orchid-exact-bundle`. Existing outputs are rejected.
 
 Minimum draft files:
 
@@ -11,7 +13,7 @@ Minimum draft files:
 
 The draft removes absolute server/cache paths and redundant path-existence checks; it does NOT anonymize the source-linked records. Original IDs, image hashes, crop coordinates and relative filenames remain linkable to downloadable source images. New aliases alone would not break that linkage and would change the split SHA. No split-hash check is bypassed to accommodate aliases.
 
-OOF probabilities are not necessary to initialize a training Dataset, but are needed for independent reanalysis of frozen results without retraining. They remain a separate disclosure decision. Exclusion evidence is scientifically important but not read by the current Dataset; it remains in original provenance, not replaced by a fabricated empty file.
+OOF probabilities are not needed to initialize a Dataset. Ten reviewed frozen sets are now included under `data/oof/` for later reanalysis. Extraction and integrity checks perform no metric/CI recalculation. Exclusion evidence remains in original provenance and verified aggregate counts, not a fabricated empty exclusion file.
 
 ## CPU-only local preparation
 

@@ -13,21 +13,34 @@ RULES={
 }
 def scan(root):
  findings=[];files=[p for p in root.rglob('*') if p.is_file() or p.is_symlink()]
- forbidden={'.pt','.pth','.safetensors','.npz','.png','.jpg','.jpeg','.tif','.tiff','.docx'}
+ import importlib.util
+ spec=importlib.util.spec_from_file_location('reviewed_release_data',Path(__file__).with_name('release_data.py'))
+ helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
+ try:approved=helper.load_policy(root)
+ except (ValueError,KeyError,OSError):
+  approved={};findings.append({'file':'data/RELEASE_DATA_POLICY.json','rule':'invalid_release_policy','matches':1})
+ forbidden={'.pt','.pth','.safetensors','.npz','.png','.jpg','.jpeg','.tif','.tiff','.docx','.gz'}
  for p in files:
   rel=str(p.relative_to(root))
-  if '.git' in p.parts or p.name.startswith('.env') or p.suffix.lower() in forbidden:findings.append({'file':rel,'rule':'forbidden_file_type','matches':1})
+  reviewed=False
+  if rel in approved:
+   try:value=helper.read_reviewed(root,approved[rel]).decode('utf-8');reviewed=True
+   except (ValueError,KeyError,OSError,EOFError):
+    findings.append({'file':rel,'rule':'reviewed_data_integrity_failure','matches':1});continue
+  if '.git' in p.parts or p.name.startswith('.env') or (p.suffix.lower() in forbidden and not reviewed):findings.append({'file':rel,'rule':'forbidden_file_type','matches':1})
   if p.is_symlink():
    findings.append({'file':rel,'rule':'symlink','matches':1})
    continue
-  if p.stat().st_size>5*1024*1024:
+  if p.stat().st_size>5*1024*1024 and not reviewed:
    findings.append({'file':rel,'rule':'file_above_5MiB','matches':1})
    continue
-  value=p.read_text(errors='replace')
+  if not reviewed:value=p.read_text(errors='replace')
   for name,pattern in RULES.items():
+   if reviewed and name=='source_patient_identifier':continue
    matches=list(re.finditer(pattern,value))
    if matches:findings.append({'file':rel,'rule':name,'matches':len(matches)})
- return {'files_scanned':len(files),'findings':findings,'pass':not findings}
+ for name in sorted(set(approved)-{str(p.relative_to(root)) for p in files}):findings.append({'file':name,'rule':'reviewed_data_missing','matches':1})
+ return {'files_scanned':len(files),'reviewed_source_linked_files':len(approved),'findings':findings,'pass':not findings}
 
 def verify_manifest(root):
  findings=[];seen=set();checked=0

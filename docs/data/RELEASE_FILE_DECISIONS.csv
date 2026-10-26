@@ -1,14 +1,10 @@
 category,decision,reason
-Scientific code and config examples,MIT_SELECTED_ORIGINAL_CONTRIBUTIONS_COMPONENT_EXCEPTIONS,See LICENSE_SCOPE.md; original source ownership not automatically certified
-Aggregate result tables and figure source data,INCLUDE_CANDIDATE,Verified against final analysis sources; author data license decision pending
-Patient split and patient/source/patch manifest contents,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Exact reruns need them; potential linkability and permitted redistribution must be reviewed
-Individual OOF predictions and patient/source mapping,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Paired reanalysis needs these; default public ZIP excludes all patient rows
-Source-image/patch SHA lists and archive member identifiers,EXCLUDE_PENDING_AUTHOR_DATA_REVIEW,Hash-based linkage and data license/reidentification scope need review
-Whole-file config/code/checkpoint digests,INCLUDE_CANDIDATE,Non-patient artifact identity only; no tensors
-Images and full patch cache,EXCLUDE,Official DOI access instead; no image content in ZIP
-Fine-tuned/pretrained model weight files,EXCLUDE,"Large/binary artifacts, ownership and model-specific terms require separate decision"
-"Full logs, secrets, emails, credentials, ethics correspondence",EXCLUDE,Not needed for scientific procedure; no old git history copied
-Generated explainability image panels,EXCLUDE_PENDING_FINAL_PANEL_REVIEW,Final panel assignment/pathology review and exact comparison identity unresolved
-Internal provenance and raw diff/source copies,EXCLUDE_INTERNAL_REVIEW_ONLY,Absolute path mapping remains outside public candidate
-Research-data-free synthetic fixtures,INCLUDE_CANDIDATE,Artificial CPU tests explicitly labeled; not study data
-Aggregate fold composition and field-level review,INCLUDE_AGGREGATE_AND_SCHEMA_ONLY,No patient row values; source linkage remains pending final approval
+Original project software and config examples,INCLUDE_MIT_AUTHOR_AUTHORIZED,Local composite exclusion superseded by explicit author scope; actual third-party notices retained
+Minimum source-linked patch and exact split metadata,INCLUDE_EXACT_FIELD_REVIEWED_CANDIDATE,Only paths and hashes in data/RELEASE_DATA_POLICY.json; no server paths or extra clinical fields
+Frozen OOF predictions,INCLUDE_10_FIELD_REVIEWED_SETS,Four Stage 1 plus six corrected Stage 2 sets; frozen strings unchanged; linkable public-source pseudonyms
+Aggregate results and plotting inputs,INCLUDE_CANDIDATE,Frozen estimates preserved; explicit cohort corrections retained
+Images and full patch cache,EXCLUDE,Obtain official images separately; cache generation lineage remains limited
+Weights and checkpoints,EXCLUDE,Identity metadata only; no binary weights redistributed
+Real identities contacts extra clinical fields credentials and private paths,EXCLUDE,Not within author-approved minimum data scope
+Manuscript final images correspondence full logs and private source maps,EXCLUDE,Outside repository organization scope
+Synthetic fixtures and technical provenance,INCLUDE_CANDIDATE,Clearly distinguished from research observations

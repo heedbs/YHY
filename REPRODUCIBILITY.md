@@ -16,16 +16,17 @@ For dependency setup and synthetic tests, follow [the tested CPU environment gui
 
 ## 2. Prepare Authorized Inputs
 
-Obtain the official data and exact input bundle as described in [DATA_ACCESS.md](DATA_ACCESS.md). Use existing validated cache files, not a newly guessed cache implementation. Prepare a private JSON mapping of model names in `data/pretrained_sources.csv` to local matching weight files.
+Obtain official images as described in [DATA_ACCESS.md](DATA_ACCESS.md). Exact metadata is now included; extract it outside the checkout as below. Use existing validated cache files, not a guessed implementation. Prepare a private JSON mapping of model names in `data/pretrained_sources.csv` to matching local weight files.
 
 Set paths outside the repository. These shell variables are placeholders to replace with actual authorized locations:
 
 ```bash
-export ORCHID_BUNDLE=/your/authorized/exact-bundle
+export ORCHID_BUNDLE=/your/new/exact-bundle
 export ORCHID_SOURCE_ROOT=/your/ORCHID/train
 export ORCHID_CACHE_ROOT=/your/validated/cache
 export ORCHID_WEIGHTS_MAP=/your/private/weights.json
 export ORCHID_MANIFEST_DIR=/your/new/local-manifests
+python -B scripts/extract_reproduction_bundle.py --output "$ORCHID_BUNDLE"
 python -B scripts/prepare_local_manifests.py \
   --bundle "$ORCHID_BUNDLE" --source-root "$ORCHID_SOURCE_ROOT" \
   --cache-root "$ORCHID_CACHE_ROOT" --weights-map "$ORCHID_WEIGHTS_MAP" \
@@ -75,7 +76,7 @@ Local configs record both historical and relocated code identities. Do not bypas
 | Purpose | Entry point | Execution scope |
 | --- | --- | --- |
 | Inspect frozen tables | [results](results/README.md), `table_source_data/` | Read existing aggregates; no reanalysis needed |
-| Patient metrics / paired statistics | [analysis](analysis/README.md) | Authorized saved probabilities required; reference orchestration is not turnkey |
+| Patient metrics / paired statistics | [analysis](analysis/README.md) | Reviewed saved probabilities included; original reference orchestration is not turnkey |
 | Figures | [figure guide](figures/README.md) | Aggregate inputs included; final external panel mapping is incomplete |
 | Efficiency | `benchmark/reference/` | Historical driver checks old helper/spec hashes; review a new identity spec before new execution |
 | Explainability | `explainability/reference/` | Cases excluded; review identifier handling and method limits before execution |

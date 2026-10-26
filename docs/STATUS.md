@@ -1,36 +1,29 @@
-# Repository Handoff
+# Private Pre-release Handoff
 
-Updated 26 October 2026. **Technical organization completed for the code-and-aggregate-data candidate.** This is not full experiment reproduction or authorization to publish every server artifact.
+Updated 26 October 2026. **Author-approved code and minimum linked-data candidate prepared for final private review.** Repository `heedbs/YHY` remains private. No public Release, visibility change or archive registration has been performed.
 
-Repository `heedbs/YHY` remains **private**, with `main` as the maintained branch. No Release or archive DOI has been issued. The author will decide when to make it public; maintenance does not change visibility.
+## Candidate Scope
 
-## Completed Scope
-
-| Area | Evidence |
+| Included | Excluded |
 | --- | --- |
-| Documentation roles | Overview in README; commands in REPRODUCIBILITY; availability in DATA_ACCESS; unresolved scientific limits in LIMITATIONS |
-| Final study source families | Stage 1 and corrected Stage 2 separated; 50 config/run identities indexed |
-| Aggregate evidence | Topic-to-file SHA index and explicit cohort corrections; no model estimates changed |
-| CPU validation | 45 local tests; independent hosted baseline [7cf75a8 succeeded](https://github.com/heedbs/YHY/actions/runs/40291231421) |
-| Ongoing validation | Push/PR workflow; check the exact final commit on the [Actions page](https://github.com/heedbs/YHY/actions) |
-| File hygiene | Complete package SHA, source-index checks and heuristic secret/path/identifier/large-file scan |
-| Historical files | Reachable history reviewed at the baseline; scope and exclusions in [final technical check](audits/REPOSITORY_FINAL_CHECK.json) |
-| Current data integrity | Source/cache read-only census recorded; exact input bundle prepared for server-only review |
+| Original project software under MIT; third-party notices retained | Third-party library binaries and weight files |
+| Fifty scientific config examples and frozen aggregate outputs | Source images, patch cache, checkpoints and full server logs |
+| Exact minimum patch metadata and original split bytes | Additional clinical information, real-name/contact fields and private path maps |
+| Four Stage 1 OOF sets and six corrected Stage 2 OOF sets | Manuscript and final Figure editing |
+| CPU tests, input/data verification and CI | New training, inference, GPU execution or metric/CI recalculation |
 
-## Release Boundary
+See [license scope](licensing/LICENSE_SCOPE.md), [data candidate](../data/README.md) and [current inclusion decisions](data/RELEASE_FILE_DECISIONS.csv). Source-linked records are not claimed anonymous. The earlier composite exclusion and blanket patient-row withholding are superseded only for the expressly authorized, field-reviewed candidate.
 
-The candidate contains software, config examples, synthetic fixtures and aggregate source data. It excludes source images, patch cache, weights, exact patient-linked manifests, individual OOF predictions, private reports and the manuscript. Exclusion from this package is not a blanket statement that those materials may never be shared. No data access route is promised until actually established.
+## Technical Gates
 
-The following decisions cannot be silently resolved by a technical check:
+Complete package SHA coverage, source/claim indexes, field/hash-restricted release scanning, exact bundle extraction, frozen patient/fold/target/run alignment and CPU regressions are checked. Local evidence is in [TEST_REPORT](audits/TEST_REPORT.md). Check the exact commit's [Actions run](https://github.com/heedbs/YHY/actions) rather than inferring hosted success from local tests.
 
-1. **License scope:** MIT is selected for authorized original contributions; the retained composite/source exception is still recorded in [license scope](licensing/LICENSE_SCOPE.md). Resolve that exact scope before representing the entire repository as MIT-cleared.
-2. **Linked-data distribution:** the review-only input ZIP stays outside GitHub. Choose an approved field/distribution policy before adding it or OOF rows. The current code-and-aggregate scope is usable for inspection but not self-contained full reproduction.
-3. **Public release:** after these decisions, review the final commit's Actions result and separately authorize public visibility, a fixed release and any archive registration.
+The earlier reachable-history scan remains a scoped baseline; approved linked data is intentionally added afterward and verified by its release policy, not mislabeled as a secret-free anonymous dataset. History scanning does not cover commit author metadata or unreachable/deleted objects.
 
-## Not Part of This Cleanup
+## Author's Remaining Actions
 
-No manuscript revision, final Figure/Table editing, new model training, inference, bootstrap, benchmark or GPU execution is performed. Public-copy CUDA validation remains unrun and must not be claimed; it is separate from repository organization. Historical cache/environment uncertainty remains in [LIMITATIONS](../LIMITATIONS.md), not an endlessly repeated cleanup task.
+Review the fixed candidate commit and its actual Actions result, then separately authorize public visibility when ready. A fixed Release and any Zenodo registration are separate later actions. About description/topics are optional and cannot be edited through the current connector.
 
-About description/topics are optional presentation settings, not a numerical-integrity blocker. They are unset and cannot be edited through the current connector. Suggested description: “Patient-wise oral histopathology benchmarking and corrected matched Mamba ablation: code and aggregate evidence.”
+No further Figure/Table or manuscript work is required to organize this candidate. It is not certified as complete historical experiment reproduction: public-copy CUDA execution, first-generation cache lineage and unresolved environment details remain honestly documented in [LIMITATIONS](../LIMITATIONS.md). Official images, matching weights and validated cache are still prerequisites for new model runs.
 
-Documentation index: [docs/README.md](README.md). For file inclusion policy use [RELEASE_FILE_DECISIONS.csv](data/RELEASE_FILE_DECISIONS.csv); for actual availability use [DATA_ACCESS.md](../DATA_ACCESS.md).
+Navigation: [documentation](README.md), [data access](../DATA_ACCESS.md), [execution guide](../REPRODUCIBILITY.md), [evidence guide](MANUSCRIPT_EVIDENCE_GUIDE.md).
