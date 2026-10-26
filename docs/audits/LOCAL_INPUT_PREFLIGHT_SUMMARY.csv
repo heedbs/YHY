@@ -1,0 +1,3 @@
+stage,configurations_checked,passed,patients,patches,input_files_changed,run_output_created,model_execution,source_cache_content_census
+stage1,20,20,149,232689,0,False,False,NOT_PERFORMED
+stage2,30,30,149,232689,0,False,False,NOT_PERFORMED

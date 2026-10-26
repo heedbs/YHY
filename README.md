@@ -39,24 +39,17 @@ python -B scripts/check_public_package.py . --manifest
 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
 ```
 
-The isolated CPU environment passed **28 synthetic tests**. These check package integrity and selected scientific logic, not real-data training, CUDA equivalence or retrospective reconstruction of the experiments. Synthetic fixtures are not research observations. See the [test report](docs/audits/TEST_REPORT.md).
+Verification results and their scope are maintained in the [test report](docs/audits/TEST_REPORT.md). Synthetic fixtures are not research observations.
 
 ## Reproduction Workflow
 
-1. Obtain the original ORCHID datasets from the official DOIs in [DATA_ACCESS.md](DATA_ACCESS.md).
-2. Supply authorized exact manifests and a validated patch cache. Patient-linked rows and the cache are **not bundled**; historical cache-generation lineage has unresolved limitations.
-3. Bind local paths and hashes using [REPRODUCIBILITY.md](REPRODUCIBILITY.md). Public code copies contain documented portability and verified-weight-binding changes.
-4. Use the corresponding Stage 1 or Stage 2 trainer. Config examples preserve their distinct checkpoint rules and epoch caps; InceptionV3 uses batch 8 × accumulation 4, the other Stage 1 models 16 × 2.
-5. Evaluate authorized saved predictions with [analysis code](analysis/README.md), then use the [figure](figures/README.md) and table source data.
-
-This is an execution map, **not a claim that the entire workflow has been rerun from this package**. Benchmark and explainability scripts are reference material with additional prerequisites.
+Follow [REPRODUCIBILITY.md](REPRODUCIBILITY.md): obtain authorized inputs → prepare manifests → bind config → run CPU input preflight → execute the appropriate trainer → analyze saved predictions → generate figures/tables. Exact prerequisites and command verification status are kept there, not duplicated here.
 
 ## Scope and Interpretation
 
-- Included: model/training/evaluation source, 50 config examples, synthetic tests and frozen aggregate figure/table data.
-- Excluded: source images, patch cache, weights, patient-level predictions, exact patient-linked manifests and private server logs.
-- Stage 2 is a same-cohort matched ablation/stability analysis, **not external validation**. Its three primary seed-specific confidence intervals include zero; neither superiority nor equivalence is established.
-- Historical cache-fit lineage, development-time outer access and final externally edited figure mapping remain explicit [limitations](LIMITATIONS.md).
+Included: model/training/evaluation source, 50 config examples, synthetic tests and frozen aggregate figure/table data. Research images, cache, weights and patient-linked rows are not bundled; see [data access](DATA_ACCESS.md).
+
+Stage 2 is same-cohort matched ablation, not external validation. Read the single [limitations register](LIMITATIONS.md) before interpreting results or claiming complete reproduction.
 
 ## License and Citation
 

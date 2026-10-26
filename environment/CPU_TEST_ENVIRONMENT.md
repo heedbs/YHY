@@ -1,20 +1,20 @@
 # Independently installed CPU-check environment
 
-This is a NEW validation environment created on 22 October 2026, not the historical training environment. A fresh Python 3.12 venv without system-site packages was populated from the official PyTorch CPU wheel index and PyPI. No historical environment was modified. The package's 28 synthetic CPU tests and `pip check` passed with isolated Python (`-I`) and CUDA hidden. No research image, prediction, training, inference, bootstrap or GPU execution was used by these tests.
+This validation environment was created on 22 October 2026, not recovered from historical training. A fresh Python 3.12 venv without system-site packages was populated from official indexes. No historical environment was modified. Current test results are maintained in [the test report](../docs/audits/TEST_REPORT.md). Fixtures do not execute research models or use patient data.
 
 The installed CPU torch build is 2.5.1+cpu. The headless OpenCV wheel 4.10.0.84 is a deliberate choice for this NEW CPU fixture environment; do not present its wheel suffix as a recovered historical pin. See requirements-cpu-checks.txt for the remaining exact installed dependencies.
 
 Installation sequence (use a new environment, never the historical research one):
 
 ```bash
-python3.12 -m venv .venv-cpu
-.venv-cpu/bin/python -I -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.5.1
-.venv-cpu/bin/python -I -m pip install --index-url https://pypi.org/simple -r environment/requirements-cpu-checks.txt
-.venv-cpu/bin/python -I -m pip check
-PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' .venv-cpu/bin/python -I -B -m unittest discover -s tests -v
+python3.12 -m venv ../orchid-cpu-venv
+../orchid-cpu-venv/bin/python -I -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.5.1
+../orchid-cpu-venv/bin/python -I -m pip install --index-url https://pypi.org/simple -r environment/requirements-cpu-checks.txt
+../orchid-cpu-venv/bin/python -I -m pip check
+PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' ../orchid-cpu-venv/bin/python -I -B -m unittest discover -s tests -v
 ```
 
-These package choices and test invocation were exercised in the new venv. The lock file was recorded after installation; a second independent replay of every transitive pinned version was not performed. The venv and downloaded binaries are NOT bundled or uploaded. The requirements are CPU fixture requirements, not permission to run scientific models on CPU as a substitute for frozen CUDA experiments.
+The package choices and test invocation were exercised in the isolated venv; the sibling path above is a relocatable example. Keep environments and local data outside the checkout so the release scan covers only candidate files. The lock file was recorded after installation; a second independent replay of every transitive pin was not performed. Binaries are not bundled. These are fixture requirements, not permission to substitute CPU for frozen CUDA experiments.
 
 ## Current research-interpreter resolution
 

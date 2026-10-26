@@ -1,25 +1,19 @@
-# Current Review Status
+# Review Status
 
-Updated: 26 October 2026. Earlier dated records are retained under [history](history/README.md).
+Updated 26 October 2026. Repository: `heedbs/YHY`, private, default branch `main`. No public release or archive DOI has been issued. Intended journal: BioData Mining; acceptance is not asserted.
 
-| Item | Current state |
+## Document Responsibilities
+
+| Document | Authoritative purpose |
 | --- | --- |
-| Repository | `heedbs/YHY`, private; reviewed files on default branch `main` |
-| Public release / archive DOI | Not issued; no visibility change in this maintenance |
-| Manuscript | Intended for BioData Mining; acceptance is not asserted |
-| Software license | MIT selected for authorized original contributions; see [scope](licensing/LICENSE_SCOPE.md) |
-| CPU checks | 28 synthetic tests passed in the isolated CPU environment |
-| Initialization audit | Six CPU factory cases; zero forward passes; not retrospective CUDA/checkpoint validation |
-| Research inputs | Images, cache, weights, exact patient-linked manifests and predictions not bundled |
-| Stage 2 source | Corrected matched comparison, never historical Stage 1 Mamba seed-42 substitution |
-| Full reproduction | Not certified; cache lineage and historical-environment gaps remain |
-| Final figure mapping | Not fully supplied or verified |
+| [README](../README.md) / [한국어 안내](../readme_kor.md) | Research overview and navigation |
+| [REPRODUCIBILITY](../REPRODUCIBILITY.md) | Prerequisites and operational commands |
+| [DATA_ACCESS](../DATA_ACCESS.md) | Data availability and distribution route |
+| [LIMITATIONS](../LIMITATIONS.md) | Single register of scientific/reproduction limitations |
+| [Test report](audits/TEST_REPORT.md) | Actual verification results and scope |
+| [License scope](licensing/LICENSE_SCOPE.md) | License coverage and unresolved rights |
+| [Historical records](history/README.md) | Dated audit snapshots, not current instructions |
 
-## Before Public Release
+Before public release, resolve the applicable license/source decisions and the data distribution route, align manuscript availability statements with reality, and provide reviewers actual access. A private URL alone does not grant access. Cite a fixed commit.
 
-1. Confirm declared code provenance and any applicable institutional/third-party obligations. AI assistance is not evidence of copying from another repository.
-2. Decide whether to distribute minimal source-linked manifests or predictions after field/linkage review. Their current omission does not mean licensed ORCHID derivatives are categorically prohibited.
-3. Keep cache/environment limitations and development-time outer-access history aligned with the manuscript.
-4. Provide reviewers an actual access route. A private URL alone does not grant access. Cite a fixed commit; archival release requires separate authorization.
-
-Technical checks do not certify ethics/IRB status, pathology interpretation, clinical safety or publication eligibility. This refresh performs no training, inference or real-data statistical calculation.
+Technical validation is not public-release approval, ethics/IRB certification or clinical validation. Detailed evidence is indexed in [the documentation guide](README.md).

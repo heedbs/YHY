@@ -1,9 +1,28 @@
-# Data access and disclosure decisions
+# Data Access
 
-Official ORCHID training source: https://doi.org/10.5281/zenodo.12636426 (train.zip). Validation/test source: https://doi.org/10.5281/zenodo.12646943 (val.zip and test.zip). Official API metadata checked 2026-10-21 reports CC BY 4.0 for both; selected metadata is preserved in data/dataset_metadata.json. Credit the dataset creators, link the DOI and license, and describe crop/resize/overlay modifications. License text: https://creativecommons.org/licenses/by/4.0/ .
+[Execution guide](REPRODUCIBILITY.md) · [Disclosure review](docs/data/DATA_DISCLOSURE_REVIEW.md)
 
-The original archive split is distinct from this study's patient-wise folds. Exact duplicate-clean patient/source/patch manifests, frozen splits, image hashes and OOF probabilities are reproducibility-critical, but their public disclosure/linkability and authorized distribution need explicit review; they are excluded pending that decision. See RELEASE_FILE_DECISIONS.csv. Publicly accessible original data does not automatically authorize redistribution of study-linked patient records or resolve IRB requirements.
+## Official Source Data
 
-No raw image, cache, model weight, checkpoint, individual prediction, source-image hash list or identity map is included. Cache-generation equivalence, source DOI mapping for final panels, and unavailable metadata are not reconstructed. Synthetic test records contain artificial identities prefixed SYNTH and no research observations.
+| Source archive | DOI |
+| --- | --- |
+| Training: `train.zip` | https://doi.org/10.5281/zenodo.12636426 |
+| Validation/test: `val.zip`, `test.zip` | https://doi.org/10.5281/zenodo.12646943 |
 
-Follow-up schema/linkability review: docs/data/DATA_DISCLOSURE_REVIEW.md and [DATA_FIELD_RELEASE_REVIEW.csv](docs/data/DATA_FIELD_RELEASE_REVIEW.csv). Only aggregate fold composition is newly included; no patient-level disclosure approval is inferred. Cache evidence is updated in [PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md](docs/audits/PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md).
+Official API metadata checked on 21 October 2026 records **CC BY 4.0** for both datasets; retained metadata is in [data/dataset_metadata.json](data/dataset_metadata.json). Credit the creators, link the DOI and [license](https://creativecommons.org/licenses/by/4.0/), and disclose crop/resize/overlay changes. Original archive partitions are distinct from this study's patient-wise folds.
+
+## Study-Specific Inputs
+
+| Artifact | In this package? | Route |
+| --- | --- | --- |
+| Source images and patch cache | No | Official datasets; validated study cache still needed |
+| Exact patch/split bundle | No | Server-only review draft; distribution route not finalized |
+| Pretrained/checkpoint weights | No | Identities documented under `data/`; obtain matching files separately |
+| Patient-level frozen predictions | No | Separate disclosure decision; aggregate outputs are included |
+| Aggregate figure/table data | Yes | [Results guide](results/README.md) |
+
+Exact bundle schema and local preparation are specified in [AUTHORIZED_MANIFEST_BUNDLE.md](data/AUTHORIZED_MANIFEST_BUNDLE.md). Whole-file fingerprints do not supply the rows themselves. There is no promised download endpoint or approved request-access process yet.
+
+Public-source-linked manifests are not categorically prohibited. Their identifiers, image hashes and crop coordinates can link back to source images; review the minimal required fields and attribution before release. See [field review](docs/data/DATA_FIELD_RELEASE_REVIEW.csv) and [file decisions](docs/data/RELEASE_FILE_DECISIONS.csv). Dataset licensing does not substitute for an ethics determination.
+
+The single register of unresolved scientific/reproduction issues is [LIMITATIONS.md](LIMITATIONS.md). Synthetic fixtures contain artificial records, not patient observations.

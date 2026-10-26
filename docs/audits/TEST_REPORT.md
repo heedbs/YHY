@@ -1,21 +1,19 @@
-# Technical verification report
+# Verification Results
 
-Status: **PASS_TECHNICAL_VALIDATION_ONLY — PUBLIC_RELEASE_NOT_APPROVED**.
+Updated 26 October 2026. Status: **technical checks only**, not complete experiment reproduction or public-release approval.
 
-**Current suite: 28 synthetic CPU tests passed in the isolated CPU environment.** Below, earlier counts preserve the progression from 11 to 21, 26 and 28. Statements about missing dependency installation describe earlier checks; installation and `pip check` were subsequently completed in the isolated environment, not the historical GPU environment.
+| Check | Result | What it establishes |
+| --- | --- | --- |
+| Isolated CPU synthetic suite | 34 tests passed | Syntax, selected scientific AST/metric/aggregation parity, config guards, manifest binding, package checks and local preflight regressions |
+| Full synthetic preflight | Passed | Wrong config/code/weight/bundle and output collision fail before model execution; successful preflight creates no run directory |
+| Existing authorized local inputs | 50/50 configurations passed | Exact bundle/local patch semantics, split/config/code/pretrained SHA and source/cache presence; no input changes or run-output creation; [aggregate receipt](LOCAL_INPUT_PREFLIGHT_SUMMARY.csv) |
+| Historical CPU initialization receipts | Six factory cases, full state equality | Verified-file binding matched baseline initialization; zero forward calls; not trained checkpoint/CUDA identity |
+| Frozen aggregate/code/config integrity | Rechecked during packaging | No research source, config or result recalculation/change in this maintenance |
 
-11 CPU tests passed with CUDA_VISIBLE_DEVICES empty: all Python syntax; scientific class/function AST equality; synthetic image-equal patient aggregation; contradictory target rejection; invalid probability rejection; patient-level metric checks; different Stage1/Stage2 checkpoint priorities and earlier-epoch ties; deterministic synthetic preprocessing; 50-run config catalog checks; local config hash binding/collision/mismatch; extracted final metric functions on artificial data. Fixtures are synthetic and are not research runs.
+The suite uses artificial fixtures only. Commands and environment setup are maintained in [the CPU guide](../../environment/CPU_TEST_ENVIRONMENT.md), not repeated here. Local-input verification is documented in [REPRODUCIBILITY.md](../../REPRODUCIBILITY.md).
 
-The AST fingerprint check normalizes only the empty Python3.12 type_params field absent in Python3.9; it does not discard function bodies, constants or scientific expressions. Runtime code digests were independently compared with all 50 historical configs; scientific values in public config examples match their original files exactly. Best-checkpoint/history digests and final aggregate-source numeric strings were also checked. Both absolute and relative SHA manifest entry styles were resolved.
+The six new preflight tests cover exact binding/no writes, crop/target/SHA alterations, duplicates/missing files, existing/symlink outputs, trainer code-digest agreement and a full synthetic success/failure sequence.
 
-Authoritative Stage1/Stage2/benchmark results were not reselected or recomputed. Bootstrap code was preserved without execution. Existing saved scores have some same-binary-label ties but no opposing-label tie groups; the vectorized historical rank/AP implementation should not be assumed generally tie-correct for a new dataset. No new CI or p-value was produced.
+No real-data training, model forward, CUDA execution, bootstrap, benchmark, Grad-CAM or cache generation was performed. The unresolved scientific limitations are maintained in [LIMITATIONS.md](../../LIMITATIONS.md).
 
-Not run: dependency installation; real-data training/inference; CUDA smoke or architecture execution; bootstrap; efficiency measurement; Grad-CAM; original-cache reconstruction; final manuscript figure equivalence; independent pathology/ethics assessment. Current packaging environment is separately recorded in environment/current_cpu_packaging_record.json.
-
-Follow-up 22 October 2026: the same 11 artificial CPU tests pass in the new review copy with CUDA_VISIBLE_DEVICES empty. No scientific Python file was changed. Historical cache notebook/reference and Gate A sample receipts were inspected without running their code. Original data-file bytes remain unchanged. See [PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md](PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md).
-
-Current public-copy maintenance validation: 21 CPU synthetic tests pass (11 original plus 10 package/config/guard regressions). New checks cover manifest full coverage, duplicate/malformed/missing/hash-mismatched entries, unsafe path/symlink rejection, all 50 stage-specific config templates, wrong checkpoint criterion, unsupported opposing-label ties and non-stratified index rejection. Invalid synthetic inputs stop before the bootstrap calculation. No real bootstrap, training, inference or CUDA execution occurred. Historical Trainer/model/evaluation files, configs, aggregate results and final-analysis reference script remain byte-identical to the prior candidate. Empty helper CSVs were removed from the candidate only.
-
-Manifest-preparation follow-up: 26 artificial CPU tests pass. On the server, a linked-data review draft was converted to private local manifests without decoding images, loading tensors or generating cache. All 232,689 patch semantic rows matched the originals; exact split bytes/SHA were retained; fifty local configs were bound with scientific values unchanged. These are metadata/path and file-identity checks, not training/initialization/inference verification. The linked draft and generated local files were NOT uploaded.
-
-Publication-readiness follow-up: a newly installed isolated CPU-only venv passes pip check and all 28 synthetic tests. Six factory cases (the five publication variants plus the separate historical Stage 1 composite factory) have bitwise-equal full initialized states before/after the public-copy verified-state binding change under seed 42; every forward counter is zero. This is not evidence of trained-checkpoint identity, CUDA forward/backward or retrospective training replay. The composite constructor AST intentionally changes; its historical full-class fingerprint is retained alongside the maintenance fingerprint, while non-constructor methods and training/evaluation functions retain historical fingerprints. Fifty local configs bind the new code without changing scientific settings. No frozen estimate/CI was recomputed.
+Earlier test counts and follow-up narratives are preserved in [the dated verification snapshot](../history/TECHNICAL_VERIFICATION_PRE_CLEANUP_20261026.md). They are historical evidence, not competing current test totals.

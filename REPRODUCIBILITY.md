@@ -1,44 +1,77 @@
-# Reproducibility and execution status
+# Reproduce the Study
 
-## Environment
+[Home](README.md) · [Data access](DATA_ACCESS.md) · [Verification status](docs/STATUS.md) · [Scientific limitations](LIMITATIONS.md)
 
-Historical training/benchmark records, not the current pip environment, are in environment/. They report Python3.12.7, PyTorch2.5.1+cu124, CUDA12.4, cuDNN90100, timm1.0.19, mamba_ssm2.2.4, NumPy1.26.4, pandas2.2.2, sklearn1.5.1, OpenCV4.10.0. Some plotting/packaging dependency versions are not fully recorded. See the [test report](docs/audits/TEST_REPORT.md) and [isolated CPU environment](environment/CPU_TEST_ENVIRONMENT.md) for current verification, not historical GPU reconstruction.
+This is the operational guide. Historical evidence is indexed under [docs](docs/README.md); scientific limitations are maintained in one place, [LIMITATIONS.md](LIMITATIONS.md). Commands below distinguish verified CPU tooling from research execution examples.
 
-Installation order (documentation example, not executed here): create a Python3.12 environment; install the CUDA12.4 build of torch2.5.1 from the official PyTorch index; install compatible torchvision (historical exact version must be verified); install recorded scientific packages; install a CUDA/compiler-compatible mamba-ssm2.2.4 and required causal-conv1d dependency only after torch. The exact historical causal-conv1d/compiler build is unresolved. A recovered legacy notebook records torchvision0.20.1; this is not proof of the final-training wheel/build identity. See [PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md](docs/audits/PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md). No CPU/Identity fallback is permitted for Composite-Mamba. Do not install new packages into the historical research environment.
+## 1. Check the Package
 
-## Local data configuration
-
-For the exact two-file input draft and CPU-only path preparation, see [data/AUTHORIZED_MANIFEST_BUNDLE.md](data/AUTHORIZED_MANIFEST_BUNDLE.md). Original rows remain server-only pending final disclosure review. `scripts/prepare_local_manifests.py` does not restore or generate the historical cache; it requires existing source/cache files.
-
-`ORCHID_MANIFEST_DIR` points to a private directory containing final_unique_patch_manifest.csv, final_outer_inner_split_manifest.csv, final_duplicate_exclusion_manifest.csv and selected_model_pretrained_provenance.csv. The pretrained table must have correct local_cache_path entries and verified weight_sha256. Set local cache/source paths in privately supplied manifests; keep logical patient/source/UID relations unchanged. `ORCHID_PRIVATE_ROOT` is a relocated research-artifact root used only by historical reference orchestration scripts. No frozen patient split or metadata content is distributed by default.
-
-## Path-adapted training copies
-
-Public configs preserve scientific settings and keep the historical code hash as historical_code_sha256. They are examples, not launch approvals. Create a separate local config with scripts/configure_local_run.py: it calculates the relocated code hash and requires the exact historical split SHA, then writes a new output config without overwriting any existing file. This explicitly distinguishes historical identity from local reproduction identity. The extracted Mamba module has the same class ASTs and parameter paths but a different source hash. Historical checkpoints must not be silently resumed under the changed source identity; original-code runtime provenance and strict checkpoint identity requirements remain documented.
-
-Documentation examples, not research commands executed during this task:
+Use a clean checkout with no local datasets or environment directory inside it:
 
 ```bash
-export ORCHID_MANIFEST_DIR=/your/private/manifests
-export ORCHID_PRIVATE_ROOT=/your/private/research-artifacts
-python scripts/configure_local_run.py --stage stage1 --template configs/stage1/stage1_inceptionv3_seed42_fold0.json --output local_config.json
-python stage1/train_one_run.py --config local_config.json --device cuda:0 --output /your/new/run
+python3 -B scripts/check_public_package.py . --manifest
 ```
 
-Use Stage2 corrected config examples and the Stage2 trainer for the matched study. Do not replace corrected Stage2 seed42 with Stage1 checkpoint output. Phase-specific selection tuples, physical batch8×accumulation4 for Inception and batch16×2 for other models, FP32, patient-balanced sampling, max80/max40 and no TTA are retained in the 50 examples.
+For dependency setup and synthetic tests, follow [the tested CPU environment guide](environment/CPU_TEST_ENVIRONMENT.md). This environment is for validation, not a replacement for CUDA/Mamba training. Historical GPU records are in `environment/`; unresolved build details are listed in [LIMITATIONS.md](LIMITATIONS.md).
 
-## Analysis, figures, benchmark, explainability
+## 2. Prepare Authorized Inputs
 
-analysis/stage1_metrics.py and analysis/stage2_statistics.py expose exact extracted metric/statistic functions. analysis/reference/ retains final filesystem orchestration for audit; it requires original private metadata/outputs and has not been re-executed. Reference plotting scripts expect the named figure-source layout and can write files; select a new output root in a reviewed local copy. Bootstrap/reference analyses must not be run as part of a simple import/test.
+Obtain the official data and exact input bundle as described in [DATA_ACCESS.md](DATA_ACCESS.md). Use existing validated cache files, not a newly guessed cache implementation. Prepare a private JSON mapping of model names in `data/pretrained_sources.csv` to local matching weight files.
 
-Public-copy maintenance: `analysis/stage2_statistics.py` now guards the historical bootstrap entry point against invalid/unstratified inputs and opposing-label score ties. The original numerical implementation and `analysis/reference/analyze_stage2_corrected.py` remain preserved; no frozen estimate/CI was regenerated. Unsupported tied-score data must not be silently evaluated by this helper. Config generation also rejects stage/template selection-rule mismatches. SHA validation now checks complete file coverage, duplicates and unsafe paths. See [MAINTENANCE_CHANGES.csv](docs/history/MAINTENANCE_CHANGES.csv).
+Set paths outside the repository. These shell variables are placeholders to replace with actual authorized locations:
 
-benchmark/reference/ is the actual measured driver and source helper, with only path portability edits. It still validates historical source-runner/spec hashes. Because a path-adapted helper has a new file hash, the historical driver is intentionally NOT claimed turnkey or revalidated for new measurement. An explicit reviewed local identity spec is needed before any future benchmark. The original telemetry parser can return an error on multiple GPU lines; this limitation is preserved, not silently fixed.
+```bash
+export ORCHID_BUNDLE=/your/authorized/exact-bundle
+export ORCHID_SOURCE_ROOT=/your/ORCHID/train
+export ORCHID_CACHE_ROOT=/your/validated/cache
+export ORCHID_WEIGHTS_MAP=/your/private/weights.json
+export ORCHID_MANIFEST_DIR=/your/new/local-manifests
+python -B scripts/prepare_local_manifests.py \
+  --bundle "$ORCHID_BUNDLE" --source-root "$ORCHID_SOURCE_ROOT" \
+  --cache-root "$ORCHID_CACHE_ROOT" --weights-map "$ORCHID_WEIGHTS_MAP" \
+  --output "$ORCHID_MANIFEST_DIR"
+```
 
-explainability/reference/ is the actual r1 runner. Frozen cases are excluded; output includes IDs unless separately reviewed. It selects median/high evidence patches within each model's own scores; identical-patch matched heatmap comparisons and patient-OOF-to-patch argmax agreement were not established by this runner. Do not claim validated localization, deterministic repeatability, or pathology validation from file presence.
+The standard-library preparation tool checks exact bundle/weight hashes, patient partitions and file presence. It creates local manifests with exclusive output creation; it does not decode images, generate cache or execute models. See [bundle schema](data/AUTHORIZED_MANIFEST_BUNDLE.md) for required fields and private handling.
 
-Verified in the current review: syntax, selected class/function AST parity, synthetic aggregation/metric tests, config scientific settings, frozen aggregate-source integrity, privacy/path/secret/file-size scans, SHA and ZIP checks. The isolated CPU environment was installed and passed `pip check` and all 28 synthetic tests. Not verified: historical GPU-environment installation, research training/inference, CUDA equivalence, real-data bootstrap, benchmark, Grad-CAM or bitwise reproduction of all paper figures.
+## 3. Bind and Preflight One Run
 
-Follow-up input binding: whole-file bundle SHA, partition/target integrity, existence of all source/cache paths, exact pretrained file hashes and 50 newly generated local configs were checked CPU-only. No source image or cache was decoded/rehash-censused in this step. This preparation step alone does not prove initialized tensor provenance; the separate factory audit is described below. See [readiness matrix](docs/audits/REPRODUCTION_READINESS.csv).
+Example using **corrected Stage 2 Mamba seed 42 fold 0**:
 
-Subsequent follow-up closes the public-copy loading gap: factories pass the verified local file through timm's pretrained config overlay. Baseline versus explicitly bound full initialization states match bitwise in offline CPU tests (seed 42), without forward calls. This intentionally changes public source hashes and the composite constructor AST only; forward/training logic and historical source digests remain recorded separately. Do not use this copy to bypass original checkpoint resume identity. A fresh CPU-only environment also passes the synthetic suite; see environment/CPU_TEST_ENVIRONMENT.md. Full historical CUDA reconstruction remains unverified.
+```bash
+export LOCAL_CONFIG=/your/new/local-config.json
+export RUN_OUTPUT=/your/new/run-output
+python -B scripts/configure_local_run.py --stage stage2 \
+  --template configs/stage2/stage2_correction_composite_mamba_seed42_fold0.json \
+  --output "$LOCAL_CONFIG"
+python -B scripts/preflight_local_run.py --stage stage2 \
+  --config "$LOCAL_CONFIG" --manifest-dir "$ORCHID_MANIFEST_DIR" \
+  --bundle "$ORCHID_BUNDLE" --output "$RUN_OUTPUT"
+```
+
+Preflight is read-only and requires no PyTorch, image decoder or GPU. It compares local patch semantics with the SHA-verified bundle, preserves the exact split, verifies scientific config equality and current code digest, hashes pretrained files, checks source/cache presence and rejects output collisions. A pass is **input binding only**, not cache-content, model-runtime or full reproduction certification. It does not create the future run output.
+
+For Stage 1 use `--stage stage1`, a template under `configs/stage1/` and its trainer. The [config catalog](configs/README.md) defines the correct stage/model family. Never use historical Stage 1 Mamba seed 42 as corrected Stage 2 input.
+
+## 4. Research Execution
+
+The next command is a documented example, **not run during package maintenance**. A separate compatible CUDA/Mamba environment and authorized execution are required:
+
+```bash
+python stage2/train_one_run.py --config "$LOCAL_CONFIG" \
+  --device cuda:0 --output "$RUN_OUTPUT"
+```
+
+Local configs record both historical and relocated code identities. Do not bypass historical checkpoint identity checks or resume a historical run under changed code.
+
+## 5. Analysis and Figures
+
+| Purpose | Entry point | Execution scope |
+| --- | --- | --- |
+| Inspect frozen tables | [results](results/README.md), `table_source_data/` | Read existing aggregates; no reanalysis needed |
+| Patient metrics / paired statistics | [analysis](analysis/README.md) | Authorized saved probabilities required; reference orchestration is not turnkey |
+| Figures | [figure guide](figures/README.md) | Aggregate inputs included; final external panel mapping is incomplete |
+| Efficiency | `benchmark/reference/` | Historical driver checks old helper/spec hashes; review a new identity spec before new execution |
+| Explainability | `explainability/reference/` | Cases excluded; review identifier handling and method limits before execution |
+
+`ORCHID_PRIVATE_ROOT` is used only by historical reference orchestration, not ordinary training input binding. Scripts under `reference/` are preserved source, not launch approvals. See [code-change provenance](docs/provenance/CODE_CHANGES.csv) for portability and guard changes. Current test results are maintained only in the [test report](docs/audits/TEST_REPORT.md).

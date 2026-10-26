@@ -1,11 +1,12 @@
 task,status,evidence,limit
 Aggregate result/source inspection,CHECKED,results and prior source fingerprints,not a new analysis
-Artificial CPU unit checks,PASS_28_TESTS_NEW_ISOLATED_ENV,new CPU venv; pip check; 28 synthetic tests,not real-data training/inference
+Artificial CPU unit checks,PASS_34_TESTS_NEW_ISOLATED_ENV,TEST_REPORT.md; six new read-only preflight regressions,not real-data training/inference
 Frozen source-linked minimal bundle,DRAFT_SERVER_ONLY,whole-file identity in data/manifest_bundle_identity.json,linked patient rows not uploaded; final field approval required
 Local metadata path binding,PASS_232689_PATCH_ROWS,private receipt; all original semantic rows matched,file presence not full source/cache content census
 Frozen split identity,PASS_EXACT_BYTES,same SHA as all fifty templates,aliases cannot silently replace original split
-Pretrained file identities,PASS_LOCAL_FILE_SHA,data/weight_artifact_identity.csv,files verified; initialized tensors not checked
+Pretrained file identities,PASS_LOCAL_FILE_SHA,data/weight_artifact_identity.csv,file content check only; separate CPU initialization evidence below
 Local config preparation,PASS_50_OF_50,private config binding audit,only relocated code hash added; no model execution
+Read-only execution input preflight,PASS_50_OF_50,LOCAL_INPUT_PREFLIGHT_SUMMARY.csv; scripts/preflight_local_run.py,exact bundle and row semantics checked; source/cache presence not content census; zero model execution
 Pretrained tensor load binding,PASS_CURRENT_CPU_BASELINE_VS_BOUND,data/PRETRAINED_INITIALIZATION_AUDIT.csv; explicit verified state_dict binding,no trained checkpoint/CUDA/historical replay
 Original image to cache reproduction,PARTIAL_HISTORICAL_SAMPLE_EVIDENCE,PREPROCESSING_AND_ENVIRONMENT_EVIDENCE.md,first-generation full-cache and exact legacy reference sample lineage unresolved
 Clean environment installation,PASS_CPU_FIXTURES_ONLY,environment/CPU_TEST_ENVIRONMENT.md,full historical CUDA stack not reconstructed
