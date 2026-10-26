@@ -43,6 +43,8 @@ PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover
 
 Verification results and their scope are maintained in the [test report](docs/audits/TEST_REPORT.md). Synthetic fixtures are not research observations.
 
+Push/PR checks are configured in [CPU continuous validation](docs/CONTINUOUS_VALIDATION.md). Actual hosted results appear in [Actions](https://github.com/heedbs/YHY/actions); configuration is not evidence of a successful hosted run.
+
 ## Reproduction Workflow
 
 Follow [REPRODUCIBILITY.md](REPRODUCIBILITY.md): obtain authorized inputs → prepare manifests → bind config → run CPU input preflight → execute the appropriate trainer → analyze saved predictions → generate figures/tables. Exact prerequisites and command verification status are kept there, not duplicated here.

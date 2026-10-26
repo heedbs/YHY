@@ -1,0 +1,52 @@
+name: CPU and evidence validation
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CUDA_VISIBLE_DEVICES: ''
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - name: Check out reviewed commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Set up CPU-check Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Export tracked candidate without Git internals
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/orchid-candidate"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/orchid-candidate"
+      - name: Check file coverage, SHA and release hygiene
+        working-directory: ${{ runner.temp }}/orchid-candidate
+        run: python -B scripts/check_public_package.py . --manifest
+      - name: Check documentation and source indexes
+        working-directory: ${{ runner.temp }}/orchid-candidate
+        run: python -B scripts/check_evidence_links.py .
+      - name: Install isolated CPU-check dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m venv "$RUNNER_TEMP/orchid-cpu-venv"
+          "$RUNNER_TEMP/orchid-cpu-venv/bin/python" -I -m pip install --index-url https://download.pytorch.org/whl/cpu torch==2.5.1
+          "$RUNNER_TEMP/orchid-cpu-venv/bin/python" -I -m pip install --index-url https://pypi.org/simple -r "$RUNNER_TEMP/orchid-candidate/environment/requirements-cpu-checks.txt"
+          "$RUNNER_TEMP/orchid-cpu-venv/bin/python" -I -m pip check
+      - name: Run synthetic and aggregate metadata tests
+        working-directory: ${{ runner.temp }}/orchid-candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          "$RUNNER_TEMP/orchid-cpu-venv/bin/python" -I -B -m unittest discover -s tests -v

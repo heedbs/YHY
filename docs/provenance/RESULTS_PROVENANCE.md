@@ -2,7 +2,7 @@
 
 Current claim-to-file mapping is in [CLAIM_SOURCE_INDEX.csv](CLAIM_SOURCE_INDEX.csv). Cohort export unit/count corrections are recorded in [DATA_CORRECTIONS.csv](DATA_CORRECTIONS.csv); corrected public copies retain original source fingerprints. These corrections do not change frozen model estimates.
 
-Source families were selected from frozen final analysis manifests and corrected Stage2 source provenance, not timestamps. results/ CSVs preserve stored numerical strings. SOURCE_FILE_FINGERPRINTS.csv connects every exported file to an original artifact label and SHA without server paths. configs/run_catalog.csv links all 50 runs to original config/code/split/pretrained/best-checkpoint digests. Private absolute-path mapping and exact code diffs remain outside the public ZIP.
+Source families were selected from frozen final analysis manifests and corrected Stage2 source provenance, not timestamps. results/ CSVs preserve stored numerical strings. SOURCE_FILE_FINGERPRINTS.csv links the indexed source-derived files to original artifact labels and SHA values; it does not cover every newly authored document or helper. SHA256_MANIFEST.txt covers the complete candidate file set except itself. CLAIM_SOURCE_INDEX.csv maps selected evidence topics to current repository files. configs/run_catalog.csv links all 50 runs to original config/code/split/pretrained/best-checkpoint digests. Private absolute-path mapping and exact code diffs remain outside the public ZIP.
 
 Stage1: 20 completed runs, seed42, AUROC-first lexicographic tuple (AUROC, macro F1, negative validation patch loss, earlier epoch), max80; pooled OOF149 patients/model. Fold means are separate descriptive outputs.
 
@@ -10,6 +10,6 @@ Corrected Stage2: 30 matched runs (15 per condition), seeds42/20260824/314159, F
 
 Efficiency: five models, RTX4500 Ada, FP32, TF32 disabled,256×256,30 warm-up/100 timed iterations×3 blocks. model_only excludes preprocessing, H2D, file I/O, initialization. The distinct preprocessing-plus-forward mode remains separate. Benchmark Composite-Mamba checkpoint precedes the corrected seed42 training; it must not be described as measured from the correction checkpoint. Digests are retained in efficiency summaries; performance and timing are different estimands. Mamba FLOPs/MACs remain NOT_RELIABLY_ESTIMATED.
 
-Final manuscript files edited outside the server, pathology panel choices and FigureLabs mappings remain unconfirmed. Current aggregate CSVs are not rewritten to match an unseen manuscript.
+The author-designated current manuscript was supplied for a separate internal read-only comparison on 26 October 2026: 144 numeric entries in Tables 2/4/5/6/7 matched stored sources at display precision. This was not a check of every narrative claim, embedded figure or supplementary file. Final pathology-panel source identities and FigureLabs edit mappings remain unconfirmed. Repository evidence is not altered merely to fit manuscript text; documented cohort metadata corrections follow frozen manifests instead.
 
 Plotting-source caveat: the original figure manifest excludes `build_figures.py`; the current script SHA is recorded in SOURCE_FILE_FINGERPRINTS.csv, but a historical execution SHA is unavailable for that generator. This is preserved as an unresolved source-provenance limitation.

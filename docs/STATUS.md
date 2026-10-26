@@ -17,3 +17,16 @@ Updated 26 October 2026. Repository: `heedbs/YHY`, private, default branch `main
 Before public release, resolve the applicable license/source decisions and the data distribution route, align manuscript availability statements with reality, and provide reviewers actual access. A private URL alone does not grant access. Cite a fixed commit.
 
 Technical validation is not public-release approval, ethics/IRB certification or clinical validation. Detailed evidence is indexed in [the documentation guide](README.md).
+
+## Remaining Release Work
+
+| Item | State / next action |
+| --- | --- |
+| Hosted CPU checks | Workflow configured; confirm the exact commit's Actions result, not just local tests |
+| Exact linked inputs | Review-only ZIP prepared on server; approved distribution route and OOF disclosure remain separate decisions |
+| Public-copy CUDA execution | Not run; requires separately authorized compatible GPU validation |
+| License scope | MIT selected; retained component/source exception still requires resolution |
+| Final figure mapping | Original panel attribution and external edit mapping not fully verified |
+| About description / topics | Not set; repository metadata editing is not available through the current connector |
+
+Historical cache/environment and development-exposure limitations are maintained only in [LIMITATIONS.md](../LIMITATIONS.md), not converted into resolved tasks by documentation updates.

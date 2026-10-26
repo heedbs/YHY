@@ -4,7 +4,7 @@ Updated 26 October 2026. Status: **technical checks only**, not complete experim
 
 | Check | Result | What it establishes |
 | --- | --- | --- |
-| Isolated CPU/metadata suite | 41 tests passed | Earlier 38 checks plus cohort-unit/export consistency, source-index hashes and correction/original-fingerprint preservation |
+| Isolated CPU/metadata suite | 45 tests passed | Earlier 41 checks plus documentation checker success/no writes, broken/escaping links, changed/duplicate indexes and external-symlink rejection |
 | Full synthetic preflight | Passed | Wrong config/code/weight/bundle and output collision fail before model execution; successful preflight creates no run directory |
 | Existing authorized local inputs | 50/50 configurations passed | Exact bundle/local patch semantics, split/config/code/pretrained SHA and source/cache presence; no input changes or run-output creation; [aggregate receipt](LOCAL_INPUT_PREFLIGHT_SUMMARY.csv) |
 | Current source/cache content | 10,072 source SHA matches; 232,689 cache files decoded and hashed | All cache crop dimensions/channels matched the frozen rows; [aggregate content receipt](SOURCE_CACHE_CONTENT_VERIFICATION.json); no image/model output created |
@@ -18,5 +18,7 @@ The six input preflight tests cover binding, identities and collisions. Four con
 The current complete-cache digest is a new inventory of existing files, not a comparison against an unavailable first-generation inventory. It does not prove historical generation/fitting equivalence. A source-linked exact-input ZIP was prepared for server-side review only; no patient rows, images or per-image hash list were uploaded.
 
 No real-data training, model forward, CUDA execution, bootstrap, benchmark, Grad-CAM or cache generation was performed. The unresolved scientific limitations are maintained in [LIMITATIONS.md](../../LIMITATIONS.md).
+
+A SHA-pinned GitHub-hosted CPU workflow is configured; local equivalents were checked separately. Hosted success must be confirmed on the exact commit's Actions run, not inferred from this local report. See [continuous validation](../CONTINUOUS_VALIDATION.md).
 
 Earlier test counts and follow-up narratives are preserved in [the dated verification snapshot](../history/TECHNICAL_VERIFICATION_PRE_CLEANUP_20261026.md). They are historical evidence, not competing current test totals.

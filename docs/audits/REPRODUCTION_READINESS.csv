@@ -1,6 +1,6 @@
 task,status,evidence,limit
 Aggregate result/source inspection,CHECKED,results and prior source fingerprints,not a new analysis
-CPU and aggregate metadata unit checks,PASS_41_TESTS_NEW_ISOLATED_ENV,TEST_REPORT.md; synthetic and aggregate evidence regressions,not real-data training/inference
+CPU and aggregate metadata unit checks,PASS_45_TESTS_NEW_ISOLATED_ENV,TEST_REPORT.md; synthetic and aggregate evidence regressions,not real-data training/inference
 Frozen source-linked minimal bundle,DRAFT_SERVER_ONLY,whole-file identity in data/manifest_bundle_identity.json,linked patient rows not uploaded; final field approval required
 Local metadata path binding,PASS_232689_PATCH_ROWS,private receipt; all original semantic rows matched,file presence not full source/cache content census
 Frozen split identity,PASS_EXACT_BYTES,same SHA as all fifty templates,aliases cannot silently replace original split
