@@ -6,4 +6,4 @@ Actual third-party code retains its original copyright and applicable license. M
 
 The root [LICENSE](../../LICENSE) applies to authorized original software and software documentation. It does not relicense ORCHID images or weights. Licensing of the newly included metadata/prediction candidate is separately described in [data/README](../../data/README.md). No image, cache or weight is bundled.
 
-This decision does not establish ethics/IRB approval, pathology review, clinical suitability or anonymity of linked source records. The repository remains private until the author separately changes visibility. No public Release or archive registration is authorized by this maintenance.
+This decision does not establish ethics/IRB approval, pathology review, clinical suitability or anonymity of linked source records. The repository is public as verified on 28 October 2026; this does not expand the licensed material beyond the stated scope. No public Release or archive registration is authorized by this maintenance.

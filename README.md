@@ -4,7 +4,7 @@
 
 [한국어 안내](readme_kor.md) · [Reproduce](REPRODUCIBILITY.md) · [Results](results/README.md) · [Documentation](docs/README.md) · [Current Status](docs/STATUS.md)
 
-Research software and frozen aggregate source data supporting a manuscript intended for **BioData Mining**. This repository is a private review candidate, not a published article or an independently validated clinical system.
+Research software and frozen aggregate source data supporting a manuscript intended for **BioData Mining**. This public repository provides research software and evidence; public availability does not establish article publication, complete historical reproduction or clinical validation.
 
 Repository organization and technical handoff are summarized in [Current Status](docs/STATUS.md). Data-distribution and license-scope decisions remain separate from technical validation.
 
@@ -41,9 +41,27 @@ Aggregate results have one canonical copy under `results/`. Removed figure/table
 From the repository root, in the documented CPU environment:
 
 ```bash
-python -B scripts/check_public_package.py . --manifest
-PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
+(
+  set -eu
+# Run from the root of a git clone; validate tracked HEAD, not .git or uncommitted files.
+ORCHID_CHECKOUT=$(git rev-parse --show-toplevel)
+ORCHID_CHECK_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/orchid-check.XXXXXXXX")
+mkdir "$ORCHID_CHECK_ROOT/tracked"
+git -C "$ORCHID_CHECKOUT" archive --format=tar --output="$ORCHID_CHECK_ROOT/HEAD.tar" HEAD
+tar -xf "$ORCHID_CHECK_ROOT/HEAD.tar" -C "$ORCHID_CHECK_ROOT/tracked"
+(
+  set -e
+  cd "$ORCHID_CHECK_ROOT/tracked"
+  python3 -B scripts/check_public_package.py . --manifest
+  python3 -B scripts/check_evidence_links.py .
+  python3 -B scripts/verify_release_data.py
+)
+# Keep this fresh temporary export for inspection; no checkout/output is overwritten.
+printf 'Tracked export: %s\n' "$ORCHID_CHECK_ROOT/tracked"
+)
 ```
+
+This checks committed `HEAD` only. Uncommitted edits and untracked files are excluded by `git archive`, not certified safe. Use the isolated CPU environment for synthetic tests; see [reproduction](REPRODUCIBILITY.md). The scanner intentionally rejects `.git`; it still checks other hidden files and full manifest coverage in the export.
 
 Verification results and their scope are maintained in the [test report](docs/audits/TEST_REPORT.md). Synthetic fixtures are not research observations.
 
@@ -63,4 +81,4 @@ Stage 2 is same-cohort matched ablation, not external validation. Read the singl
 
 [MIT](LICENSE) is selected for authorized original software contributions. Third-party software retains its own terms; see [license scope](docs/licensing/LICENSE_SCOPE.md) and [third-party notices](THIRD_PARTY_NOTICES.md). Dataset CC BY 4.0 is separate from the code license. No new pathology, ethics or clinical approval is asserted.
 
-Citation metadata: [CITATION.cff](CITATION.cff). Cite the exact reviewed commit. No manuscript DOI or archival release DOI is assigned. Private access, release decisions and dated historical records are explained in [Current Status](docs/STATUS.md).
+Citation metadata: [CITATION.cff](CITATION.cff). Cite the exact reviewed commit. No manuscript DOI or archival release DOI is assigned. Public availability, release decisions and dated historical records are explained in [Current Status](docs/STATUS.md).

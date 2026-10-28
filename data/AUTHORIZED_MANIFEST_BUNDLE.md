@@ -2,7 +2,7 @@
 
 ## Current disclosure status
 
-The author approved this exact metadata candidate on 26 October 2026. `data/reproduction/` contains losslessly compressed patches and the original split CSV. `manifest_bundle_identity.json` retains historical hashes and its earlier draft annotation as provenance; current inclusion is governed by [RELEASE_DATA_POLICY.json](RELEASE_DATA_POLICY.json). The repository remains private.
+The author approved this exact metadata candidate on 26 October 2026. `data/reproduction/` contains losslessly compressed patches and the original split CSV. `manifest_bundle_identity.json` retains historical hashes and its earlier draft annotation as provenance; current inclusion is governed by [RELEASE_DATA_POLICY.json](RELEASE_DATA_POLICY.json). The repository is public as verified on 28 October 2026; fixed Release/archive registration is separate.
 
 Extract outside the checkout: `python -B scripts/extract_reproduction_bundle.py --output ../orchid-exact-bundle`. Existing outputs are rejected.
 
