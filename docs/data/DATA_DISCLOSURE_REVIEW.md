@@ -1,6 +1,6 @@
 # Approved Minimal Data Candidate
 
-On 26 October 2026 the author authorized field review and inclusion of minimal public-ORCHID-linked split/manifest and frozen OOF data in the distribution candidate. The repository remains private. This is not consent to publish all server records.
+On 26 October 2026 the author authorized field review and inclusion of minimal public-ORCHID-linked split/manifest and frozen OOF data in the distribution candidate. The repository was private at that review; it is public as verified on 28 October 2026. See [current status](../STATUS.md). This is not consent to publish all server records.
 
 ## Included Fields
 

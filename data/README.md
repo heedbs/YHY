@@ -1,6 +1,6 @@
 # Distribution Data Candidate
 
-This directory now includes the author-reviewed minimum exact input metadata and saved OOF predictions. The repository is still private; final public visibility is a separate author action.
+This directory now includes the author-reviewed minimum exact input metadata and saved OOF predictions. The repository is public as verified on 28 October 2026; a fixed software Release and archive remain separate actions.
 
 | Location | Contents |
 | --- | --- |

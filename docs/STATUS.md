@@ -1,6 +1,6 @@
-# Private Pre-release Handoff
+# Public Repository Status
 
-Updated 26 October 2026. **Author-approved code and minimum linked-data candidate prepared for final private review.** Repository `heedbs/YHY` remains private. No public Release, visibility change or archive registration has been performed.
+Updated 28 October 2026. Repository `heedbs/YHY` is **public**, verified through repository metadata. Maintenance started at `c338879a1bf8948ab7bc357296004710fc57291c`, unchanged since the previous review. Public availability is not article publication, clinical validation or complete historical reproduction. Dated audit receipts retain their original historical state. No Release/archive registration is performed in this maintenance.
 
 ## Candidate Scope
 
@@ -22,7 +22,7 @@ The earlier reachable-history scan remains a scoped baseline; approved linked da
 
 ## Author's Remaining Actions
 
-Review the fixed candidate commit and its actual Actions result, then separately authorize public visibility when ready. A fixed Release and any Zenodo registration are separate later actions. About description/topics are optional and cannot be edited through the current connector.
+Review and merge the submission-maintenance PR only after its exact Actions run succeeds. Then choose a real software version/tag and create a fixed Release if desired; any Zenodo integration/registration is a separate author action. Update CITATION only after actual identifiers exist. No release/version/DOI is fabricated. About description/topics are optional and cannot be edited through the current connector.
 
 No further Figure/Table or manuscript work is required to organize this candidate. It is not certified as complete historical experiment reproduction: public-copy CUDA execution, first-generation cache lineage and unresolved environment details remain honestly documented in [LIMITATIONS](../LIMITATIONS.md). Official images, matching weights and validated cache are still prerequisites for new model runs.
 

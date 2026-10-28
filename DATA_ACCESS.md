@@ -21,7 +21,7 @@ Official API metadata checked on 21 October 2026 records **CC BY 4.0** for both 
 | Patient-level frozen predictions | Yes, reviewed candidate | `data/oof/stage1/` (4 sets), `data/oof/stage2/` (6 corrected sets) |
 | Aggregate figure/table data | Yes | [Results guide](results/README.md) |
 
-The author approved the minimum distribution candidate on 26 October 2026. See [data/README](data/README.md) for fields, attribution and data licensing. Extract the exact metadata using [AUTHORIZED_MANIFEST_BUNDLE](data/AUTHORIZED_MANIFEST_BUNDLE.md). The repository remains private; no external download endpoint or public Release is claimed.
+The author approved the minimum distribution candidate on 26 October 2026. See [data/README](data/README.md) for fields, attribution and data licensing. Extract the exact metadata using [AUTHORIZED_MANIFEST_BUNDLE](data/AUTHORIZED_MANIFEST_BUNDLE.md). These reviewed files are available in this public repository. No fixed software Release or archival DOI is assigned.
 
 Approved identifiers, hashes and coordinates remain linkable to public source images, not newly anonymized. The [current policy](data/RELEASE_DATA_POLICY.json) authorizes exact reviewed bytes/fields, not the broader historical [field inventory](docs/data/DATA_FIELD_RELEASE_REVIEW.csv). Private paths, extra clinical attributes, logs and images remain excluded. Dataset licensing does not substitute for an ethics determination.
 

@@ -4,9 +4,9 @@
 
 [English README](README.md) · [재현 절차](REPRODUCIBILITY.md) · [결과 안내](results/README.md) · [문서 목록](docs/README.md) · [현재 상태](docs/STATUS.md)
 
-BioData Mining 투고 예정 원고를 지원하는 코드와 동결 집계 자료입니다. 현재 **비공개 검토본**이며, 논문 게재나 임상 검증이 완료됐다는 뜻은 아닙니다. 국제 독자에게는 영문 README를 기본 문서로 제공합니다.
+BioData Mining 투고 예정 원고를 지원하는 코드와 동결 집계 자료입니다. 현재 **공개 저장소**이며, 논문 게재나 임상 검증이 완료됐다는 뜻은 아닙니다. 국제 독자에게는 영문 README를 기본 문서로 제공합니다.
 
-코드·집계자료 패키지의 기술 정리 상태와 공개 전 남은 결정은 [최종 인계 안내](docs/STATUS.md)에 모았습니다. 저장소 정리 완료와 환자 연결 자료 공개·전체 실험 재현은 서로 다릅니다.
+코드·집계자료 패키지의 기술 정리 상태와 공개 이후 Release·보존에 필요한 결정은 [최종 인계 안내](docs/STATUS.md)에 모았습니다. 저장소 정리 완료와 환자 연결 자료 공개·전체 실험 재현은 서로 다릅니다.
 
 ## 연구 구성
 
@@ -38,7 +38,8 @@ Stage 2의 seed 42 Mamba는 **교정된 Stage 2 run**입니다. 과거 Stage 1 M
 [CPU 환경 안내](environment/CPU_TEST_ENVIRONMENT.md)에 따라 의존성을 준비한 뒤 저장소 루트에서 실행합니다.
 
 ```bash
-python -B scripts/check_public_package.py . --manifest
+# .git이 있는 clone에서 직접 검사하지 말고 영문 안내의 tracked export를 사용합니다.
+# README.md의 CPU Checks 명령을 실행한 뒤, 별도 CPU 환경에서 테스트합니다.
 PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover -s tests -v
 ```
 
@@ -54,4 +55,4 @@ Stage 2는 동일 코호트의 matched ablation이며 독립 외부검증이 아
 
 권한 있는 자체 소프트웨어 기여에는 [MIT](LICENSE)를 선택했습니다. Codex 보조 사용은 그 자체로 외부 저장소 코드 복사를 뜻하지 않으며, 실제 외부 의존성의 라이선스는 별개로 유지합니다. 출처와 미확인 범위는 [라이선스 안내](docs/licensing/LICENSE_SCOPE.md), [AI 사용 기록](docs/provenance/AI_USE_INVENTORY.md)을 확인하십시오.
 
-자체 소프트웨어에는 MIT를 적용하고 외부 고지는 유지합니다. 승인된 최소 split·patch metadata와 frozen OOF 후보는 [data 안내](data/README.md)에 명시한 별도 범위·출처·라이선스로 포함했습니다. 원본과 연결되는 가명 ID이므로 완전 익명화를 주장하지 않습니다. 저장소는 비공개이며 공개 전환·Release·Zenodo 등록은 하지 않았습니다. 인용 시 정확한 commit과 [CITATION.cff](CITATION.cff)를 확인하십시오.
+자체 소프트웨어에는 MIT를 적용하고 외부 고지는 유지합니다. 승인된 최소 split·patch metadata와 frozen OOF 후보는 [data 안내](data/README.md)에 명시한 별도 범위·출처·라이선스로 포함했습니다. 원본과 연결되는 가명 ID이므로 완전 익명화를 주장하지 않습니다. 저장소는 공개 상태입니다(2026-10-28 확인). 공개 Release·Zenodo 등록·DOI 생성은 이번 작업에서 수행하지 않습니다. 인용 시 정확한 commit과 [CITATION.cff](CITATION.cff)를 확인하십시오.

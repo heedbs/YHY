@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Review draft citation metadata; no manuscript or archival DOI is assigned."
+message: "Cite the exact software commit used; no manuscript or archival DOI is assigned."
 title: "ORCHID comparative study reproducibility package"
 type: software
 license: MIT
@@ -8,4 +8,4 @@ authors:
   - family-names: "Yang"
     given-names: "Hee Yoon"
     orcid: "https://orcid.org/0009-0004-6231-2517"
-abstract: "Review-stage software and aggregate source data for an internal patient-wise oral histopathology comparison and corrected matched Mamba ablation."
+abstract: "Public research software, reviewed source-linked metadata and saved predictions, and aggregate source data for an internal patient-wise oral histopathology comparison and corrected matched Mamba ablation."

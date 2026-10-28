@@ -6,11 +6,30 @@ This is the operational guide. Historical evidence is indexed under [docs](docs/
 
 ## 1. Check the Package
 
-Use a clean checkout with no local datasets or environment directory inside it:
+Use a git clone and a fresh tracked export, matching Actions. From the checkout root:
 
 ```bash
-python3 -B scripts/check_public_package.py . --manifest
+(
+  set -eu
+# Run from the root of a git clone; validate tracked HEAD, not .git or uncommitted files.
+ORCHID_CHECKOUT=$(git rev-parse --show-toplevel)
+ORCHID_CHECK_ROOT=$(mktemp -d "${TMPDIR:-/tmp}/orchid-check.XXXXXXXX")
+mkdir "$ORCHID_CHECK_ROOT/tracked"
+git -C "$ORCHID_CHECKOUT" archive --format=tar --output="$ORCHID_CHECK_ROOT/HEAD.tar" HEAD
+tar -xf "$ORCHID_CHECK_ROOT/HEAD.tar" -C "$ORCHID_CHECK_ROOT/tracked"
+(
+  set -e
+  cd "$ORCHID_CHECK_ROOT/tracked"
+  python3 -B scripts/check_public_package.py . --manifest
+  python3 -B scripts/check_evidence_links.py .
+  python3 -B scripts/verify_release_data.py
+)
+# Keep this fresh temporary export for inspection; no checkout/output is overwritten.
+printf 'Tracked export: %s\n' "$ORCHID_CHECK_ROOT/tracked"
+)
 ```
+
+This checks committed HEAD only, not uncommitted/untracked contents. Do not scan the clone directly: `.git` is intentionally rejected. Other hidden files, secrets and missing/unlisted files remain checked. An already exported package without `.git` can be scanned directly. Each invocation creates a new temporary directory, leaving existing outputs unchanged. Synthetic tests may run from the checkout using the isolated environment below; no model research execution is required.
 
 For dependency setup and synthetic tests, follow [the tested CPU environment guide](environment/CPU_TEST_ENVIRONMENT.md). This environment is for validation, not a replacement for CUDA/Mamba training. Historical GPU records are in `environment/`; unresolved build details are listed in [LIMITATIONS.md](LIMITATIONS.md).
 
