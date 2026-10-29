@@ -49,7 +49,9 @@ PYTHONDONTWRITEBYTECODE=1 CUDA_VISIBLE_DEVICES='' python -B -m unittest discover
 
 공식 데이터 확보 → 승인된 입력 준비 → 로컬 경로·SHA 연결 → CPU 입력 preflight → 해당 Stage trainer → 평가·figure/table 순서입니다. 실행 명령은 [재현 안내](REPRODUCIBILITY.md), 자료 제공 여부는 [DATA_ACCESS](DATA_ACCESS.md), 과학적·재현성 제한은 [LIMITATIONS](LIMITATIONS.md)에서 각각 관리합니다.
 
-Stage 2는 동일 코호트의 matched ablation이며 독립 외부검증이 아닙니다. 제한 사항은 위 기준 문서에 모아 두었으며, 문서 정리로 미해결 문제가 해결된 것처럼 표현하지 않습니다.
+Stage 1은 기술적 내부 모델 비교이며, Stage 2는 동일 코호트의 matched component·seed-stability 분석입니다. 독립 외부검증이 아닙니다. 제한 사항은 위 기준 문서에 모아 두었으며, 문서 정리로 미해결 문제가 해결된 것처럼 표현하지 않습니다.
+
+초기 development smoke에서 네 모델의 fold-0 outer 평가가 수행됐습니다. 검토한 최종 production·수치 분석 기록에서는 해당 산출물의 재사용이 발견되지 않았지만, 과거 사람·AI의 열람과 후속 개발 결정에 미친 영향은 완전히 확인되지 않습니다. 상세 범위는 [접근 이력과 근거](docs/provenance/RESULTS_PROVENANCE.md#development-outer-test-access)를 확인하십시오.
 
 ## 라이선스와 공개
 
