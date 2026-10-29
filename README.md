@@ -75,7 +75,9 @@ Follow [REPRODUCIBILITY.md](REPRODUCIBILITY.md): obtain authorized inputs → pr
 
 Included: model/training/evaluation source, 50 config examples, synthetic tests, frozen aggregate data and [field-reviewed exact metadata / saved OOF predictions](data/README.md). Images, cache, weights and private clinical/server records are not bundled; see [data access](DATA_ACCESS.md).
 
-Stage 2 is same-cohort matched ablation, not external validation. Read the single [limitations register](LIMITATIONS.md) before interpreting results or claiming complete reproduction.
+Stage 1 is a descriptive internal model comparison. Stage 2 is a same-cohort matched-component and seed-stability analysis, not external validation. Read the single [limitations register](LIMITATIONS.md) before interpreting results or claiming complete reproduction.
+
+An early development smoke evaluated the fold-0 outer partition for all four Stage 1 models. No reuse of its saved outputs was identified in the reviewed final production or numerical-analysis records; historical viewing and any influence on subsequent development decisions could not be fully established. See [development-access provenance](docs/provenance/RESULTS_PROVENANCE.md#development-outer-test-access).
 
 ## License and Citation
 
